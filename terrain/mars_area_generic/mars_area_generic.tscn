@@ -12,10 +12,9 @@ textures = [ [  ], [  ] ]
 [node name="MarsAreaGeneric" type="Spatial"]
 
 [node name="HTerrain" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20000, 0, -20000 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2000, 0, -2000 )
 script = ExtResource( 1 )
 lod_scale = 2.0
-map_scale = Vector3( 10, 10, 10 )
 _terrain_data = ExtResource( 3 )
 chunk_size = 32
 collision_enabled = true
