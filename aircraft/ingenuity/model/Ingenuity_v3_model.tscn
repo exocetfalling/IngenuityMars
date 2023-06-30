@@ -8,14 +8,14 @@
 [node name="bus" parent="." index="0"]
 transform = Transform( 6.94758e-08, -0.129512, 0, 0.129512, 6.94758e-08, 0, 0, 0, 0.129512, 0, -0.2, 0 )
 
-[node name="Prop_Upper" type="Sprite3D" parent="bus" index="10"]
+[node name="PropBlur01" type="Sprite3D" parent="bus" index="10"]
 transform = Transform( 4.14201e-06, 7.72127, 0, -7.72127, 4.14201e-06, 0, 0, 0, 7.72127, 3.3305, 1.78662e-06, 0 )
 visible = false
 pixel_size = 0.0013
 axis = 1
 texture = ExtResource( 2 )
 
-[node name="Prop_Lower" type="Sprite3D" parent="bus" index="11"]
+[node name="PropBlur02" type="Sprite3D" parent="bus" index="11"]
 transform = Transform( 3.58709e-06, 7.72127, 2.07101e-06, -6.68682, 4.14201e-06, -3.86064, -3.86064, 0, 6.68682, 2.52402, 1.35399e-06, 0 )
 visible = false
 pixel_size = 0.0013
