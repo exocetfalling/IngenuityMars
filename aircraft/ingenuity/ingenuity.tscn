@@ -9,6 +9,7 @@ margin = 0.001
 extents = Vector3( 0.311, 0.25, 0.311 )
 
 [node name="Ingenuity" type="VehicleBody"]
+mass = 1.8
 continuous_cd = true
 can_sleep = false
 angular_damp = 1.0
@@ -50,9 +51,9 @@ param_tuning_active = false
 
 [node name="PIDCalcVelocityX" type="Node" parent="."]
 script = ExtResource( 3 )
-term_P = 1.0
+term_P = 2.0
 term_I = 1.0
-term_D = 1.0
+term_D = 0.02
 param_tuning_active = false
 
 [node name="PIDCalcVelocityY" type="Node" parent="."]
@@ -64,9 +65,30 @@ param_tuning_active = false
 
 [node name="PIDCalcVelocityZ" type="Node" parent="."]
 script = ExtResource( 3 )
-term_P = 1.0
+term_P = 2.0
 term_I = 1.0
-term_D = 1.0
+term_D = 0.02
+param_tuning_active = false
+
+[node name="PIDCalcPositionX" type="Node" parent="."]
+script = ExtResource( 3 )
+term_P = 2.0
+term_I = 0.5
+term_D = 0.1
+param_tuning_active = false
+
+[node name="PIDCalcPositionY" type="Node" parent="."]
+script = ExtResource( 3 )
+term_P = 2.0
+term_I = 0.5
+term_D = 0.1
+param_tuning_active = false
+
+[node name="PIDCalcPositionZ" type="Node" parent="."]
+script = ExtResource( 3 )
+term_P = 2.0
+term_I = 0.5
+term_D = 0.1
 param_tuning_active = false
 
 [node name="VehicleWheel1" type="VehicleWheel" parent="."]

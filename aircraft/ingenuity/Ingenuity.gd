@@ -5,11 +5,11 @@ extends AeroBody
 # var a = 2
 # var b = "text"
 var cmd_sas : Vector3 = Vector3.ZERO
-var sas_mode : int = 1
+var sas_mode : int = 2
 
 var rotation_target : Vector3 = Vector3.ZERO
 
-var thrust_rated : float = 500
+var thrust_rated : float = 10
 
 var output_throttle : float = 0
 
@@ -105,9 +105,9 @@ func _physics_process(delta):
 		
 		output_throttle = clamp($PIDCalcThrust.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
 		
-		cmd_sas.x = $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
-		cmd_sas.y = input_rudder * 10
-		cmd_sas.z = $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
+		cmd_sas.x = 0.1 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
+		cmd_sas.y = 0.1 * input_rudder
+		cmd_sas.z = 0.1 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
 		
 		add_force_local(Vector3(0, thrust_rated * output_throttle, 0), Vector3.ZERO)
 		
