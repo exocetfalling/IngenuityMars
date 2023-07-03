@@ -52,7 +52,7 @@ func calc_atmo_properties(height_metres):
 		atmo_properties.x = 249.15 - 0.00222 * height_metres
 	
 	atmo_properties.y = 699 * pow(2.718281828, (-0.00009 * height_metres))
-	atmo_properties.z = atmo_properties.x / (192.1 * atmo_properties.y)
+	atmo_properties.z = atmo_properties.x / (19.210 * atmo_properties.y)
 	
 	return atmo_properties
 
