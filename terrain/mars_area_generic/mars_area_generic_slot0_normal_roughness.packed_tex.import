@@ -1,0 +1,18 @@
+[remap]
+
+importer="hterrain_packed_texture_importer"
+type="StreamTexture"
+path.s3tc="res://.import/mars_area_generic_slot0_normal_roughness.packed_tex-4199a4a0614a8b31d9f26b151968b46e.s3tc.stex"
+path.etc2="res://.import/mars_area_generic_slot0_normal_roughness.packed_tex-4199a4a0614a8b31d9f26b151968b46e.etc2.stex"
+
+[deps]
+
+source_file="res://terrain/mars_area_generic/mars_area_generic_slot0_normal_roughness.packed_tex"
+dest_files=[ "res://.import/mars_area_generic_slot0_normal_roughness.packed_tex-4199a4a0614a8b31d9f26b151968b46e.s3tc.stex", "res://.import/mars_area_generic_slot0_normal_roughness.packed_tex-4199a4a0614a8b31d9f26b151968b46e.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+flags/repeat=1
+flags/filter=true
+flags/mipmaps=true
