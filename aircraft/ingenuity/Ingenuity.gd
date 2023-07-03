@@ -30,8 +30,31 @@ func _ready():
 	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
 	DebugOverlay.stats.add_property(self, "input_throttle_mapped", "")
 	DebugOverlay.stats.add_property(self, "output_throttle", "")
+	DebugOverlay.stats.add_property(self, "air_temperature", "")
+	DebugOverlay.stats.add_property(self, "air_pressure", "")
+	DebugOverlay.stats.add_property(self, "air_density", "")
 	
 	pass # Replace with function body.
+	
+func calc_atmo_properties(height_metres):
+	# Store atmospheric properties as Vector3
+	# X value is air temperature, deg K
+	# Y value is air pressure, Pa
+	# Z value is air density, kg m^-3
+	
+	# From https://www.grc.nasa.gov/www/k-12/airplane/atmosmrm.html
+	
+	var atmo_properties : Vector3 = Vector3.ZERO
+	
+	if (height_metres <= 7000):
+		atmo_properties.x = 242.15 - 0.000998 * height_metres
+	if (height_metres > 7000):
+		atmo_properties.x = 249.15 - 0.00222 * height_metres
+	
+	atmo_properties.y = 699 * pow(2.718281828, (-0.00009 * height_metres))
+	atmo_properties.z = atmo_properties.x / (192.1 * atmo_properties.y)
+	
+	return atmo_properties
 
 func throttle_map(input_throttle):
 	var p1 : Vector2 = Vector2(0, 0)
@@ -49,7 +72,6 @@ func throttle_map(input_throttle):
 	
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta): 
-#	angular_velocity_local = (angular_velocity)
 	if (control_type == 1):
 		# Panel updates
 		AeroDataBus.aircraft_pitch = adc_pitch
@@ -74,78 +96,78 @@ func _physics_process(delta):
 		
 		AeroDataBus.aircraft_nav_waypoint_data = find_angles_and_distance_to_target(Vector3(0, 200, 0))
 	
-		$RadioAltimeter.rotation_degrees.x = clamp(-adc_pitch, -30, +30)
-		$RadioAltimeter.rotation_degrees.z = clamp(+adc_roll, -30, +30)
-		
-		
-		if ($RadioAltimeter.is_colliding() == true):
-			adc_alt_radio = (global_translation - $RadioAltimeter.get_collision_point()).length()
-		else:
-			# Set value to show sensor is out of range
-			adc_alt_radio = 9999
-		
+	$RadioAltimeter.rotation_degrees.x = clamp(-adc_pitch, -30, +30)
+	$RadioAltimeter.rotation_degrees.z = clamp(+adc_roll, -30, +30)
+	
+	
+	if ($RadioAltimeter.is_colliding() == true):
+		adc_alt_radio = (global_translation - $RadioAltimeter.get_collision_point()).length()
+	else:
+		# Set value to show sensor is out of range
+		adc_alt_radio = 9999
+	
 #		if (camera_mode == 0):
 #			$Camera_FPV/FPV_HUD.visible = true
 #		if (camera_mode == 1):
 #			$Camera_FPV/FPV_HUD.visible = false
+	
+	calc_atmo_properties(global_transform.origin.y)
+	
+	tgt_rates.x = deg2rad(input_joystick.y * 10)
+	tgt_rates.y = deg2rad(input_rudder * 10)
+	tgt_rates.z = deg2rad(input_joystick.x * 10)
+	
+	linear_velocity_rotated = linear_velocity.rotated(Vector3.UP, -global_rotation.y)
+	
+	if (sas_mode == 1):
+		tgt_pitch = 20 * input_joystick.y
+		tgt_roll = 20 * input_joystick.x
 		
-		tgt_rates.x = deg2rad(input_joystick.y * 10)
-		tgt_rates.y = deg2rad(input_rudder * 10)
-		tgt_rates.z = deg2rad(input_joystick.x * 10)
-		
-#		cmd_sas = 5 * (tgt_rates - adc_rates)
-		
-		linear_velocity_rotated = linear_velocity.rotated(Vector3.UP, -global_rotation.y)
-		
-		if (sas_mode == 1):
-			tgt_pitch = 20 * input_joystick.y
-			tgt_roll = 20 * input_joystick.x
-			
-		if (sas_mode == 2):
-			tgt_pitch = clamp($PIDCalcVelocityZ.calc_PID_output(linear_velocity_target.z, linear_velocity_rotated.z), -20, 20)
-			tgt_roll = clamp($PIDCalcVelocityX.calc_PID_output(linear_velocity_target.x, linear_velocity_rotated.x), -20, 20)
-		
-		linear_velocity_target.x = 10 * input_joystick.x
-		linear_velocity_target.y = 3 * (input_throttle_mapped - 0.5)
-		linear_velocity_target.z = 10 * input_joystick.y
-		
-		
-		input_throttle = clamp(input_throttle, 0, 1)
-		
-		input_throttle_mapped = throttle_map(input_throttle)
-		
-		output_throttle = clamp($PIDCalcThrust.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
-		
-		cmd_sas.x = 0.1 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
-		cmd_sas.y = 0.1 * input_rudder
-		cmd_sas.z = 0.1 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
-		
-		add_force_local(Vector3(0, thrust_rated * output_throttle, 0), Vector3.ZERO)
-		
+	if (sas_mode == 2):
+		tgt_pitch = clamp($PIDCalcVelocityZ.calc_PID_output(linear_velocity_target.z, linear_velocity_rotated.z), -20, 20)
+		tgt_roll = clamp($PIDCalcVelocityX.calc_PID_output(linear_velocity_target.x, linear_velocity_rotated.x), -20, 20)
+	
+	linear_velocity_target.x = 10 * input_joystick.x
+	linear_velocity_target.y = 3 * (input_throttle_mapped - 0.5)
+	linear_velocity_target.z = 10 * input_joystick.y
+	
+	
+	input_throttle = clamp(input_throttle, 0, 1)
+	
+	input_throttle_mapped = throttle_map(input_throttle)
+	
+	output_throttle = clamp($PIDCalcThrust.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
+	
+	cmd_sas.x = 0.1 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
+	cmd_sas.y = 0.1 * input_rudder
+	cmd_sas.z = 0.1 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
+	
+	add_force_local(Vector3(0, thrust_rated * output_throttle, 0), Vector3.ZERO)
+	
 #		add_torque_local(20 * Vector3(input_joystick.y, -input_rudder, -input_joystick.x))
-		add_torque_local(Vector3(cmd_sas.x, -cmd_sas.y, -cmd_sas.z))
+	add_torque_local(Vector3(cmd_sas.x, -cmd_sas.y, -cmd_sas.z))
+	
+	# Basic drag
+	add_central_force(-0.2 * air_density * (linear_velocity + linear_velocity_wind).length_squared() * (linear_velocity + linear_velocity_wind).normalized())
+	
+	# Reset integral on ground
+	if (input_throttle < 0.05):
+		$PIDCalcThrust.integral = 0
+		$PIDCalcVelocityX.integral = 0
+		$PIDCalcVelocityZ.integral = 0
+	
+	# Anims
+	# Props
+	if (output_throttle > 0.05):
+		$Ingenuity_v3/bus/PropBlur01.visible = true
+		$Ingenuity_v3/bus/PropBlur02.visible = true
 		
-		# Basic drag
-		add_central_force(-0.2 * air_density * (linear_velocity + linear_velocity_wind).length_squared() * (linear_velocity + linear_velocity_wind).normalized())
+	else:
+		$Ingenuity_v3/bus/PropBlur01.visible = false
+		$Ingenuity_v3/bus/PropBlur02.visible = false
 		
-		# Reset integral on ground
-		if (input_throttle < 0.05):
-			$PIDCalcThrust.integral = 0
-			$PIDCalcVelocityX.integral = 0
-			$PIDCalcVelocityZ.integral = 0
-		
-		# Anims
-		# Props
-		if (output_throttle > 0.05):
-			$Ingenuity_v3/bus/PropBlur01.visible = true
-			$Ingenuity_v3/bus/PropBlur02.visible = true
-			
-		else:
-			$Ingenuity_v3/bus/PropBlur01.visible = false
-			$Ingenuity_v3/bus/PropBlur02.visible = false
-			
-		$Ingenuity_v3/bus/rotors_01.rotate_x(+output_throttle * 283 * delta)
-		$Ingenuity_v3/bus/rotors_02.rotate_x(-output_throttle * 283 * delta)
+	$Ingenuity_v3/bus/rotors_01.rotate_x(+output_throttle * 283 * delta)
+	$Ingenuity_v3/bus/rotors_02.rotate_x(-output_throttle * 283 * delta)
 			
 		
 func get_input(delta):
