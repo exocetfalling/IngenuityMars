@@ -51,9 +51,7 @@ param_tuning_active = false
 
 [node name="PIDCalcVelocityX" type="Node" parent="."]
 script = ExtResource( 3 )
-term_P = 2.0
-term_I = 1.0
-term_D = 0.02
+term_P = 8.0
 param_tuning_active = false
 
 [node name="PIDCalcVelocityY" type="Node" parent="."]
@@ -65,9 +63,7 @@ param_tuning_active = false
 
 [node name="PIDCalcVelocityZ" type="Node" parent="."]
 script = ExtResource( 3 )
-term_P = 2.0
-term_I = 1.0
-term_D = 0.02
+term_P = 8.0
 param_tuning_active = false
 
 [node name="PIDCalcPositionX" type="Node" parent="."]
