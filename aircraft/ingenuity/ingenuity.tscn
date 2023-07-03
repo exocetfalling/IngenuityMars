@@ -119,4 +119,9 @@ wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.3, 1 )
+current = true
+far = 10000.0
+
 [editable path="Ingenuity_v3"]
