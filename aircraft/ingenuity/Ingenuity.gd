@@ -25,14 +25,14 @@ var camera_mouse_delta = 0
 func _ready():
 	linear_velocity_wind = Vector3(0, 0, 0)
 	
-	DebugOverlay.stats.add_property(self, "input_joystick", "round")
-	DebugOverlay.stats.add_property(self, "linear_velocity_local", "round")
-	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
-	DebugOverlay.stats.add_property(self, "input_throttle_mapped", "")
-	DebugOverlay.stats.add_property(self, "output_throttle", "")
-	DebugOverlay.stats.add_property(self, "air_temperature", "")
-	DebugOverlay.stats.add_property(self, "air_pressure", "")
-	DebugOverlay.stats.add_property(self, "air_density", "")
+#	DebugOverlay.stats.add_property(self, "input_joystick", "round")
+#	DebugOverlay.stats.add_property(self, "linear_velocity_local", "round")
+#	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
+#	DebugOverlay.stats.add_property(self, "input_throttle_mapped", "")
+#	DebugOverlay.stats.add_property(self, "output_throttle", "")
+#	DebugOverlay.stats.add_property(self, "air_temperature", "")
+#	DebugOverlay.stats.add_property(self, "air_pressure", "")
+#	DebugOverlay.stats.add_property(self, "air_density", "")
 	
 	pass # Replace with function body.
 	

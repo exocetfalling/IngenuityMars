@@ -11,41 +11,48 @@ anchor_bottom = 0.95
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_top = 0.4
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_vertical = 3
-
-[node name="ButtonFreeFlight" type="Button" parent="VBoxContainer"]
-margin_right = 1728.0
-margin_bottom = 79.0
-text = "Free Flight"
-
-[node name="Button2" type="Button" parent="VBoxContainer"]
-margin_top = 83.0
-margin_right = 1728.0
-margin_bottom = 162.0
-disabled = true
-text = "Tutorials"
-
-[node name="Button3" type="Button" parent="VBoxContainer"]
-margin_top = 166.0
-margin_right = 1728.0
-margin_bottom = 245.0
-disabled = true
-text = "Missions"
-
-[node name="Button4" type="Button" parent="VBoxContainer"]
-margin_top = 249.0
-margin_right = 1728.0
-margin_bottom = 328.0
-disabled = true
-text = "Credits"
-
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 0.25
 text = "INGENUITY MARS"
 align = 1
 valign = 1
+
+[node name="Options" type="VBoxContainer" parent="."]
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+
+[node name="ButtonFreeFlight" type="Button" parent="Options"]
+margin_right = 1728.0
+margin_bottom = 79.0
+text = "Free Flight"
+
+[node name="ButtonTutorials" type="Button" parent="Options"]
+margin_top = 83.0
+margin_right = 1728.0
+margin_bottom = 162.0
+disabled = true
+text = "Tutorials"
+
+[node name="ButtonMissions" type="Button" parent="Options"]
+margin_top = 166.0
+margin_right = 1728.0
+margin_bottom = 245.0
+disabled = true
+text = "Missions"
+
+[node name="ButtonCredits" type="Button" parent="Options"]
+margin_top = 249.0
+margin_right = 1728.0
+margin_bottom = 328.0
+disabled = true
+text = "Credits"
+
+[node name="ButtonExit" type="Button" parent="Options"]
+margin_top = 332.0
+margin_right = 1728.0
+margin_bottom = 411.0
+disabled = true
+text = "Exit"

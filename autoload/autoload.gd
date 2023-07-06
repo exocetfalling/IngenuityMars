@@ -13,6 +13,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if($Options/ButtonFreeFlight.pressed == true):
-		get_tree().change_scene("res://uires/menu_free_flight/menu_free_flight.tscn")
+	get_input(delta)
 	pass
+
+func get_input(delta):
+
+	# Pause input
+	if (Input.is_action_just_pressed("ui_cancel")):
+		if (get_tree().paused == false):
+			$MenuPause.visible = true
+			get_tree().paused = true
+		else:
+			$MenuPause.visible = false
+			get_tree().paused = false

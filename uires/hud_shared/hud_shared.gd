@@ -8,11 +8,11 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	visible = false
-	pass
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if($Options/ButtonMainMenu.pressed == true):
-		get_tree().change_scene("res://uires/menu_main/menu_main.tscn")
+	$GaugeSPD.value_displayed = AeroDataBus.aircraft_spd_true
+	$GaugeHDG.value_displayed = AeroDataBus.aircraft_hdg
+	$GaugeALT.value_displayed = AeroDataBus.aircraft_alt_barometric
