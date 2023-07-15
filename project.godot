@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://addons/aero_tools/scripts/aero_engine.gd"
 }, {
 "base": "Spatial",
+"class": "AeroRotor",
+"language": "GDScript",
+"path": "res://addons/aero_tools/scripts/aero_rotor.gd"
+}, {
+"base": "Spatial",
 "class": "AeroSurface",
 "language": "GDScript",
 "path": "res://addons/aero_tools/scripts/aero_surface.gd"
@@ -48,6 +53,7 @@ _global_script_class_icons={
 "AeroBody": "",
 "AeroElement": "",
 "AeroEngine": "",
+"AeroRotor": "",
 "AeroSurface": "",
 "HTerrainDataLoader": "",
 "HTerrainDataSaver": "",

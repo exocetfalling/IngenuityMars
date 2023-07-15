@@ -14,6 +14,16 @@ var thrust_rated : float = 10
 var input_throttle_mapped : float = 0
 var output_throttle : float = 0
 
+# Total lift force from both rotors
+var rotor_lift_force : float = 0
+
+# Uses RPM because the RL specs are in RPM
+var rotor_rpm : float = 0
+var rotor_rpm_range_min : float = 2400
+var rotor_rpm_range_max : float = 2700
+
+var rotor_angular_velocity : float = 0
+
 var linear_velocity_target : Vector3 = Vector3.ZERO
 
 var linear_velocity_rotated : Vector3 = Vector3.ZERO
@@ -56,7 +66,8 @@ func calc_atmo_properties(height_metres):
 	
 	return atmo_properties
 
-func throttle_map(input_throttle):
+# Map throttle to make hovering easier
+func throttle_map(throttle):
 	var p1 : Vector2 = Vector2(0, 0)
 	var p2 : Vector2 = Vector2(0.45, 0.5)
 	var p3 : Vector2 = Vector2(0.55, 0.5)
@@ -69,7 +80,19 @@ func throttle_map(input_throttle):
 	elif ((input_throttle >= p3.x) && (input_throttle <= p4.x)):
 		return (((p4.y - p3.y) / (p4.x - p3.x)) * (input_throttle - p3.x) + p3.y)
 	
+func rotor_rpm_map(throttle):
+	var p1 : Vector2 = Vector2(0, 0)
+	var p2 : Vector2 = Vector2(0.02, 2400)
+	var p3 : Vector2 = Vector2(0.05, 2600)
+	var p4 : Vector2 = Vector2(1, 2700)
 	
+	if ((input_throttle >= p1.x) && (input_throttle < p2.x)):
+		return (((p2.y - p1.y) / (p2.x - p1.x)) * (input_throttle - p1.x) + p1.y)
+	elif ((input_throttle >= p2.x) && (input_throttle < p3.x)):
+		return (((p3.y - p2.y) / (p3.x - p2.x)) * (input_throttle - p2.x) + p2.y)
+	elif ((input_throttle >= p3.x) && (input_throttle <= p4.x)):
+		return (((p4.y - p3.y) / (p4.x - p3.x)) * (input_throttle - p3.x) + p3.y)
+
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta): 
 	if (control_type == 1):
@@ -141,6 +164,10 @@ func _physics_process(delta):
 	cmd_sas.x = 0.1 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
 	cmd_sas.y = 0.1 * input_rudder
 	cmd_sas.z = 0.1 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
+	
+	rotor_rpm = rotor_rpm_map(input_throttle)
+	rotor_angular_velocity = rotor_rpm * 283
+	
 	
 	add_force_local(Vector3(0, thrust_rated * output_throttle, 0), Vector3.ZERO)
 	
