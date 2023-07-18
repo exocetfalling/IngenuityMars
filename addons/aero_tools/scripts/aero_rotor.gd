@@ -179,11 +179,7 @@ func _physics_process(delta):
 		Vector3(0, force_lift_rotor_magnitude, 0)
 	
 	force_drag_rotor_vector = \
-		Vector3(\
-			(sin(angle_beta) * force_drag_rotor_magnitude), \
-			0, \
-			(cos(angle_beta) * force_drag_rotor_magnitude) \
-			)
+		- vel_body.normalized() * force_drag_rotor_magnitude
 	
 	force_total_rotor_vector = \
 		(force_lift_rotor_vector + force_drag_rotor_vector)
