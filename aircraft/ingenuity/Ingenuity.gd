@@ -114,8 +114,10 @@ func _physics_process(delta):
 		AeroDataBus.aircraft_flaps = input_flaps
 		AeroDataBus.aircraft_trim = output_elevator_trim
 		AeroDataBus.aircraft_gear = gear_current
-		AeroDataBus.aircraft_throttle = input_throttle
+		AeroDataBus.aircraft_throttle = input_throttle_mapped
 		AeroDataBus.aircraft_cws = autopilot_on
+		AeroDataBus.aircraft_spd_vertical = linear_velocity.y
+		AeroDataBus.aircraft_spd_vertical_tgt = (input_throttle_mapped - 0.5) * 6
 		
 		AeroDataBus.aircraft_nav_waypoint_data = find_angles_and_distance_to_target(Vector3(0, 200, 0))
 	

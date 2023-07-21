@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "PID_Calc",
 "language": "GDScript",
 "path": "res://addons/aero_tools/scripts/aero_pid_calc.gd"
+}, {
+"base": "Control",
+"class": "VirtualJoystick",
+"language": "GDScript",
+"path": "res://addons/virtual-joystick/joystick/virtual_joystick.gd"
 } ]
 _global_script_class_icons={
 "AeroBody": "",
@@ -57,7 +62,8 @@ _global_script_class_icons={
 "AeroSurface": "",
 "HTerrainDataLoader": "",
 "HTerrainDataSaver": "",
-"PID_Calc": ""
+"PID_Calc": "",
+"VirtualJoystick": ""
 }
 
 [application]
@@ -140,6 +146,11 @@ yaw_right={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [physics]
 

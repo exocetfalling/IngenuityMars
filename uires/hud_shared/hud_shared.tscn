@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://uires/hud_gauge_numeric/hud_gauge_numeric.tscn" type="PackedScene" id=1]
 [ext_resource path="res://uires/hud_shared/hud_shared.gd" type="Script" id=2]
+[ext_resource path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://uires/hud_gauge_custom/hud_gauge_custom.tscn" type="PackedScene" id=4]
 
 [node name="HUDShared" type="Control"]
 anchor_left = 0.05
@@ -26,3 +28,38 @@ anchor_left = 0.9
 anchor_right = 1.0
 anchor_bottom = 0.2
 label_displayed = "ALT"
+
+[node name="GaugeVST" parent="." instance=ExtResource( 4 )]
+anchor_top = 0.6
+anchor_right = 0.1
+anchor_bottom = 0.6
+label_displayed = "VST"
+value_format_string = "%+0.1f"
+
+[node name="GaugeVSI" parent="." instance=ExtResource( 4 )]
+anchor_left = 0.9
+anchor_top = 0.6
+anchor_right = 0.9
+anchor_bottom = 0.6
+margin_right = 180.0
+margin_bottom = 150.0
+label_displayed = "VSI"
+value_format_string = "%+0.1f"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="VJoyLeft" parent="UI" instance=ExtResource( 3 )]
+action_left = "yaw_left"
+action_right = "yaw_right"
+action_up = "throttle_up"
+action_down = "throttle_down"
+
+[node name="VJoyRight" parent="UI" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -250.0
+margin_right = -50.0
+action_left = "roll_left"
+action_right = "roll_right"
+action_up = "pitch_down"
+action_down = "pitch_up"
