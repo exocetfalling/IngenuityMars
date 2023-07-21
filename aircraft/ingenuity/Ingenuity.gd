@@ -153,7 +153,7 @@ func _physics_process(delta):
 		tgt_roll = clamp($PIDCalcVelocityX.calc_PID_output(linear_velocity_target.x, linear_velocity_rotated.x), -20, 20)
 	
 	linear_velocity_target.x = 10 * input_joystick.x
-	linear_velocity_target.y = 3 * (input_throttle_mapped - 0.5)
+	linear_velocity_target.y = 6 * (input_throttle_mapped - 0.5)
 	linear_velocity_target.z = 10 * input_joystick.y
 	
 	
