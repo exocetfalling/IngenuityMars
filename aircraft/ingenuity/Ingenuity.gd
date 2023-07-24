@@ -24,6 +24,9 @@ var rotor_rpm_range_max : float = 2700
 
 var rotor_angular_velocity : float = 0
 
+# Blade pitch angles
+var rotor_blade_angle : float = 0
+
 var linear_velocity_target : Vector3 = Vector3.ZERO
 
 var linear_velocity_rotated : Vector3 = Vector3.ZERO
@@ -170,6 +173,7 @@ func _physics_process(delta):
 	rotor_rpm = rotor_rpm_map(input_throttle)
 	rotor_angular_velocity = rotor_rpm * 283
 	
+	rotor_blade_angle = PI / 12 * output_throttle
 	
 	add_force_local(Vector3(0, thrust_rated * output_throttle, 0), Vector3.ZERO)
 	
@@ -195,8 +199,8 @@ func _physics_process(delta):
 		$Ingenuity_v3/bus/PropBlur01.visible = false
 		$Ingenuity_v3/bus/PropBlur02.visible = false
 		
-	$Ingenuity_v3/bus/rotors_01.rotate_x(+output_throttle * 283 * delta)
-	$Ingenuity_v3/bus/rotors_02.rotate_x(-output_throttle * 283 * delta)
+	$Ingenuity_v3/bus/rotors_01.rotate_x(+rotor_angular_velocity * delta)
+	$Ingenuity_v3/bus/rotors_02.rotate_x(-rotor_angular_velocity * delta)
 			
 		
 func get_input(delta):
