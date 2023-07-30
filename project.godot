@@ -69,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="IngenuityMars"
-run/main_scene="res://scenes/test_scene.tscn"
+run/main_scene="res://uires/menu_main/menu_main.tscn"
 config/icon="res://assets/icon.png"
 
 [autoload]
@@ -77,7 +77,6 @@ config/icon="res://assets/icon.png"
 AeroHelper="*res://addons/aero_tools/scripts/aero_helper.gd"
 AeroDataBus="*res://addons/aero_tools/scripts/aero_data_bus.gd"
 DebugOverlay="*res://debug/DebugOverlay.tscn"
-Autoload="*res://autoload/autoload.tscn"
 Global="*res://autoload/global.gd"
 
 [display]

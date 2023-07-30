@@ -126,9 +126,9 @@ transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0
 current = true
 far = 10000.0
 
-[node name="HUDShared" parent="." instance=ExtResource( 4 )]
-
 [node name="AeroSurfaceRef" type="Spatial" parent="."]
 script = ExtResource( 5 )
+
+[node name="HUDShared" parent="." instance=ExtResource( 4 )]
 
 [editable path="Ingenuity_v3"]
