@@ -15,6 +15,8 @@ func _ready():
 func _process(delta):
 	if($Options/ButtonFreeFlight.pressed == true):
 		get_tree().change_scene("res://uires/menu_free_flight/menu_free_flight.tscn")
+	if($Options/ButtonExit.pressed == true):
+		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 	
 	if (get_tree().paused == true):
 		get_tree().paused = false

@@ -208,9 +208,9 @@ func get_input(delta):
 	if (control_type == 1):
 			# Throttle input
 		if (Input.is_action_pressed("throttle_up")):
-			input_throttle += 0.5 * delta 
+			input_throttle += Input.get_action_strength("throttle_up") * delta * 0.25
 		if (Input.is_action_pressed("throttle_down")):
-			input_throttle -= 0.5 * delta
+			input_throttle -= Input.get_action_strength("throttle_down") * delta * 0.25
 
 		# Joystick input as axes
 		input_joystick.x = Input.get_axis("roll_left", "roll_right")

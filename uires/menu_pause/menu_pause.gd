@@ -20,3 +20,5 @@ func _process(delta):
 	if($Options/ButtonResume.pressed == true):
 		visible = false
 		get_tree().paused = false
+	if($Options/ButtonExit.pressed == true):
+		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
