@@ -229,3 +229,13 @@ func get_input(delta):
 #		if (camera_mode > 1):
 #			camera_mode = 0
 
+
+
+func _on_ButtonCamera_button_up():
+	if ($CameraExt.current == true):
+		$CameraRTE.current = true
+	elif ($CameraRTE.current == true):
+		$CameraNAV.current = true
+	elif ($CameraNAV.current == true):
+		$CameraExt.current = true
+
