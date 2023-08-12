@@ -23,6 +23,7 @@ script = ExtResource( 2 )
 anchor_top = 0.1
 anchor_right = 0.1
 anchor_bottom = 0.3
+grow_horizontal = 2
 label_displayed = "SPD"
 
 [node name="GaugeHDG" parent="." instance=ExtResource( 1 )]
@@ -30,6 +31,7 @@ anchor_left = 0.45
 anchor_top = 0.1
 anchor_right = 0.55
 anchor_bottom = 0.3
+grow_horizontal = 2
 label_displayed = "HDG"
 
 [node name="GaugeALT" parent="." instance=ExtResource( 1 )]
@@ -37,12 +39,14 @@ anchor_left = 0.9
 anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.3
+grow_horizontal = 2
 label_displayed = "ALT"
 
 [node name="GaugeVST" parent="." instance=ExtResource( 4 )]
 anchor_top = 0.6
 anchor_right = 0.1
 anchor_bottom = 0.6
+grow_horizontal = 2
 label_displayed = "VST"
 value_format_string = "%+0.1f"
 
@@ -53,6 +57,7 @@ anchor_right = 0.9
 anchor_bottom = 0.6
 margin_right = 180.0
 margin_bottom = 150.0
+grow_horizontal = 2
 label_displayed = "VSI"
 value_format_string = "%+0.1f"
 
