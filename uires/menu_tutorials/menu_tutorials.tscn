@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://uires/menu_shared/menu_shared_theme.tres" type="Theme" id=1]
+[ext_resource path="res://uires/menu_credits/menu_credits.gd" type="Script" id=2]
+
+[node name="MenuTutorials" type="Control"]
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_right = 8.0
+margin_bottom = 95.0
+tab_align = 0
+
+[node name="HUD" type="RichTextLabel" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 91.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "HUD Data:
+
+SPD -> Speed
+HDG -> Heading 
+ALT -> Altitude
+VVT -> Vertical velocity target
+VVI -> Vertical velocity indicator "
+
+[node name="Controls" type="RichTextLabel" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 91.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "Controls:
+Left stick -> Vertical velocity + yaw
+Right stick -> Horizontal velocity"
+
+[node name="Tips" type="RichTextLabel" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 91.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "- Stability augmentation system available
+- Stick position controls velocity
+  -> Limit 10 m/s horizontal
+  -> Limit 3 m/s vertical
+- Set VVT to +0.0 to hover
+- For landing, VVT > -0.5 m/s suggested"
+
+[node name="ButtonBack" type="Button" parent="."]
+anchor_top = 0.9
+anchor_right = 0.2
+anchor_bottom = 1.0
+text = "Back"

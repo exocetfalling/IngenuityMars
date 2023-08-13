@@ -33,7 +33,6 @@ text = "Free Flight"
 margin_top = 83.0
 margin_right = 1728.0
 margin_bottom = 162.0
-disabled = true
 text = "Tutorials"
 
 [node name="ButtonMissions" type="Button" parent="Options"]
@@ -47,7 +46,6 @@ text = "Missions"
 margin_top = 249.0
 margin_right = 1728.0
 margin_bottom = 328.0
-disabled = true
 text = "Credits"
 
 [node name="ButtonExit" type="Button" parent="Options"]

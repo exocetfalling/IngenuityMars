@@ -24,8 +24,8 @@ func _process(delta):
 	$GaugeSPD.value_displayed = AeroDataBus.aircraft_spd_true
 	$GaugeHDG.value_displayed = AeroDataBus.aircraft_hdg
 	$GaugeALT.value_displayed = AeroDataBus.aircraft_alt_barometric
-	$GaugeVST.value_displayed = AeroDataBus.aircraft_spd_vertical_tgt
-	$GaugeVSI.value_displayed = AeroDataBus.aircraft_spd_vertical
+	$GaugeVVT.value_displayed = AeroDataBus.aircraft_spd_vertical_tgt
+	$GaugeVVI.value_displayed = AeroDataBus.aircraft_spd_vertical
 	
 	if ($ButtonPause.pressed == true):
 		pause_handle()
