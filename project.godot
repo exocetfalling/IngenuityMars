@@ -70,7 +70,7 @@ _global_script_class_icons={
 
 config/name="IngenuityMars"
 config/description="A simulation of NASA's Ingenuity Mars helicopter in Godot 3.5."
-run/main_scene="res://scenes/test_scene.tscn"
+run/main_scene="res://uires/menu_main/menu_main.tscn"
 config/icon="res://assets/icon.png"
 
 [autoload]
