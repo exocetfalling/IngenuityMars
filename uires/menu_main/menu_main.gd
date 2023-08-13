@@ -15,6 +15,8 @@ func _ready():
 func _process(delta):
 	if($Options/ButtonFreeFlight.pressed == true):
 #		get_tree().change_scene("res://uires/menu_free_flight/menu_free_flight.tscn")
+#		$LoadingNotice.visible = true
+#		$Label.text = "FML"
 		get_tree().change_scene("res://scenes/test_scene.tscn")
 	
 	if($Options/ButtonTutorials.pressed == true):
