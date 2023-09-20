@@ -164,7 +164,7 @@ func _physics_process(delta):
 	
 	input_throttle_mapped = throttle_map(input_throttle)
 	
-	output_throttle = clamp($PIDCalcThrust.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
+	output_throttle = clamp($PIDCalcVelocityY.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
 	
 	cmd_sas.x = 0.1 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
 	cmd_sas.y = 0.1 * input_rudder
@@ -185,8 +185,8 @@ func _physics_process(delta):
 	
 	# Reset integral on ground
 	if (input_throttle < 0.05):
-		$PIDCalcThrust.integral = 0
 		$PIDCalcVelocityX.integral = 0
+		$PIDCalcVelocityY.integral = 0
 		$PIDCalcVelocityZ.integral = 0
 	
 	# Anims
@@ -206,11 +206,8 @@ func _physics_process(delta):
 func get_input(delta):
 	# Check if aircraft is under player control
 	if (control_type == 1):
-			# Throttle input
-		if (Input.is_action_pressed("throttle_up")):
-			input_throttle += Input.get_action_strength("throttle_up") * delta * 0.25
-		if (Input.is_action_pressed("throttle_down")):
-			input_throttle -= Input.get_action_strength("throttle_down") * delta * 0.25
+		# Throttle input
+		input_throttle += Input.get_axis("throttle_down", "throttle_up") * 0.2 * delta
 
 		# Joystick input as axes
 		input_joystick.x = Input.get_axis("roll_left", "roll_right")
