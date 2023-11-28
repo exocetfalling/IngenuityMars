@@ -142,7 +142,7 @@ func _physics_process(delta):
 	calc_atmo_properties(global_transform.origin.y)
 	
 	tgt_rates.x = deg2rad(input_joystick.y * 10)
-	tgt_rates.y = deg2rad(input_rudder * 10)
+	tgt_rates.y = deg2rad(input_rudder * 60)
 	tgt_rates.z = deg2rad(input_joystick.x * 10)
 	
 	linear_velocity_rotated = linear_velocity.rotated(Vector3.UP, -global_rotation.y)
@@ -166,9 +166,9 @@ func _physics_process(delta):
 	
 	output_throttle = clamp($PIDCalcVelocityY.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
 	
-	cmd_sas.x = 0.1 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
-	cmd_sas.y = 0.1 * input_rudder
-	cmd_sas.z = 0.1 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
+	cmd_sas.x = 1.0 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
+	cmd_sas.y = 1.0 * $PIDCalcYaw.calc_PID_output(tgt_rates.y, -angular_velocity.y)
+	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
 	
 	rotor_rpm = rotor_rpm_map(input_throttle)
 	rotor_angular_velocity = rotor_rpm * 283

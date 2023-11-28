@@ -29,20 +29,20 @@ enabled = true
 
 [node name="PIDCalcPitch" type="Node" parent="."]
 script = ExtResource( 3 )
-term_P = 0.1
-term_D = 0.05
+term_P = 0.01
+term_D = 0.01
 param_tuning_active = false
 
 [node name="PIDCalcRoll" type="Node" parent="."]
 script = ExtResource( 3 )
-term_P = 0.1
-term_D = 0.05
+term_P = 0.01
+term_D = 0.01
 param_tuning_active = false
 
 [node name="PIDCalcYaw" type="Node" parent="."]
 script = ExtResource( 3 )
-term_P = 0.8
-term_D = 0.4
+term_P = 0.2
+term_D = 0.01
 param_tuning_active = false
 
 [node name="PIDCalcVelocityX" type="Node" parent="."]
