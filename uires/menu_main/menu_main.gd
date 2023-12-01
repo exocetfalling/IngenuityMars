@@ -17,8 +17,8 @@ func _process(delta):
 	if ($Options/ButtonFreeFlight.pressed == true):
 #		get_tree().change_scene("res://uires/menu_free_flight/menu_free_flight.tscn")
 		$LoadingNotice.visible = true
-		$Label.text = "FML"
-		get_tree().change_scene("res://scenes/test_scene.tscn")
+		$Options.visible = false
+		$Timer.start()
 	
 	if ($Options/ButtonTutorials.pressed == true):
 		get_tree().change_scene("res://uires/menu_tutorials/menu_tutorials.tscn")
@@ -32,8 +32,11 @@ func _process(delta):
 	if ($Options/ButtonExit.pressed == true):
 		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 	
-	
 	if (get_tree().paused == true):
 		get_tree().paused = false
 	pass
 
+
+
+func _on_Timer_timeout():
+	get_tree().change_scene("res://scenes/test_scene.tscn")
