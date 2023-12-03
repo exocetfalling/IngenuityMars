@@ -90,7 +90,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/aero_tools/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/aero_tools/plugin.cfg", "res://addons/multimesh_scatter/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg" )
 
 [gui]
 
