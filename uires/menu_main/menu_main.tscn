@@ -1,14 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://uires/menu_shared/menu_shared_theme.tres" type="Theme" id=1]
+[ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://uires/menu_main/menu_main.gd" type="Script" id=2]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 0, 0.541176, 0.858824, 1 )
+Button/colors/font_color_disabled = Color( 0.541176, 0.858824, 1, 0.254902 )
+Button/colors/font_color_hover = Color( 0, 0.705882, 0.858824, 1 )
+Button/colors/font_color_pressed = Color( 0, 0.541176, 0.858824, 1 )
+Button/constants/hseparation = 2
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+Label/colors/font_color = Color( 0, 0.541176, 0.858824, 1 )
+RichTextLabel/colors/default_color = Color( 0, 0.541176, 0.858824, 1 )
 
 [node name="MenuMain" type="Control"]
 anchor_left = 0.05
 anchor_top = 0.05
 anchor_right = 0.95
 anchor_bottom = 0.95
-theme = ExtResource( 1 )
+theme = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]

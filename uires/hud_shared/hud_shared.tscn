@@ -47,6 +47,7 @@ anchor_top = 0.6
 anchor_right = 0.1
 anchor_bottom = 0.6
 grow_horizontal = 2
+theme = null
 label_displayed = "VVT"
 value_format_string = "%+0.1f"
 

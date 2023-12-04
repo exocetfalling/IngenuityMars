@@ -42,8 +42,20 @@ margin_top = 91.0
 margin_right = -4.0
 margin_bottom = -4.0
 text = "Controls:
+On screen, there are two virtual joysticks. 
+
 Left stick -> Vertical velocity + yaw
-Right stick -> Horizontal velocity"
+Right stick -> Horizontal velocity
+
+They can be manipulated via: 
+- Mouse
+- Touchscreen 
+- Physical controller
+
+The sticks do not control the aircraft directly, rather, they generate commands.
+These commands are fed into the flight computer, which then executes them. 
+
+The velocity commands are zero at stick neutral and increase to maximum at full deflection. "
 
 [node name="Tips" type="RichTextLabel" parent="TabContainer"]
 visible = false

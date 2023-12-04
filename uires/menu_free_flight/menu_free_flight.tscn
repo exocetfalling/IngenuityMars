@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://uires/menu_shared/menu_shared_theme.tres" type="Theme" id=1]
+[ext_resource path="res://uires/hud_shared/hud_shared_theme.tres" type="Theme" id=1]
 [ext_resource path="res://uires/menu_free_flight/menu_free_flight.gd" type="Script" id=2]
 
 [node name="MenuFreeFlight" type="Control"]
@@ -25,27 +25,27 @@ align = 1
 [node name="Button1" type="Button" parent="Options"]
 margin_top = 77.0
 margin_right = 1728.0
-margin_bottom = 156.0
+margin_bottom = 154.0
 text = "Crater Floor"
 
 [node name="Button2" type="Button" parent="Options"]
-margin_top = 160.0
+margin_top = 158.0
 margin_right = 1728.0
-margin_bottom = 239.0
+margin_bottom = 235.0
 disabled = true
 text = "Midair"
 
 [node name="Button3" type="Button" parent="Options"]
-margin_top = 243.0
+margin_top = 239.0
 margin_right = 1728.0
-margin_bottom = 322.0
+margin_bottom = 316.0
 disabled = true
 text = "Tall Plateau"
 
 [node name="Button4" type="Button" parent="Options"]
-margin_top = 326.0
+margin_top = 320.0
 margin_right = 1728.0
-margin_bottom = 405.0
+margin_bottom = 397.0
 disabled = true
 text = "Sandy Flats"
 

@@ -4,3 +4,14 @@
 
 [resource]
 default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 0, 0.87451, 0, 1 )
+Button/colors/font_color_disabled = Color( 0, 0.858824, 0, 0.254902 )
+Button/colors/font_color_hover = Color( 0, 1, 0, 1 )
+Button/colors/font_color_pressed = Color( 0, 0.541176, 0, 1 )
+Button/constants/hseparation = 2
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+Label/colors/font_color = Color( 0, 1, 0, 1 )
