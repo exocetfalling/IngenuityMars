@@ -4,6 +4,7 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var hud_visible : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,16 @@ func pause_handle():
 	else:
 		$MenuPause.visible = false
 		get_tree().paused = false
+
+func hud_visibility_handle():
+	if hud_visible == true:
+		hud_visible = false
+		visible = false
+		$UI.visible = false
+	else:
+		hud_visible = true
+		visible = true
+		$UI.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,3 +45,6 @@ func get_input(delta):
 	# Pause input
 	if (Input.is_action_just_pressed("ui_cancel")):
 		pause_handle()
+	# UI visibility input (for screenshots)
+	if (Input.is_action_just_pressed("hud_toggle")):
+		hud_visibility_handle()
