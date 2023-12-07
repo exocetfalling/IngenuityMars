@@ -34,6 +34,9 @@ var linear_velocity_rotated : Vector3 = Vector3.ZERO
 var camera_mode : int = 0
 var camera_mouse_delta = 0
 
+export var wpt_array: PoolVector3Array = [Vector3.ZERO]
+var wpt_current: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	linear_velocity_wind = Vector3(0, 0, 0)
@@ -201,8 +204,16 @@ func _physics_process(delta):
 		
 	$Ingenuity_v3/bus/rotors_01.rotate_x(+rotor_angular_velocity * delta)
 	$Ingenuity_v3/bus/rotors_02.rotate_x(-rotor_angular_velocity * delta)
-			
-		
+	
+	# Dust effects
+	if $DustRayCast.is_colliding():
+		$DustEffect.fx_intensity = input_throttle_mapped * 2 * (5 - $DustEffect.translation.y) / 5
+		$DustEffect.global_translation = $DustRayCast.get_collision_point()
+	else:
+		$DustEffect.fx_intensity = 0
+		$DustEffect.translation = Vector3.ZERO
+		$DustEffect.rotation = Vector3.ZERO
+	
 func get_input(delta):
 	# Check if aircraft is under player control
 	if (control_type == 1):
