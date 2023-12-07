@@ -149,18 +149,18 @@ func _physics_process(delta):
 	tgt_rates.z = deg2rad(input_joystick.x * 10)
 	
 	linear_velocity_rotated = linear_velocity.rotated(Vector3.UP, -global_rotation.y)
-	
-	if (sas_mode == 1):
-		tgt_pitch = 20 * input_joystick.y
-		tgt_roll = 20 * input_joystick.x
+	if input_throttle_mapped > 0.01:
+		if (sas_mode == 1):
+			tgt_pitch = 20 * input_joystick.y
+			tgt_roll = 20 * input_joystick.x
+			
+		if (sas_mode == 2):
+			tgt_pitch = clamp($PIDCalcVelocityZ.calc_PID_output(linear_velocity_target.z, linear_velocity_rotated.z), -20, 20)
+			tgt_roll = clamp($PIDCalcVelocityX.calc_PID_output(linear_velocity_target.x, linear_velocity_rotated.x), -20, 20)
 		
-	if (sas_mode == 2):
-		tgt_pitch = clamp($PIDCalcVelocityZ.calc_PID_output(linear_velocity_target.z, linear_velocity_rotated.z), -20, 20)
-		tgt_roll = clamp($PIDCalcVelocityX.calc_PID_output(linear_velocity_target.x, linear_velocity_rotated.x), -20, 20)
-	
-	linear_velocity_target.x = 10 * input_joystick.x
-	linear_velocity_target.y = 6 * (input_throttle_mapped - 0.5)
-	linear_velocity_target.z = 10 * input_joystick.y
+		linear_velocity_target.x = 10 * input_joystick.x
+		linear_velocity_target.y = 6 * (input_throttle_mapped - 0.5)
+		linear_velocity_target.z = 10 * input_joystick.y
 	
 	
 	input_throttle = clamp(input_throttle, 0, 1)
