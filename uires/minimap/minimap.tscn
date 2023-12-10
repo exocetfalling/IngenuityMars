@@ -1,0 +1,94 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://uires/hud_shared/hud_shared_font.tres" type="DynamicFont" id=1]
+
+[node name="Minimap" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1520.0
+margin_bottom = -680.0
+rect_min_size = Vector2( 400, 400 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="Centre" type="Node2D" parent="."]
+position = Vector2( 200, 200 )
+
+[node name="Ownship" type="Polygon2D" parent="Centre"]
+polygon = PoolVector2Array( 0, -5, 5, 0, 0, 5, -5, 0 )
+
+[node name="Waypoint" type="Line2D" parent="Centre"]
+points = PoolVector2Array( 0, 0, 0, -10, 0, 0, 10, 0, 0, 0, 0, 10, 0, 0, -10, 0, 0, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="MarkerN" type="Line2D" parent="Centre"]
+points = PoolVector2Array( 0, -165, 10, -155, 0, -165, -10, -155, 0, -165 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="Centre/MarkerN"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -198.0
+margin_right = 30.008
+margin_bottom = -118.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "N"
+align = 1
+
+[node name="MarkerE" type="Line2D" parent="Centre"]
+rotation = 1.5708
+points = PoolVector2Array( 0, -165, 10, -155, 0, -165, -10, -155, 0, -165 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="Centre/MarkerE"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -198.0
+margin_right = 30.008
+margin_bottom = -118.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "E"
+align = 1
+
+[node name="MarkerS" type="Line2D" parent="Centre"]
+rotation = 3.14159
+points = PoolVector2Array( 0, -165, 10, -155, 0, -165, -10, -155, 0, -165 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="Centre/MarkerS"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -198.0
+margin_right = 30.008
+margin_bottom = -118.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "S"
+align = 1
+
+[node name="MarkerW" type="Line2D" parent="Centre"]
+rotation = 4.71239
+points = PoolVector2Array( 0, -165, 10, -155, 0, -165, -10, -155, 0, -165 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Label" type="Label" parent="Centre/MarkerW"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -10.0
+margin_top = -198.0
+margin_right = 30.008
+margin_bottom = -118.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "W"
+align = 1

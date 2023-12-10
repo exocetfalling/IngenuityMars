@@ -35,7 +35,8 @@ var camera_mode : int = 0
 var camera_mouse_delta = 0
 
 export var wpt_array: PoolVector3Array = [Vector3.ZERO]
-var wpt_current: int = 0
+var wpt_current: Vector3 = Vector3.ZERO
+var wpt_index: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -49,6 +50,7 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "air_temperature", "")
 #	DebugOverlay.stats.add_property(self, "air_pressure", "")
 #	DebugOverlay.stats.add_property(self, "air_density", "")
+	DebugOverlay.stats.add_property(self, "wpt_current", "")
 	
 	pass # Replace with function body.
 	
@@ -209,10 +211,11 @@ func _physics_process(delta):
 	if $DustRayCast.is_colliding():
 		$DustEffect.fx_intensity = input_throttle_mapped * 2 * (5 - $DustEffect.translation.y) / 5
 		$DustEffect.global_translation = $DustRayCast.get_collision_point()
+#		$DustEffect.look_at($DustRayCast.get_collision_normal(), Vector3.FORWARD)
 	else:
 		$DustEffect.fx_intensity = 0
 		$DustEffect.translation = Vector3.ZERO
-		$DustEffect.rotation = Vector3.ZERO
+#		$DustEffect.rotation = Vector3(90, 0, 0)
 	
 func get_input(delta):
 	# Check if aircraft is under player control
