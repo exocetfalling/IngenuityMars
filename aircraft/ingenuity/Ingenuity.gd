@@ -213,11 +213,14 @@ func _physics_process(delta):
 	# Dust effects
 	if dust_scene != null:
 		if $DustRayCast.is_colliding():
-			dust_scene.fx_intensity = input_throttle_mapped * 2
 			dust_scene.global_translation = $DustRayCast.get_collision_point()
-#			dust_scene.look_at($DustRayCast.get_collision_normal(), Vector3.UP)
 			dust_scene.global_transform.basis = align_up(global_transform.basis, $DustRayCast.get_collision_normal())
+			dust_scene.fx_intensity = clamp(rotor_rpm / adc_alt_radio * 5, 0, 1)
+#			dust_scene.fx_intensity = clamp(output_throttle, 0, 1)
+			dust_scene.visible = true
+			$DustRayCast.force_raycast_update()
 		else:
+			dust_scene.visible = false
 			dust_scene.fx_intensity = 0
 			dust_scene.translation = Vector3.ZERO
 			dust_scene.rotation = Vector3.ZERO
