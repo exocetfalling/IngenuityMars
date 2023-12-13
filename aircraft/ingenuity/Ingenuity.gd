@@ -38,6 +38,9 @@ export var wpt_array: PoolVector3Array = [Vector3.ZERO]
 var wpt_current: Vector3 = Vector3.ZERO
 var wpt_index: int = 0
 
+# Dust effect scene
+export(NodePath) onready var dust_scene = get_node(dust_scene)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	linear_velocity_wind = Vector3(0, 0, 0)
@@ -50,7 +53,7 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "air_temperature", "")
 #	DebugOverlay.stats.add_property(self, "air_pressure", "")
 #	DebugOverlay.stats.add_property(self, "air_density", "")
-	DebugOverlay.stats.add_property(self, "wpt_current", "")
+#	DebugOverlay.stats.add_property(self, "wpt_current", "")
 	
 	pass # Replace with function body.
 	
@@ -208,14 +211,16 @@ func _physics_process(delta):
 	$Ingenuity_v3/bus/rotors_02.rotate_x(-rotor_angular_velocity * delta)
 	
 	# Dust effects
-	if $DustRayCast.is_colliding():
-		$DustEffect.fx_intensity = input_throttle_mapped * 2 * (5 - $DustEffect.translation.y) / 5
-		$DustEffect.global_translation = $DustRayCast.get_collision_point()
-#		$DustEffect.look_at($DustRayCast.get_collision_normal(), Vector3.FORWARD)
-	else:
-		$DustEffect.fx_intensity = 0
-		$DustEffect.translation = Vector3.ZERO
-#		$DustEffect.rotation = Vector3(90, 0, 0)
+	if dust_scene != null:
+		if $DustRayCast.is_colliding():
+			dust_scene.fx_intensity = input_throttle_mapped * 2
+			dust_scene.global_translation = $DustRayCast.get_collision_point()
+#			dust_scene.look_at($DustRayCast.get_collision_normal(), Vector3.UP)
+			dust_scene.global_transform.basis = align_up(global_transform.basis, $DustRayCast.get_collision_normal())
+		else:
+			dust_scene.fx_intensity = 0
+			dust_scene.translation = Vector3.ZERO
+			dust_scene.rotation = Vector3.ZERO
 	
 func get_input(delta):
 	# Check if aircraft is under player control
@@ -250,3 +255,17 @@ func _on_ButtonCamera_button_up():
 	elif ($CameraNAV.current == true):
 		$CameraExt.current = true
 
+func align_up(node_basis, normal):
+	var result = Basis()
+	var scale = node_basis.get_scale() # Only if your node might have a scale other than (1,1,1)
+
+	result.x = normal.cross(node_basis.z)
+	result.y = normal
+	result.z = node_basis.x.cross(normal)
+
+	result = result.orthonormalized()
+	result.x *= scale.x 
+	result.y *= scale.y 
+	result.z *= scale.z 
+
+	return result
