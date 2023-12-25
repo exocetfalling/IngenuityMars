@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://uires/menu_main/menu_main.gd" type="Script" id=2]
+[ext_resource path="res://uires/menu_settings/menu_settings.gd" type="Script" id=2]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
@@ -42,10 +42,23 @@ size_flags_vertical = 3
 [node name="ButtonShadows" type="Button" parent="Options"]
 margin_right = 1728.0
 margin_bottom = 79.0
-text = "Free Flight"
+text = "Shadows -> 2"
 
 [node name="ButtonDustEffects" type="Button" parent="Options"]
 margin_top = 83.0
 margin_right = 1728.0
 margin_bottom = 162.0
-text = "Tutorials"
+text = "Dust Effects -> 2"
+
+[node name="ButtonConfirm" type="Button" parent="."]
+anchor_left = 0.8
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Confirm"
+
+[node name="ButtonBack" type="Button" parent="."]
+anchor_top = 0.9
+anchor_right = 0.2
+anchor_bottom = 1.0
+text = "Back"

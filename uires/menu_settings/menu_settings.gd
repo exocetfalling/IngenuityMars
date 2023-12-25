@@ -20,4 +20,8 @@ func _process(delta):
 	if ($Options/ButtonDustEffects.pressed == true):
 		pass
 
-	pass
+	if ($ButtonBack.pressed == true):
+		get_tree().change_scene("res://uires/menu_main/menu_main.tscn")
+	
+	if ($ButtonConfirm.pressed == true):
+		pass
