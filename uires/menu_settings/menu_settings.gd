@@ -14,12 +14,22 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ($Options/ButtonShadows.pressed == true):
-		pass
+	if ($Options/ButtonOff.pressed == true):
+		Settings.opt_dust_effects = 0
+		Settings.opt_shadows = 0
 	
-	if ($Options/ButtonDustEffects.pressed == true):
-		pass
-
+	if ($Options/ButtonLow.pressed == true):
+		Settings.opt_dust_effects = 1
+		Settings.opt_shadows = 1
+	
+	if ($Options/ButtonMedium.pressed == true):
+		Settings.opt_dust_effects = 2
+		Settings.opt_shadows = 2
+	
+	if ($Options/ButtonHigh.pressed == true):
+		Settings.opt_dust_effects = 3
+		Settings.opt_shadows = 3
+	
 	if ($ButtonBack.pressed == true):
 		get_tree().change_scene("res://uires/menu_main/menu_main.tscn")
 	

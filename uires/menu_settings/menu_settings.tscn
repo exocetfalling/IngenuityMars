@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://uires/menu_settings/menu_settings.gd" type="Script" id=2]
+[ext_resource path="res://uires/menu_settings/settings_button_group.tres" type="ButtonGroup" id=3]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
@@ -29,26 +30,46 @@ script = ExtResource( 2 )
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 0.25
-text = "Settings"
+text = "Quality"
 align = 1
 valign = 1
 
 [node name="Options" type="VBoxContainer" parent="."]
-anchor_top = 0.5
+anchor_top = 0.3
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 
-[node name="ButtonShadows" type="Button" parent="Options"]
+[node name="ButtonOff" type="Button" parent="Options"]
 margin_right = 1728.0
 margin_bottom = 79.0
-text = "Shadows -> 2"
+toggle_mode = true
+group = ExtResource( 3 )
+text = "Off"
 
-[node name="ButtonDustEffects" type="Button" parent="Options"]
+[node name="ButtonLow" type="Button" parent="Options"]
 margin_top = 83.0
 margin_right = 1728.0
 margin_bottom = 162.0
-text = "Dust Effects -> 2"
+toggle_mode = true
+group = ExtResource( 3 )
+text = "Low"
+
+[node name="ButtonMedium" type="Button" parent="Options"]
+margin_top = 166.0
+margin_right = 1728.0
+margin_bottom = 245.0
+toggle_mode = true
+group = ExtResource( 3 )
+text = "Medium"
+
+[node name="ButtonHigh" type="Button" parent="Options"]
+margin_top = 249.0
+margin_right = 1728.0
+margin_bottom = 328.0
+toggle_mode = true
+group = ExtResource( 3 )
+text = "High"
 
 [node name="ButtonConfirm" type="Button" parent="."]
 anchor_left = 0.8
