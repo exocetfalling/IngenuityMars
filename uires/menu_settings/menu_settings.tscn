@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://uires/menu_settings/menu_settings.gd" type="Script" id=2]
-[ext_resource path="res://uires/menu_settings/settings_button_group.tres" type="ButtonGroup" id=3]
+[ext_resource path="res://uires/menu_settings/dust_button_group.tres" type="ButtonGroup" id=3]
+[ext_resource path="res://uires/menu_settings/shadows_button_group.tres" type="ButtonGroup" id=4]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
@@ -29,47 +30,10 @@ script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.25
-text = "Quality"
+anchor_bottom = 0.2
+text = "Settings"
 align = 1
 valign = 1
-
-[node name="Options" type="VBoxContainer" parent="."]
-anchor_top = 0.3
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_vertical = 3
-
-[node name="ButtonOff" type="Button" parent="Options"]
-margin_right = 1728.0
-margin_bottom = 79.0
-toggle_mode = true
-group = ExtResource( 3 )
-text = "Off"
-
-[node name="ButtonLow" type="Button" parent="Options"]
-margin_top = 83.0
-margin_right = 1728.0
-margin_bottom = 162.0
-toggle_mode = true
-group = ExtResource( 3 )
-text = "Low"
-
-[node name="ButtonMedium" type="Button" parent="Options"]
-margin_top = 166.0
-margin_right = 1728.0
-margin_bottom = 245.0
-toggle_mode = true
-group = ExtResource( 3 )
-text = "Medium"
-
-[node name="ButtonHigh" type="Button" parent="Options"]
-margin_top = 249.0
-margin_right = 1728.0
-margin_bottom = 328.0
-toggle_mode = true
-group = ExtResource( 3 )
-text = "High"
 
 [node name="ButtonConfirm" type="Button" parent="."]
 anchor_left = 0.8
@@ -83,3 +47,102 @@ anchor_top = 0.9
 anchor_right = 0.2
 anchor_bottom = 1.0
 text = "Back"
+
+[node name="Panes" type="HBoxContainer" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_right = 40.0
+margin_bottom = 40.0
+alignment = 1
+
+[node name="OptionsDust" type="VBoxContainer" parent="Panes"]
+margin_right = 882.0
+margin_bottom = 623.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panes/OptionsDust"]
+margin_right = 882.0
+margin_bottom = 73.0
+text = "Dust Effects"
+align = 1
+valign = 1
+
+[node name="ButtonOff" type="Button" parent="Panes/OptionsDust"]
+margin_top = 77.0
+margin_right = 882.0
+margin_bottom = 156.0
+toggle_mode = true
+group = ExtResource( 3 )
+text = "Off"
+
+[node name="ButtonLow" type="Button" parent="Panes/OptionsDust"]
+margin_top = 160.0
+margin_right = 882.0
+margin_bottom = 239.0
+toggle_mode = true
+group = ExtResource( 3 )
+text = "Low"
+
+[node name="ButtonMedium" type="Button" parent="Panes/OptionsDust"]
+margin_top = 243.0
+margin_right = 882.0
+margin_bottom = 322.0
+toggle_mode = true
+group = ExtResource( 3 )
+text = "Medium"
+
+[node name="ButtonHigh" type="Button" parent="Panes/OptionsDust"]
+margin_top = 326.0
+margin_right = 882.0
+margin_bottom = 405.0
+toggle_mode = true
+group = ExtResource( 3 )
+text = "High"
+
+[node name="OptionsShadows" type="VBoxContainer" parent="Panes"]
+margin_left = 886.0
+margin_right = 1768.0
+margin_bottom = 623.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panes/OptionsShadows"]
+margin_right = 882.0
+margin_bottom = 73.0
+text = "Shadows"
+align = 1
+valign = 1
+
+[node name="ButtonOff" type="Button" parent="Panes/OptionsShadows"]
+margin_top = 77.0
+margin_right = 882.0
+margin_bottom = 156.0
+toggle_mode = true
+group = ExtResource( 4 )
+text = "Off"
+
+[node name="ButtonLow" type="Button" parent="Panes/OptionsShadows"]
+margin_top = 160.0
+margin_right = 882.0
+margin_bottom = 239.0
+toggle_mode = true
+group = ExtResource( 4 )
+text = "Low"
+
+[node name="ButtonMedium" type="Button" parent="Panes/OptionsShadows"]
+margin_top = 243.0
+margin_right = 882.0
+margin_bottom = 322.0
+toggle_mode = true
+group = ExtResource( 4 )
+text = "Medium"
+
+[node name="ButtonHigh" type="Button" parent="Panes/OptionsShadows"]
+margin_top = 326.0
+margin_right = 882.0
+margin_bottom = 405.0
+toggle_mode = true
+group = ExtResource( 4 )
+text = "High"
