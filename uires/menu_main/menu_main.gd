@@ -29,6 +29,9 @@ func _process(delta):
 	if ($Options/ButtonCredits.pressed == true):
 		get_tree().change_scene("res://uires/menu_credits/menu_credits.tscn")
 	
+	if ($Options/ButtonSettings.pressed == true):
+		get_tree().change_scene("res://uires/menu_settings/menu_settings.tscn")
+	
 	if ($Options/ButtonExit.pressed == true):
 		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 	
