@@ -211,7 +211,7 @@ func _physics_process(delta):
 	$Ingenuity_v3/bus/rotors_02.rotate_x(-rotor_angular_velocity * delta)
 	
 	# Dust effects
-	if dust_scene != null:
+	if dust_scene != null and Settings.opt_dust_effects > 0:
 		if $DustRayCast.is_colliding():
 			dust_scene.global_translation = $DustRayCast.get_collision_point()
 			dust_scene.global_transform.basis = align_up(global_transform.basis, $DustRayCast.get_collision_normal())
