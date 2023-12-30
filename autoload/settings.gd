@@ -34,6 +34,18 @@ func load_data():
 	opt_shadows = config.get_value("graphics", "opt_shadows")
 
 
+func save_data():
+	# Create new ConfigFile object.
+	var config = ConfigFile.new()
+
+	# Store some values.
+	config.set_value("graphics", "opt_dust_effects", opt_dust_effects)
+	config.set_value("graphics", "opt_shadows", opt_shadows)
+
+	# Save it to a file (overwrite if already exists).
+	config.save("user://settings.ini")
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
