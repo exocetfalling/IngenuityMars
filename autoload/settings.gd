@@ -15,7 +15,23 @@ export var opt_dust_effects: int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	load_data()
+
+
+func load_data():
+	var score_data = {}
+	var config = ConfigFile.new()
+
+	# Load data from a file.
+	var err = config.load("user://settings.ini")
+
+	# If the file didn't load, ignore it.
+	if err != OK:
+		return
+
+	# Load data
+	opt_dust_effects = config.get_value("graphics", "opt_dust_effects")
+	opt_shadows = config.get_value("graphics", "opt_shadows")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
