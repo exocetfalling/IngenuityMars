@@ -19,7 +19,6 @@ func _ready():
 
 
 func load_data():
-	var score_data = {}
 	var config = ConfigFile.new()
 
 	# Load data from a file.

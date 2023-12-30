@@ -8,19 +8,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var score_data = {}
-	var config = ConfigFile.new()
-
-	# Load data from a file.
-	var err = config.load("user://settings.ini")
-
-	# If the file didn't load, ignore it.
-	if err != OK:
-		return
-
-	# Load data
-	Settings.opt_dust_effects = config.get_value("graphics", "opt_dust_effects")
-	Settings.opt_shadows = config.get_value("graphics", "opt_shadows")
+	Settings.load_data()
 	
 	# Push in dust effect button corresponding to setting on load
 	if Settings.opt_dust_effects == 0:
@@ -65,12 +53,4 @@ func _process(delta):
 		get_tree().change_scene("res://uires/menu_main/menu_main.tscn")
 	
 	if ($ButtonConfirm.pressed == true):
-		# Create new ConfigFile object.
-		var config = ConfigFile.new()
-
-		# Store some values.
-		config.set_value("graphics", "opt_dust_effects", Settings.opt_dust_effects)
-		config.set_value("graphics", "opt_shadows", Settings.opt_shadows)
-
-		# Save it to a file (overwrite if already exists).
-		config.save("user://settings.ini")
+		Settings.save_data()
