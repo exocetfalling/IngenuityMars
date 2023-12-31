@@ -52,5 +52,5 @@ func _process(delta):
 	if ($ButtonBack.pressed == true):
 		get_tree().change_scene("res://uires/menu_main/menu_main.tscn")
 	
-	if ($ButtonConfirm.pressed == true):
+	if ($ButtonSave.pressed == true):
 		Settings.save_data()
