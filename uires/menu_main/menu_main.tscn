@@ -34,7 +34,7 @@ align = 1
 valign = 1
 
 [node name="Options" type="VBoxContainer" parent="."]
-anchor_top = 0.55
+anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
@@ -63,10 +63,16 @@ margin_right = 1728.0
 margin_bottom = 328.0
 text = "Credits"
 
-[node name="ButtonExit" type="Button" parent="Options"]
+[node name="ButtonSettings" type="Button" parent="Options"]
 margin_top = 332.0
 margin_right = 1728.0
 margin_bottom = 411.0
+text = "Settings"
+
+[node name="ButtonExit" type="Button" parent="Options"]
+margin_top = 415.0
+margin_right = 1728.0
+margin_bottom = 494.0
 text = "Exit"
 
 [node name="LoadingNotice" type="Label" parent="."]

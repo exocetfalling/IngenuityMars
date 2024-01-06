@@ -31,7 +31,7 @@ angular_velocity_random = 1.0
 angle = 360.0
 angle_random = 1.0
 scale_curve = SubResource( 10 )
-color = Color( 0.8, 0.384314, 0.0823529, 1 )
+color = Color( 0.827451, 0.454902, 0.180392, 1 )
 color_ramp = SubResource( 9 )
 
 [sub_resource type="SpatialMaterial" id=11]
@@ -43,6 +43,11 @@ particles_anim_h_frames = 6
 particles_anim_v_frames = 5
 particles_anim_loop = true
 albedo_texture = ExtResource( 2 )
+emission_enabled = true
+emission = Color( 0.690196, 0.411765, 0.113725, 1 )
+emission_energy = 0.1
+emission_operator = 0
+emission_on_uv2 = false
 
 [sub_resource type="QuadMesh" id=3]
 material = SubResource( 11 )

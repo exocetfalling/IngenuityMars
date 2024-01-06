@@ -17,8 +17,15 @@ func _process(delta):
 	if($Options/ButtonMainMenu.pressed == true):
 		get_tree().paused = false
 		get_tree().change_scene("res://uires/menu_main/menu_main.tscn")
+	
 	if($Options/ButtonResume.pressed == true):
 		visible = false
 		get_tree().paused = false
+	
+	if ($Options/ButtonSettings.pressed == true):
+		visible = false
+		get_tree().paused = false
+		get_tree().change_scene("res://uires/menu_settings/menu_settings.tscn")
+	
 	if($Options/ButtonExit.pressed == true):
 		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
