@@ -10,6 +10,14 @@ extends Spatial
 func _ready():
 	if Settings.opt_shadows > 0:
 		$Sun.shadow_enabled = true
+		
+		if Settings.opt_shadows == 1:
+			$Sun.directional_shadow_mode = DirectionalLight.SHADOW_ORTHOGONAL
+		if Settings.opt_shadows == 2:
+			$Sun.directional_shadow_mode = DirectionalLight.SHADOW_PARALLEL_2_SPLITS
+		if Settings.opt_shadows == 3:
+			$Sun.directional_shadow_mode = DirectionalLight.SHADOW_PARALLEL_4_SPLITS
+	
 	else:
 		$Sun.shadow_enabled = false
 
