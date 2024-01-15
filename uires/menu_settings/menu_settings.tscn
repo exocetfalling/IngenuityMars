@@ -51,12 +51,12 @@ text = "Back"
 [node name="Panes" type="HBoxContainer" parent="."]
 anchor_top = 0.2
 anchor_right = 1.0
-anchor_bottom = 0.8
+anchor_bottom = 0.65
 alignment = 1
 
 [node name="OptionsDust" type="VBoxContainer" parent="Panes"]
 margin_right = 862.0
-margin_bottom = 583.0
+margin_bottom = 437.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -102,7 +102,7 @@ text = "High"
 [node name="OptionsShadows" type="VBoxContainer" parent="Panes"]
 margin_left = 866.0
 margin_right = 1728.0
-margin_bottom = 583.0
+margin_bottom = 437.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
