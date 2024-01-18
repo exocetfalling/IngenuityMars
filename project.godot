@@ -79,6 +79,7 @@ AeroHelper="*res://addons/aero_tools/scripts/aero_helper.gd"
 AeroDataBus="*res://addons/aero_tools/scripts/aero_data_bus.gd"
 DebugOverlay="*res://debug/DebugOverlay.tscn"
 Global="*res://autoload/global.gd"
+Settings="*res://autoload/settings.gd"
 
 [display]
 
