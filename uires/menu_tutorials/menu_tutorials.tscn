@@ -19,7 +19,6 @@ margin_bottom = 95.0
 tab_align = 0
 
 [node name="HUD" type="RichTextLabel" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -59,6 +58,7 @@ These commands are fed into the flight computer, which then executes them.
 The velocity commands are zero at stick neutral and increase to maximum at full deflection. "
 
 [node name="Tips" type="RichTextLabel" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
