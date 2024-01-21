@@ -55,7 +55,11 @@ They can be manipulated via:
 The sticks do not control the aircraft directly, rather, they generate commands.
 These commands are fed into the flight computer, which then executes them. 
 
-The velocity commands are zero at stick neutral and increase to maximum at full deflection. "
+The velocity commands are zero at stick neutral and increase to maximum at full deflection. 
+
+To activate the rotors, move the left stick forwards for one second while on the ground.
+
+To deactivate the rotors, move the left stick backwards for one second while on the ground."
 
 [node name="Tips" type="RichTextLabel" parent="TabContainer"]
 visible = false
