@@ -51,9 +51,9 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "input_joystick", "round")
 #	DebugOverlay.stats.add_property(self, "linear_velocity_local", "round")
 #	DebugOverlay.stats.add_property(self, "angular_velocity_local", "round")
-	DebugOverlay.stats.add_property(self, "input_throttle", "")
-	DebugOverlay.stats.add_property(self, "output_throttle", "")
-	DebugOverlay.stats.add_property(self, "linear_velocity_target", "round")
+#	DebugOverlay.stats.add_property(self, "input_throttle", "")
+#	DebugOverlay.stats.add_property(self, "output_throttle", "")
+#	DebugOverlay.stats.add_property(self, "linear_velocity_target", "round")
 #	DebugOverlay.stats.add_property(self, "air_temperature", "")
 #	DebugOverlay.stats.add_property(self, "air_pressure", "")
 #	DebugOverlay.stats.add_property(self, "air_density", "")
@@ -82,6 +82,26 @@ func calc_atmo_properties(height_metres):
 	
 	return atmo_properties
 
+
+func velocity_y_map(altitude_agl, throttle_pos):
+	var ALT_LOW: float = 3
+	var ALT_MED: float = 10
+	var ALT_HIGH: float = 15
+	
+	# If climbing, don't limit vertical speed
+	if throttle_pos > 0:
+		return throttle_pos * 3
+	
+	# Reduce vertical speed target when low down, for smoother landings
+	else:
+		if altitude_agl <= ALT_LOW:
+			return throttle_pos * 0.5
+		if altitude_agl > ALT_LOW and altitude_agl <= ALT_MED:
+			return throttle_pos * 1
+		if altitude_agl > ALT_MED and altitude_agl <= ALT_HIGH:
+			return throttle_pos * 2
+		if altitude_agl > ALT_HIGH:
+			return throttle_pos * 3
 
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
@@ -145,7 +165,7 @@ func _physics_process(delta):
 			tgt_roll = clamp($PIDCalcVelocityX.calc_PID_output(linear_velocity_target.x, linear_velocity_rotated.x), -20, 20)
 		
 	linear_velocity_target.x = 10 * input_joystick.x
-	linear_velocity_target.y = 3 * input_throttle
+	linear_velocity_target.y = velocity_y_map(adc_alt_agl, input_throttle)
 	linear_velocity_target.z = 10 * input_joystick.y
 	
 	if rotor_active == true:
@@ -195,7 +215,7 @@ func _physics_process(delta):
 	
 	# Anims
 	# Props
-	if (output_throttle > 0.05):
+	if (rotor_rpm > 100):
 		$Ingenuity_v3/bus/PropBlur01.visible = true
 		$Ingenuity_v3/bus/PropBlur02.visible = true
 		
