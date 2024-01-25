@@ -53,7 +53,7 @@ param_tuning_active = false
 
 [node name="PIDCalcVelocityY" type="Node" parent="."]
 script = ExtResource( 3 )
-term_P = 1.5
+term_P = 2.0
 term_I = 1.0
 term_D = 0.1
 param_tuning_active = false

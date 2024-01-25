@@ -10,6 +10,7 @@ var sas_mode : int = 2
 var rotation_target : Vector3 = Vector3.ZERO
 
 var thrust_rated : float = 10
+var thrust_current : float = 0
 
 var output_throttle : float = 0
 
@@ -26,6 +27,9 @@ var rotor_angular_velocity : float = 0
 
 # Blade pitch angles
 var rotor_blade_angle : float = 0
+
+# Rotor coefficient of lift
+var rotor_cl : float = 0
 
 var linear_velocity_target : Vector3 = Vector3.ZERO
 
@@ -185,7 +189,7 @@ func _physics_process(delta):
 			if input_hold_time >= 1:
 				input_hold_time = 0
 				rotor_active = true
-				rotor_rpm_tgt = rotor_rpm_range_max
+				rotor_rpm_tgt = 2500
 		
 		if input_throttle < -0.95:
 			input_hold_time += delta
@@ -196,10 +200,14 @@ func _physics_process(delta):
 				rotor_rpm_tgt = 0
 	
 	rotor_rpm = lerp(rotor_rpm, rotor_rpm_tgt, 0.05)
-	rotor_angular_velocity = rotor_rpm * 283
-	rotor_blade_angle = PI / 12 * (input_throttle + 1) / 2
+	rotor_angular_velocity = rotor_rpm * 0.10472
+	rotor_blade_angle = PI / 12 * (output_throttle + 1) / 2
+	rotor_cl = output_throttle * 1.2
 	
-	add_force_local(Vector3(0, thrust_rated * output_throttle * rotor_rpm / rotor_rpm_range_max, 0), Vector3.ZERO)
+	# thrust_current = thrust_rated * output_throttle * rotor_rpm / rotor_rpm_range_max
+	thrust_current = 0.5 * air_density * pow((rotor_angular_velocity * 0.605), 2) * 0.1 * rotor_cl
+	
+	add_force_local(Vector3(0, thrust_current, 0), Vector3.ZERO)
 	
 #		add_torque_local(20 * Vector3(input_joystick.y, -input_rudder, -input_joystick.x))
 	add_torque_local(Vector3(cmd_sas.x, -cmd_sas.y, -cmd_sas.z))
