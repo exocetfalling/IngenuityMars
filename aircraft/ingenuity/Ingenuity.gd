@@ -43,10 +43,8 @@ var wpt_current: Vector3 = Vector3.ZERO
 var wpt_index: int = 0
 
 var input_hold_time : float = 0
-var rotor_active : bool = false
+export var rotor_active : bool = false
 
-# Dust effect scene
-export(NodePath) onready var dust_scene = get_node(dust_scene)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,7 +61,7 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "air_density", "")
 #	DebugOverlay.stats.add_property(self, "wpt_current", "")
 #	DebugOverlay.stats.add_property(self, "adc_alt_agl", "round")
-	
+#	DebugOverlay.stats.add_property(self, "thrust_current", "round")
 	pass # Replace with function body.
 	
 func calc_atmo_properties(height_metres):
@@ -189,7 +187,6 @@ func _physics_process(delta):
 			if input_hold_time >= 1:
 				input_hold_time = 0
 				rotor_active = true
-				rotor_rpm_tgt = 2500
 		
 		if input_throttle < -0.95:
 			input_hold_time += delta
@@ -197,12 +194,16 @@ func _physics_process(delta):
 			if input_hold_time >= 1:
 				input_hold_time = 0
 				rotor_active = false
-				rotor_rpm_tgt = 0
+	
+	if rotor_active:
+		rotor_rpm_tgt = 2500
+	else:
+		rotor_rpm_tgt = 0
 	
 	rotor_rpm = lerp(rotor_rpm, rotor_rpm_tgt, 0.05)
 	rotor_angular_velocity = rotor_rpm * 0.10472
-	rotor_blade_angle = PI / 12 * (output_throttle + 1) / 2
-	rotor_cl = output_throttle * 1.2
+	rotor_blade_angle = PI / 12 * output_throttle
+	rotor_cl = 1.2 * sin(3 * rotor_blade_angle)
 	
 	# thrust_current = thrust_rated * output_throttle * rotor_rpm / rotor_rpm_range_max
 	thrust_current = 0.5 * air_density * pow((rotor_angular_velocity * 0.605), 2) * 0.1 * rotor_cl
@@ -235,19 +236,19 @@ func _physics_process(delta):
 	$Ingenuity_v3/bus/rotors_02.rotate_x(-rotor_angular_velocity * delta)
 	
 	# Dust effects
-	if dust_scene != null and Settings.opt_dust_effects > 0:
+	if Settings.opt_dust_effects > 0:
 		if $DustRayCast.is_colliding():
-			dust_scene.global_translation = $DustRayCast.get_collision_point()
-			dust_scene.global_transform.basis = align_up(global_transform.basis, $DustRayCast.get_collision_normal())
-			dust_scene.fx_intensity = clamp(rotor_rpm / adc_alt_agl * 2, 0, 1)
-#			dust_scene.fx_intensity = clamp(output_throttle, 0, 1)
-			dust_scene.visible = true
+			$DustEffect.global_translation = $DustRayCast.get_collision_point()
+			$DustEffect.global_transform.basis = align_up(global_transform.basis, $DustRayCast.get_collision_normal())
+			$DustEffect.fx_intensity = clamp(thrust_current / adc_alt_agl * 2, 0, 1)
+#			$DustEffect.fx_intensity = clamp(output_throttle, 0, 1)
+			$DustEffect.visible = true
 			$DustRayCast.force_raycast_update()
 		else:
-			dust_scene.visible = false
-			dust_scene.fx_intensity = 0
-			dust_scene.translation = Vector3.ZERO
-			dust_scene.rotation = Vector3.ZERO
+			$DustEffect.visible = false
+			$DustEffect.fx_intensity = 0
+			$DustEffect.translation = Vector3.ZERO
+			$DustEffect.rotation = Vector3.ZERO
 	
 func get_input(delta):
 	# Check if aircraft is under player control
