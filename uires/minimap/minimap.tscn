@@ -7,12 +7,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1520.0
 margin_bottom = -680.0
-rect_min_size = Vector2( 400, 400 )
-size_flags_horizontal = 5
-size_flags_vertical = 5
+rect_min_size = Vector2( 420, 420 )
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Centre" type="Node2D" parent="."]
-position = Vector2( 200, 200 )
+position = Vector2( 210, 210 )
 
 [node name="Ownship" type="Polygon2D" parent="Centre"]
 polygon = PoolVector2Array( 0, -5, 5, 0, 0, 5, -5, 0 )

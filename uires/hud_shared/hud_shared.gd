@@ -38,6 +38,8 @@ func _process(delta):
 	$GaugeVVT.value_displayed = AeroDataBus.aircraft_spd_vertical_tgt
 	$GaugeVVI.value_displayed = AeroDataBus.aircraft_spd_vertical
 	
+	$Minimap/Centre.rotation_degrees = -AeroDataBus.aircraft_hdg
+	
 	if ($ButtonPause.pressed == true):
 		pause_handle()
 
