@@ -10,13 +10,11 @@ class_name AeroRotor
 # var b = "text"
 
 # For individual blades
-export var length_chord_root : float = 1.00
-export var length_chord_tip : float = 1.00
+export var length_chord : float = 1.00
 export var length_span : float = 1.00
-export var angle_sweep : float = 0.00
 
 # Number of blades in rotor
-var rotor_blade_num : int = 4
+export var rotor_blade_num : int = 4
 
 # Blade angle, for variable pitch
 export var rotor_blade_angle : float = 0.00
@@ -112,8 +110,7 @@ func _calc_lift_coeff(angle_alpha_rad):
 func _calc_drag_coeff(lift_coeff, drag_coeff_zero_lift, wing_span, wing_area, wing_effeciency):
 	return \
 		( \
-#			drag_coeff_zero_lift + (pow(lift_coeff, 2) / (PI * (pow(wing_span, 2) / wing_area) * wing_effeciency))
-			0.2
+			drag_coeff_zero_lift + (pow(lift_coeff, 2) / (PI * (pow(wing_span, 2) / wing_area) * wing_effeciency))
 		)
 	
 func _calc_lift_force(air_density_current, airspeed_true, rotor_area, lift_coeff):
@@ -130,7 +127,7 @@ func _calc_beta(vel_right, vel_fwd):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	rotor_area = (length_chord_root + length_chord_tip) / 2 * length_span * rotor_blade_num
+	rotor_area = length_chord * length_span * rotor_blade_num
 	
 #	DebugOverlay.stats.add_property(self, "rotor_area", "round")
 #	DebugOverlay.stats.add_property(self, "angle_alpha_deg", "round")
@@ -153,7 +150,7 @@ func _physics_process(delta):
 	vel_rotor = (self.transform.basis.xform_inv(vel_body))
 	linear_velocity_total = vel_rotor.length()
 	
-	rotor_blade_velocity = rotor_angular_velocity * 0.4 * (length_chord_root + length_chord_tip)
+	rotor_blade_velocity = rotor_angular_velocity * 0.8 * length_span
 	
 	vel_delta = vel_rotor - vel_body
 	

@@ -55,7 +55,11 @@ They can be manipulated via:
 The sticks do not control the aircraft directly, rather, they generate commands.
 These commands are fed into the flight computer, which then executes them. 
 
-The velocity commands are zero at stick neutral and increase to maximum at full deflection. "
+The velocity commands are zero at stick neutral and increase to maximum at full deflection. 
+
+To activate the rotors, move the left stick forwards for one second while on the ground.
+
+To deactivate the rotors, move the left stick backwards for one second while on the ground."
 
 [node name="Tips" type="RichTextLabel" parent="TabContainer"]
 visible = false
@@ -70,7 +74,11 @@ text = "- Stability augmentation system available
   -> Limit 10 m/s horizontal
   -> Limit 3 m/s vertical
 - Set VVT to +0.0 to hover
-- For landing, VVT > -0.5 m/s suggested"
+- Hold left stick forward for ~1 second to start rotors
+- Continue holding it forward to takeoff
+- For landing, VVT > -0.5 m/s enforced
+- VVT limited to prevent hard touchdowns
+- Hold left stick down while on the ground to stop"
 
 [node name="ButtonBack" type="Button" parent="."]
 anchor_top = 0.9

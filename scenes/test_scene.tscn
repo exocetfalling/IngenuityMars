@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://aircraft/ingenuity/ingenuity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://terrain/mars_area_generic/mars_area_generic.tscn" type="PackedScene" id=3]
-[ext_resource path="res://effects/dust_effect/dust_effect.tscn" type="PackedScene" id=4]
 
 [node name="TestScene" type="Spatial"]
 
@@ -15,7 +14,3 @@ far = 10000.0
 
 [node name="Ingenuity" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.233347, 0 )
-control_type = 1
-dust_scene = NodePath("../DustEffect")
-
-[node name="DustEffect" parent="." instance=ExtResource( 4 )]
