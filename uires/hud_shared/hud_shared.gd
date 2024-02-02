@@ -39,6 +39,8 @@ func _process(delta):
 	$GaugeVVI.value_displayed = AeroDataBus.aircraft_spd_vertical
 	
 	$Minimap/Centre.rotation_degrees = -AeroDataBus.aircraft_hdg
+	$Minimap/Centre/FlightPath.points[1] = \
+		5 * Vector2(AeroDataBus.aircraft_linear_velocity.x, AeroDataBus.aircraft_linear_velocity.z)
 	
 	if ($ButtonPause.pressed == true):
 		pause_handle()

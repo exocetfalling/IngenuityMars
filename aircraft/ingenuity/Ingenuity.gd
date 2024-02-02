@@ -133,6 +133,9 @@ func _physics_process(delta):
 		AeroDataBus.aircraft_spd_vertical_tgt = linear_velocity_target.y
 		
 		AeroDataBus.aircraft_nav_waypoint_data = find_angles_and_distance_to_target(Vector3(0, 200, 0))
+		
+		AeroDataBus.aircraft_linear_velocity = linear_velocity
+		AeroDataBus.aircraft_linear_velocity_local = linear_velocity_local
 	
 	$RadioAltimeter.rotation_degrees.x = clamp(-adc_pitch, -30, +30)
 	$RadioAltimeter.rotation_degrees.z = clamp(+adc_roll, -30, +30)

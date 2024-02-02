@@ -105,10 +105,11 @@ shortcut = SubResource( 2 )
 text = "CAMERA"
 
 [node name="Minimap" parent="." instance=ExtResource( 7 )]
+modulate = Color( 0, 1, 0, 1 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-margin_left = -210.0
-margin_top = -420.0
-margin_right = 210.0
+margin_left = -125.0
+margin_top = -250.0
+margin_right = 125.0
 margin_bottom = 0.0
