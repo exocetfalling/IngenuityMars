@@ -5,6 +5,7 @@ extends Control
 # var a = 2
 # var b = "text"
 var hud_visible : bool = true
+var wpt_vector : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,6 +42,19 @@ func _process(delta):
 	$Minimap/Centre.rotation_degrees = -AeroDataBus.aircraft_hdg
 	$Minimap/Centre/FlightPath.points[1] = \
 		5 * Vector2(AeroDataBus.aircraft_linear_velocity.x, AeroDataBus.aircraft_linear_velocity.z)
+	
+	wpt_vector = Vector2( \
+		AeroDataBus.aircraft_nav_waypoint_data.x, \
+		AeroDataBus.aircraft_nav_waypoint_data.z \
+		)
+	
+	# Clamp and ghost symbol if outside map bounds
+	if wpt_vector.length() <= 50:
+		$Minimap/Centre/Waypoint.position = 1 * wpt_vector
+		$Minimap/Centre/Waypoint.default_color = Color(1, 1, 1, 1)
+	else:
+		$Minimap/Centre/Waypoint.position = 50 * wpt_vector.normalized()
+		$Minimap/Centre/Waypoint.default_color = Color(1, 1, 1, 0.1)
 	
 	if ($ButtonPause.pressed == true):
 		pause_handle()

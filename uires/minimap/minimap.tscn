@@ -20,7 +20,7 @@ polygon = PoolVector2Array( 0, -5, 5, 0, 0, 5, -5, 0 )
 
 [node name="Waypoint" type="Line2D" parent="Centre"]
 points = PoolVector2Array( 0, 0, 0, -10, 0, 0, 10, 0, 0, 0, 0, 10, 0, 0, -10, 0, 0, 0 )
-width = 1.0
+width = 3.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="MarkerN" type="Line2D" parent="Centre"]

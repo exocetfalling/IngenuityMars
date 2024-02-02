@@ -132,7 +132,7 @@ func _physics_process(delta):
 		AeroDataBus.aircraft_spd_vertical = linear_velocity.y
 		AeroDataBus.aircraft_spd_vertical_tgt = linear_velocity_target.y
 		
-		AeroDataBus.aircraft_nav_waypoint_data = find_angles_and_distance_to_target(Vector3(0, 200, 0))
+		AeroDataBus.aircraft_nav_waypoint_data = wpt_array[wpt_index] - global_translation
 		
 		AeroDataBus.aircraft_linear_velocity = linear_velocity
 		AeroDataBus.aircraft_linear_velocity_local = linear_velocity_local
