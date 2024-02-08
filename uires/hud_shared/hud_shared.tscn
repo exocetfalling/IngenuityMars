@@ -19,6 +19,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+wpt_array = PoolVector3Array( 0, 0, 0, 10, 0, 0 )
 
 [node name="GaugeSPD" parent="." instance=ExtResource( 1 )]
 anchor_top = 0.1
@@ -103,6 +107,30 @@ anchor_right = 1.0
 grow_horizontal = 2
 shortcut = SubResource( 2 )
 text = "CAMERA"
+
+[node name="ButtonWptDec" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.3
+anchor_right = 0.4
+grow_horizontal = 2
+shortcut = SubResource( 2 )
+text = "<<"
+
+[node name="ButtonWptDisp" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.4
+anchor_right = 0.6
+grow_horizontal = 2
+shortcut = SubResource( 2 )
+text = "WPT XX"
+
+[node name="ButtonWptInc" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.6
+anchor_right = 0.7
+grow_horizontal = 2
+shortcut = SubResource( 2 )
+text = ">>"
 
 [node name="Minimap" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0, 1, 0, 1 )

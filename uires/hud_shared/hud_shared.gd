@@ -4,8 +4,11 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var hud_visible : bool = true
+var hud_visible: bool = true
+
+export var wpt_array: PoolVector3Array = [Vector3.ZERO]
 var wpt_vector : Vector2 = Vector2.ZERO
+var wpt_index: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,10 +46,14 @@ func _process(delta):
 	$Minimap/Centre/FlightPath.points[1] = \
 		5 * Vector2(AeroDataBus.aircraft_linear_velocity.x, AeroDataBus.aircraft_linear_velocity.z)
 	
-	wpt_vector = Vector2( \
-		AeroDataBus.aircraft_nav_waypoint_data.x, \
-		AeroDataBus.aircraft_nav_waypoint_data.z \
-		)
+	if wpt_array[wpt_index] != null:
+		wpt_vector = Vector2( \
+			(wpt_array[wpt_index].x - AeroDataBus.aircraft_global_translation.x), \
+			(wpt_array[wpt_index].z - AeroDataBus.aircraft_global_translation.z) \
+			)
+	
+	$ButtonWptDisp.text = "WPT " + str("%02d" % [wpt_index + 1])
+	wpt_index = clamp(wpt_index, 0, len(wpt_array) - 1)
 	
 	# Clamp and ghost symbol if outside map bounds
 	if wpt_vector.length() <= 50:
@@ -56,8 +63,16 @@ func _process(delta):
 		$Minimap/Centre/Waypoint.position = 50 * wpt_vector.normalized()
 		$Minimap/Centre/Waypoint.default_color = Color(1, 1, 1, 0.1)
 	
+	# Buttons
 	if ($ButtonPause.pressed == true):
 		pause_handle()
+	
+	if ($ButtonWptDec.pressed == true):
+		wpt_index -= 1
+	
+	if ($ButtonWptInc.pressed == true):
+		wpt_index += 1
+
 
 func get_input(delta):
 	# Pause input

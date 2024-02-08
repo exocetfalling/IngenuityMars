@@ -38,13 +38,10 @@ var linear_velocity_rotated : Vector3 = Vector3.ZERO
 var camera_mode : int = 0
 var camera_mouse_delta = 0
 
-export var wpt_array: PoolVector3Array = [Vector3.ZERO]
-var wpt_current: Vector3 = Vector3.ZERO
-var wpt_index: int = 0
-
 var input_hold_time : float = 0
 export var rotor_active : bool = false
 
+#var adc_data: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -132,10 +129,13 @@ func _physics_process(delta):
 		AeroDataBus.aircraft_spd_vertical = linear_velocity.y
 		AeroDataBus.aircraft_spd_vertical_tgt = linear_velocity_target.y
 		
-		AeroDataBus.aircraft_nav_waypoint_data = wpt_array[wpt_index] - global_translation
-		
 		AeroDataBus.aircraft_linear_velocity = linear_velocity
 		AeroDataBus.aircraft_linear_velocity_local = linear_velocity_local
+		AeroDataBus.aircraft_global_translation = global_translation
+		
+#		adc_data["pitch"] = adc_pitch
+#		adc_data["roll"] = adc_roll
+#
 	
 	$RadioAltimeter.rotation_degrees.x = clamp(-adc_pitch, -30, +30)
 	$RadioAltimeter.rotation_degrees.z = clamp(+adc_roll, -30, +30)
