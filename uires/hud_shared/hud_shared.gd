@@ -46,14 +46,10 @@ func _process(delta):
 	$Minimap/Centre/FlightPath.points[1] = \
 		5 * Vector2(AeroDataBus.aircraft_linear_velocity.x, AeroDataBus.aircraft_linear_velocity.z)
 	
-	if wpt_array[wpt_index] != null:
-		wpt_vector = Vector2( \
-			(wpt_array[wpt_index].x - AeroDataBus.aircraft_global_translation.x), \
-			(wpt_array[wpt_index].z - AeroDataBus.aircraft_global_translation.z) \
-			)
-	
-	$ButtonWptDisp.text = "WPT " + str("%02d" % [wpt_index + 1])
-	wpt_index = clamp(wpt_index, 0, len(wpt_array) - 1)
+	wpt_vector = Vector2( \
+		(wpt_array[wpt_index].x - AeroDataBus.aircraft_global_translation.x), \
+		(wpt_array[wpt_index].z - AeroDataBus.aircraft_global_translation.z) \
+		)
 	
 	# Clamp and ghost symbol if outside map bounds
 	if wpt_vector.length() <= 50:
@@ -67,17 +63,33 @@ func _process(delta):
 	if ($ButtonPause.pressed == true):
 		pause_handle()
 	
-	if ($ButtonWptDec.pressed == true):
+	if $ButtonWptDec.pressed == true and wpt_index > 0:
 		wpt_index -= 1
 	
-	if ($ButtonWptInc.pressed == true):
+	if $ButtonWptInc.pressed == true and wpt_index < len(wpt_array) - 1:
 		wpt_index += 1
+	
+	# If waypoint button pushed in
+	# Enable increase/decrease buttons
+	# Show waypoint symbol and number
+	# Else, hide/disable
+	if $ButtonWptDisp.pressed:
+		$ButtonWptDec.disabled = false
+		$ButtonWptInc.disabled = false
+		$Minimap/Centre/Waypoint.visible = true
+		$ButtonWptDisp.text = "WPT " + str("%02d" % [wpt_index + 1])
+	else:
+		$ButtonWptDec.disabled = true
+		$ButtonWptInc.disabled = true
+		$Minimap/Centre/Waypoint.visible = false
+		$ButtonWptDisp.text = "WPT XX"
 
 
 func get_input(delta):
 	# Pause input
 	if (Input.is_action_just_pressed("ui_cancel")):
 		pause_handle()
+	
 	# UI visibility input (for screenshots)
 	if (Input.is_action_just_pressed("hud_toggle")):
 		hud_visibility_handle()

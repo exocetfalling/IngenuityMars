@@ -113,7 +113,6 @@ pause_mode = 2
 anchor_left = 0.3
 anchor_right = 0.4
 grow_horizontal = 2
-shortcut = SubResource( 2 )
 text = "<<"
 
 [node name="ButtonWptDisp" type="Button" parent="."]
@@ -121,7 +120,8 @@ pause_mode = 2
 anchor_left = 0.4
 anchor_right = 0.6
 grow_horizontal = 2
-shortcut = SubResource( 2 )
+toggle_mode = true
+keep_pressed_outside = true
 text = "WPT XX"
 
 [node name="ButtonWptInc" type="Button" parent="."]
@@ -129,7 +129,6 @@ pause_mode = 2
 anchor_left = 0.6
 anchor_right = 0.7
 grow_horizontal = 2
-shortcut = SubResource( 2 )
 text = ">>"
 
 [node name="Minimap" parent="." instance=ExtResource( 7 )]
