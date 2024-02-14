@@ -22,7 +22,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-wpt_array = PoolVector3Array( 0, 0, 0, 10, 0, 0 )
+wpt_array = PoolVector3Array( 0, 0, 0, -182, 0, -29 )
 
 [node name="GaugeSPD" parent="." instance=ExtResource( 1 )]
 anchor_top = 0.1

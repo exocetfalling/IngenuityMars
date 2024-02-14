@@ -59,6 +59,7 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "wpt_current", "")
 #	DebugOverlay.stats.add_property(self, "adc_alt_agl", "round")
 #	DebugOverlay.stats.add_property(self, "thrust_current", "round")
+	DebugOverlay.stats.add_property(self, "global_translation", "round")
 	pass # Replace with function body.
 	
 func calc_atmo_properties(height_metres):
