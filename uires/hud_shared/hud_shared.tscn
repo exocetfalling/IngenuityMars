@@ -19,6 +19,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+wpt_array = PoolVector3Array( 0, 0, 0, -182, 0, -29 )
 
 [node name="GaugeSPD" parent="." instance=ExtResource( 1 )]
 anchor_top = 0.1
@@ -28,6 +32,7 @@ grow_horizontal = 2
 label_displayed = "SPD"
 
 [node name="GaugeHDG" parent="." instance=ExtResource( 1 )]
+visible = false
 anchor_left = 0.45
 anchor_top = 0.1
 anchor_right = 0.55
@@ -92,6 +97,7 @@ visible = false
 pause_mode = 2
 anchor_right = 0.15
 grow_horizontal = 2
+shortcut_in_tooltip = false
 shortcut = SubResource( 2 )
 text = "PAUSE"
 
@@ -100,9 +106,42 @@ pause_mode = 2
 anchor_left = 0.85
 anchor_right = 1.0
 grow_horizontal = 2
+shortcut_in_tooltip = false
 shortcut = SubResource( 2 )
 text = "CAMERA"
 
+[node name="ButtonWptDec" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.3
+anchor_right = 0.4
+grow_horizontal = 2
+shortcut_in_tooltip = false
+text = "<<"
+
+[node name="ButtonWptDisp" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.4
+anchor_right = 0.6
+grow_horizontal = 2
+toggle_mode = true
+shortcut_in_tooltip = false
+keep_pressed_outside = true
+text = "WPT XX"
+
+[node name="ButtonWptInc" type="Button" parent="."]
+pause_mode = 2
+anchor_left = 0.6
+anchor_right = 0.7
+grow_horizontal = 2
+shortcut_in_tooltip = false
+text = ">>"
+
 [node name="Minimap" parent="." instance=ExtResource( 7 )]
-visible = false
-anchor_bottom = 0.0
+modulate = Color( 0, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+margin_left = -125.0
+margin_top = -250.0
+margin_right = 125.0
+margin_bottom = 0.0
