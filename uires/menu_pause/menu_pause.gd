@@ -8,8 +8,11 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	visible = false
-	pass
+	# If running in webpage, hide exit button 
+	# User can just close browswer tab
+	# Using the button makes it freeze in the browser anyway
+	if OS.has_feature("HTML5"):
+		$Options/ButtonExit.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
