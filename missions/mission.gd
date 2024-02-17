@@ -1,5 +1,7 @@
 extends Node
 
+class_name Mission
+
 
 # Declare member variables here. Examples:
 # var a = 2
