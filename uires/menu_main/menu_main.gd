@@ -8,6 +8,12 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# If running in webpage, hide exit button 
+	# User can just close browswer tab
+	# Using the button makes it freeze in the browser anyway
+	if OS.has_feature("HTML5"):
+		$Options/ButtonExit.visible = false
+	
 #	preload("res://scenes/test_scene.tscn")
 	pass # Replace with function body.
 
@@ -38,6 +44,7 @@ func _process(delta):
 	if (get_tree().paused == true):
 		get_tree().paused = false
 	pass
+
 
 
 
