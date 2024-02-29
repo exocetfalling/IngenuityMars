@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
+[ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
+[ext_resource path="res://terrain/jezero_crater/data.hterrain" type="Resource" id=3]
+[ext_resource path="res://terrain/jezero_crater/jezero_crater_slot0_albedo_bump.packed_tex" type="Texture" id=4]
+[ext_resource path="res://terrain/jezero_crater/jezero_crater_slot0_normal_roughness.packed_tex" type="Texture" id=5]
+[ext_resource path="res://resources/mars_env.tres" type="Environment" id=7]
+[ext_resource path="res://terrain/mars_area_generic/mars_area_generic.gd" type="Script" id=8]
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 2 )
+mode = 0
+textures = [ [ ExtResource( 4 ) ], [ ExtResource( 5 ) ] ]
+
+[node name="JezeroCrater" type="Spatial"]
+script = ExtResource( 8 )
+
+[node name="Sun" type="DirectionalLight" parent="."]
+transform = Transform( -1, 5.01436e-08, -7.16125e-08, 0, 0.819152, 0.573576, 8.74228e-08, 0.573576, -0.819152, 0, 2700, -4000 )
+light_color = Color( 0.878431, 0.847059, 0.764706, 1 )
+light_indirect_energy = 0.1
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_contact = 0.2
+directional_shadow_depth_range = 1
+directional_shadow_max_distance = 20.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 7 )
+
+[node name="HTerrain" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30000, 0, -30000 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "scale 58.537
+trans.( -30000, 0, -30000)"
+}
+lod_scale = 2.0
+map_scale = Vector3( 29.297, 29.297, 29.297 )
+_terrain_data = ExtResource( 3 )
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource( 3 )
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Plane( 0, 0, 0, 0 )
+
+[node name="CSGSphere" type="CSGSphere" parent="HTerrain"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1060, 29, 1872 )
+radius = 5.0
