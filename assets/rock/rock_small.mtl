@@ -1,0 +1,11 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v5.0.4193295597)
+
+newmtl $Material_0
+Kd 0.63999999 0.63999999 0.63999999
+Ka 0 0 0
+Ks 0.0079370001 0.0079370001 0.0079370001
+Ke 0 0 0
+illum 1
+map_Kd rock-texture-surface.jpg
+

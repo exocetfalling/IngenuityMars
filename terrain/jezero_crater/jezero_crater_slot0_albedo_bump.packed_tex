@@ -1,8 +1,8 @@
 {
 	"contains_albedo": true,
-	"resolution": 2048,
+	"resolution": 1024,
 	"src": {
-		"a": "res://assets/pbr_materials/ground_tiled/ground_tiled_bump.png",
-		"rgb": "res://assets/pbr_materials/ground_tiled/ground_tiled_albedo.png"
+		"a": "res://assets/pbr_materials/ground/ground_bump.png",
+		"rgb": "res://assets/pbr_materials/ground/ground_albedo.png"
 	}
 }
