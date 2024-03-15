@@ -12,10 +12,10 @@ textures = [ [  ], [  ] ]
 [node name="JZRORef" type="Spatial"]
 
 [node name="HTerrain" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30000, 0, -30000 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25600, -360, -25600 )
 script = ExtResource( 2 )
 lod_scale = 2.0
-map_scale = Vector3( 29.283, 1, 29.283 )
+map_scale = Vector3( 25, 0.8, 25 )
 _terrain_data = ExtResource( 3 )
 chunk_size = 32
 collision_enabled = false
@@ -29,3 +29,24 @@ shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = false
 shader_params/u_tile_reduction = Plane( 0, 0, 0, 0 )
+
+[node name="P001" type="CSGSphere" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21250, 887, 0 )
+radius = 10.0
+radial_segments = 4
+rings = 2
+smooth_faces = false
+
+[node name="P003" type="CSGSphere" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24674.3, 887, 0 )
+visible = false
+radius = 10.0
+radial_segments = 4
+rings = 2
+smooth_faces = false
+
+[node name="P002" type="CSGSphere" parent="."]
+radius = 10.0
+radial_segments = 4
+rings = 2
+smooth_faces = false
