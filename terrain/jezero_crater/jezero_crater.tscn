@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://resources/mars_env.tres" type="Environment" id=7]
 [ext_resource path="res://terrain/mars_area_generic/mars_area_generic.gd" type="Script" id=8]
 [ext_resource path="res://addons/zylann.scatter/scatter3d.gd" type="Script" id=9]
-[ext_resource path="res://terrain/jzro_ref/jzro_ref.tscn" type="PackedScene" id=10]
 [ext_resource path="res://terrain/jezero_crater/jezero_crater_slot1_albedo_bump.packed_tex" type="Texture" id=11]
 [ext_resource path="res://terrain/jezero_crater/jezero_crater_slot1_normal_roughness.packed_tex" type="Texture" id=12]
 
@@ -57,11 +56,6 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = false
 shader_params/u_tile_reduction = Plane( 1, 1, 1, 1 )
 
-[node name="CSGSphere" type="CSGSphere" parent="HTerrain"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1060, 29, 1872 )
-visible = false
-radius = 5.0
-
 [node name="Scatter3D" type="Spatial" parent="."]
 script = ExtResource( 9 )
 _scenes = [ ExtResource( 6 ) ]
@@ -74,9 +68,6 @@ transform = Transform( 0.70828, 0.705931, 3.08572e-08, 0, -4.37114e-08, 1, 0.705
 
 [node name="Rock3" parent="Scatter3D" instance=ExtResource( 6 )]
 transform = Transform( 0.472133, 0.881527, 3.85328e-08, 0, -4.37114e-08, 1, 0.881527, -0.472133, -2.06376e-08, 176.537, -4.57764e-05, 206.36 )
-
-[node name="JZRORef" parent="." instance=ExtResource( 10 )]
-visible = false
 
 [node name="Spatial" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5390.47, 0, 5321.25 )
