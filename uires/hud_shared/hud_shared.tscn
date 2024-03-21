@@ -31,14 +31,16 @@ anchor_bottom = 0.3
 grow_horizontal = 2
 label_displayed = "SPD"
 
-[node name="GaugeHDG" parent="." instance=ExtResource( 1 )]
-visible = false
+[node name="GaugeBAT" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.45
 anchor_top = 0.1
 anchor_right = 0.55
 anchor_bottom = 0.3
 grow_horizontal = 2
-label_displayed = "HDG"
+label_displayed = "BAT"
+value_displayed = 100.0
+value_maximum = 100.0
+value_minimum = 0.0
 
 [node name="GaugeALT" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.9
