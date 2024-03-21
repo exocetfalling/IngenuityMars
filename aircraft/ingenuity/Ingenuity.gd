@@ -218,7 +218,7 @@ func _physics_process(delta):
 	
 	# Battery consumption
 	if rotor_active:
-		battery_level -= 100 / 90 * delta
+		battery_level -= rotor_rpm / rotor_rpm_range_min * delta
 	if battery_level < 0:
 		rotor_active = false
 	
