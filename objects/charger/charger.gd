@@ -22,7 +22,8 @@ func _ready():
 func _physics_process(delta):
 	if body_in_area:
 		if body_tgt.get("battery_level"):
-			body_tgt.set("battery_level", 100)
+			if body_tgt.get("battery_level") < 100:
+				body_tgt.set("battery_level", body_tgt.get("battery_level") + 5 * delta)
 
 
 func _on_Charger_body_entered(body):
