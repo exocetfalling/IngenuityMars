@@ -106,6 +106,8 @@ func velocity_y_map(altitude_agl, throttle_pos):
 		if altitude_agl > ALT_HIGH:
 			return throttle_pos * 3
 
+# Takes input and makes the result vector lie within a circle, not a square
+# See https://web.archive.org/web/20240324115012/https://raw.org/article/how-to-map-a-square-to-a-circle/
 func map_vector_square_to_circle(vector_square: Vector2):
 	var vector_circle: Vector2 = Vector2.ZERO
 	
