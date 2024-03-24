@@ -6,6 +6,7 @@ extends AeroBody
 # var b = "text"
 var cmd_sas : Vector3 = Vector3.ZERO
 var sas_mode : int = 2
+var att_limits : Vector2 = Vector2.ZERO
 
 var rotation_target : Vector3 = Vector3.ZERO
 
@@ -105,6 +106,14 @@ func velocity_y_map(altitude_agl, throttle_pos):
 		if altitude_agl > ALT_HIGH:
 			return throttle_pos * 3
 
+func map_vector_square_to_circle(vector_square: Vector2):
+	var vector_circle: Vector2 = Vector2.ZERO
+	
+	vector_circle.x = vector_square.x * sqrt(1 - pow(vector_square.y, 2) / 2)
+	vector_circle.y = vector_square.y * sqrt(1 - pow(vector_square.x, 2) / 2)
+	
+	return vector_circle
+
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta): 
@@ -186,6 +195,9 @@ func _physics_process(delta):
 	cmd_sas.x = 1.0 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
 	cmd_sas.y = 1.0 * $PIDCalcYaw.calc_PID_output(tgt_rates.y, -angular_velocity.y)
 	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
+	
+	# Calc attitude limits
+	att_limits
 	
 	# Rotor on/off
 	if adc_alt_agl < 0.25:
@@ -274,6 +286,9 @@ func get_input(delta):
 		# Joystick input as axes
 		input_joystick.x = Input.get_axis("roll_left", "roll_right")
 		input_joystick.y = Input.get_axis("pitch_down", "pitch_up")
+		
+		# Circle the square input 
+		input_joystick = map_vector_square_to_circle(input_joystick)
 		
 		# Yaw input
 		input_rudder = Input.get_axis("yaw_left", "yaw_right")
