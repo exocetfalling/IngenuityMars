@@ -41,6 +41,8 @@ var camera_mouse_delta = 0
 var input_hold_time : float = 0
 export var rotor_active : bool = false
 
+export var battery_level: float = 100
+
 #var adc_data: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
@@ -134,6 +136,8 @@ func _physics_process(delta):
 		AeroDataBus.aircraft_linear_velocity_local = linear_velocity_local
 		AeroDataBus.aircraft_global_translation = global_translation
 		
+		AeroDataBus.aircraft_battery_level = battery_level
+		
 #		adc_data["pitch"] = adc_pitch
 #		adc_data["roll"] = adc_roll
 #
@@ -211,6 +215,13 @@ func _physics_process(delta):
 	
 	# thrust_current = thrust_rated * output_throttle * rotor_rpm / rotor_rpm_range_max
 	thrust_current = 0.5 * air_density * pow((rotor_angular_velocity * 0.605), 2) * 0.1 * rotor_cl
+	
+	# Battery consumption
+	if rotor_active:
+		battery_level -= rotor_rpm / rotor_rpm_range_min * 0.9 * delta
+	if battery_level < 0:
+		rotor_active = false
+	
 	
 	add_force_local(Vector3(0, thrust_current, 0), Vector3.ZERO)
 	
