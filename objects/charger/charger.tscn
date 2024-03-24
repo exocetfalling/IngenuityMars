@@ -4,6 +4,7 @@
 
 [sub_resource type="CylinderShape" id=1]
 height = 0.25
+radius = 1.5
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.278431, 0.278431, 0.278431, 1 )
@@ -16,6 +17,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0 )
 shape = SubResource( 1 )
 
 [node name="CSGCylinder" type="CSGCylinder" parent="."]
+radius = 1.5
 height = 0.02
 smooth_faces = false
 material = SubResource( 2 )
