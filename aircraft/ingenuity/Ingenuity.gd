@@ -63,6 +63,8 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "adc_alt_agl", "round")
 #	DebugOverlay.stats.add_property(self, "thrust_current", "round")
 #	DebugOverlay.stats.add_property(self, "global_translation", "round")
+	DebugOverlay.stats.add_property(self, "adc_pitch", "round")
+	DebugOverlay.stats.add_property(self, "adc_roll", "round")
 	pass # Replace with function body.
 	
 func calc_atmo_properties(height_metres):
@@ -182,8 +184,23 @@ func _physics_process(delta):
 			tgt_roll = 20 * input_joystick.x
 			
 		if (sas_mode == 2):
-			tgt_pitch = clamp($PIDCalcVelocityZ.calc_PID_output(linear_velocity_target.z, linear_velocity_rotated.z), -20, 20)
-			tgt_roll = clamp($PIDCalcVelocityX.calc_PID_output(linear_velocity_target.x, linear_velocity_rotated.x), -20, 20)
+			# Attitude limits
+#			att_limits.x = sqrt(400 - pow(adc_pitch, 2))
+#			att_limits.y = sqrt(400 - pow(adc_roll, 2))
+			att_limits = Vector2(20, 20)
+			
+			tgt_pitch = clamp(\
+				$PIDCalcVelocityZ.calc_PID_output(\
+					linear_velocity_target.z, \
+					linear_velocity_rotated.z \
+					), \
+				-att_limits.x, att_limits.x)
+			tgt_roll = clamp(\
+				$PIDCalcVelocityX.calc_PID_output(\
+					linear_velocity_target.x, \
+					linear_velocity_rotated.x \
+					), \
+				-att_limits.y, att_limits.y)
 		
 	linear_velocity_target.x = 10 * input_joystick.x
 	linear_velocity_target.y = velocity_y_map(adc_alt_agl, input_throttle)
