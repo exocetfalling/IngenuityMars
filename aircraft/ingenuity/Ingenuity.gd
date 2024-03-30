@@ -6,8 +6,8 @@ extends AeroBody
 # var b = "text"
 var cmd_sas : Vector3 = Vector3.ZERO
 export var sas_mode : int = 2
-var att_limit : float = 20
-var tgt_attitude : Vector2 = Vector2.ZERO
+var att_limit : float = 20 # Maximum angle from vertical permitted
+var tgt_attitude : Vector2 = Vector2.ZERO # x for roll, y for pitch 
 
 var rotation_target : Vector3 = Vector3.ZERO
 
@@ -64,8 +64,8 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "adc_alt_agl", "round")
 #	DebugOverlay.stats.add_property(self, "thrust_current", "round")
 #	DebugOverlay.stats.add_property(self, "global_translation", "round")
-	DebugOverlay.stats.add_property(self, "adc_pitch", "round")
-	DebugOverlay.stats.add_property(self, "adc_roll", "round")
+#	DebugOverlay.stats.add_property(self, "adc_pitch", "round")
+#	DebugOverlay.stats.add_property(self, "adc_roll", "round")
 	pass # Replace with function body.
 	
 func calc_atmo_properties(height_metres):
@@ -180,9 +180,11 @@ func _physics_process(delta):
 	linear_velocity_rotated = linear_velocity.rotated(Vector3.UP, -global_rotation.y)
 	
 	if output_throttle > 0.01:
+		# Basic attitude mode
 		if (sas_mode == 1):
 			tgt_attitude.y = 20 * input_joystick.y
 			tgt_attitude.x = 20 * input_joystick.x
+		# Velocity referenced mode
 		if (sas_mode == 2):
 			tgt_attitude.y = $PIDCalcVelocityZ.calc_PID_output(\
 				linear_velocity_target.z, \
@@ -192,6 +194,8 @@ func _physics_process(delta):
 					linear_velocity_target.x, \
 					linear_velocity_rotated.x \
 			)
+		
+		# Keep attitude within limits 
 		if tgt_attitude.length() > att_limit:
 			tgt_attitude = tgt_attitude.normalized() * att_limit
 	
