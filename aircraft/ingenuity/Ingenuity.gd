@@ -5,8 +5,9 @@ extends AeroBody
 # var a = 2
 # var b = "text"
 var cmd_sas : Vector3 = Vector3.ZERO
-var sas_mode : int = 2
-var att_limits : Vector2 = Vector2.ZERO
+export var sas_mode : int = 2
+var att_limit : float = 20
+var tgt_attitude : Vector2 = Vector2.ZERO
 
 var rotation_target : Vector3 = Vector3.ZERO
 
@@ -180,28 +181,21 @@ func _physics_process(delta):
 	
 	if output_throttle > 0.01:
 		if (sas_mode == 1):
-			tgt_pitch = 20 * input_joystick.y
-			tgt_roll = 20 * input_joystick.x
-			
+			tgt_attitude.y = 20 * input_joystick.y
+			tgt_attitude.x = 20 * input_joystick.x
 		if (sas_mode == 2):
-			# Attitude limits
-#			att_limits.x = sqrt(400 - pow(adc_pitch, 2))
-#			att_limits.y = sqrt(400 - pow(adc_roll, 2))
-			att_limits = Vector2(20, 20)
-			
-			tgt_pitch = clamp(\
-				$PIDCalcVelocityZ.calc_PID_output(\
-					linear_velocity_target.z, \
-					linear_velocity_rotated.z \
-					), \
-				-att_limits.x, att_limits.x)
-			tgt_roll = clamp(\
-				$PIDCalcVelocityX.calc_PID_output(\
+			tgt_attitude.y = $PIDCalcVelocityZ.calc_PID_output(\
+				linear_velocity_target.z, \
+				linear_velocity_rotated.z \
+			)
+			tgt_attitude.x = $PIDCalcVelocityX.calc_PID_output(\
 					linear_velocity_target.x, \
 					linear_velocity_rotated.x \
-					), \
-				-att_limits.y, att_limits.y)
-		
+			)
+		if tgt_attitude.length() > att_limit:
+			tgt_attitude = tgt_attitude.normalized() * att_limit
+	
+	
 	linear_velocity_target.x = 10 * input_joystick.x
 	linear_velocity_target.y = velocity_y_map(adc_alt_agl, input_throttle)
 	linear_velocity_target.z = 10 * input_joystick.y
@@ -211,12 +205,9 @@ func _physics_process(delta):
 	else:
 		output_throttle = 0
 	
-	cmd_sas.x = 1.0 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
+	cmd_sas.x = 1.0 * $PIDCalcPitch.calc_PID_output(tgt_attitude.y, adc_pitch)
 	cmd_sas.y = 1.0 * $PIDCalcYaw.calc_PID_output(tgt_rates.y, -angular_velocity.y)
-	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
-	
-	# Calc attitude limits
-	att_limits
+	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_attitude.x, adc_roll)
 	
 	# Rotor on/off
 	if adc_alt_agl < 0.25:
