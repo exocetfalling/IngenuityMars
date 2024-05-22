@@ -204,11 +204,6 @@ func _physics_process(delta):
 	linear_velocity_target.y = velocity_y_map(adc_alt_agl, input_throttle)
 	linear_velocity_target.z = 10 * input_joystick.y
 	
-	if rotor_active == true:
-		output_throttle = clamp($PIDCalcVelocityY.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
-	else:
-		output_throttle = 0
-	
 	cmd_sas.x = 1.0 * $PIDCalcPitch.calc_PID_output(tgt_attitude.y, adc_pitch)
 	cmd_sas.y = 1.0 * $PIDCalcYaw.calc_PID_output(tgt_rates.y, -angular_velocity.y)
 	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_attitude.x, adc_roll)
@@ -230,9 +225,17 @@ func _physics_process(delta):
 				rotor_active = false
 	
 	if rotor_active:
+		output_throttle = clamp(\
+			$PIDCalcVelocityY.calc_PID_output(\
+				linear_velocity_target.y, \
+				linear_velocity.y), \
+			0, 1)
 		rotor_rpm_tgt = 2500
+		$RotorSounds.play()
 	else:
 		rotor_rpm_tgt = 0
+		output_throttle = 0
+		$RotorSounds.stop()
 	
 	rotor_rpm = lerp(rotor_rpm, rotor_rpm_tgt, 0.05)
 	rotor_angular_velocity = rotor_rpm * 0.10472
