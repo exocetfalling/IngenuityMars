@@ -109,6 +109,11 @@ func velocity_y_map(altitude_agl, throttle_pos):
 		if altitude_agl > ALT_HIGH:
 			return throttle_pos * 3
 
+
+func _calc_sound_volume(vol_float):
+	return 10.0 * log(vol_float)
+
+
 # Takes input and makes the result vector lie within a circle, not a square
 # See https://web.archive.org/web/20240324115012/https://raw.org/article/how-to-map-a-square-to-a-circle/
 func map_vector_square_to_circle(vector_square: Vector2):
@@ -208,6 +213,10 @@ func _physics_process(delta):
 	cmd_sas.y = 1.0 * $PIDCalcYaw.calc_PID_output(tgt_rates.y, -angular_velocity.y)
 	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_attitude.x, adc_roll)
 	
+	# Rotor sounds
+	$RotorSounds.unit_db = 10 * log(rotor_rpm / rotor_rpm_range_max)
+	$RotorSounds.play()
+	
 	# Rotor on/off
 	if adc_alt_agl < 0.25:
 		if input_throttle > 0.95:
@@ -231,11 +240,9 @@ func _physics_process(delta):
 				linear_velocity.y), \
 			0, 1)
 		rotor_rpm_tgt = 2500
-		$RotorSounds.play()
 	else:
 		rotor_rpm_tgt = 0
 		output_throttle = 0
-		$RotorSounds.stop()
 	
 	rotor_rpm = lerp(rotor_rpm, rotor_rpm_tgt, 0.05)
 	rotor_angular_velocity = rotor_rpm * 0.10472
