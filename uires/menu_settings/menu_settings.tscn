@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://uires/menu_settings/menu_settings.gd" type="Script" id=2]
 [ext_resource path="res://uires/menu_settings/dust_button_group.tres" type="ButtonGroup" id=3]
 [ext_resource path="res://uires/menu_settings/shadows_button_group.tres" type="ButtonGroup" id=4]
+[ext_resource path="res://uires/menu_settings/rotor_button_group.tres" type="ButtonGroup" id=5]
+[ext_resource path="res://uires/menu_settings/wind_button_group.tres" type="ButtonGroup" id=6]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
@@ -54,93 +56,188 @@ anchor_right = 1.0
 anchor_bottom = 0.6
 alignment = 1
 
-[node name="OptionsDust" type="VBoxContainer" parent="Panes"]
-margin_right = 862.0
+[node name="Dust" type="VBoxContainer" parent="Panes"]
+margin_right = 468.0
 margin_bottom = 405.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Label" type="Label" parent="Panes/OptionsDust"]
-margin_right = 862.0
+[node name="Label" type="Label" parent="Panes/Dust"]
+margin_right = 468.0
 margin_bottom = 73.0
 text = "Dust Effects"
 align = 1
 valign = 1
 
-[node name="ButtonOff" type="Button" parent="Panes/OptionsDust"]
+[node name="ButtonOff" type="Button" parent="Panes/Dust"]
 margin_top = 77.0
-margin_right = 862.0
+margin_right = 468.0
 margin_bottom = 156.0
 toggle_mode = true
 group = ExtResource( 3 )
 text = "Off"
 
-[node name="ButtonLow" type="Button" parent="Panes/OptionsDust"]
+[node name="ButtonLow" type="Button" parent="Panes/Dust"]
 margin_top = 160.0
-margin_right = 862.0
+margin_right = 468.0
 margin_bottom = 239.0
 toggle_mode = true
 group = ExtResource( 3 )
 text = "Low"
 
-[node name="ButtonMedium" type="Button" parent="Panes/OptionsDust"]
+[node name="ButtonMedium" type="Button" parent="Panes/Dust"]
 margin_top = 243.0
-margin_right = 862.0
+margin_right = 468.0
 margin_bottom = 322.0
 toggle_mode = true
 group = ExtResource( 3 )
 text = "Medium"
 
-[node name="ButtonHigh" type="Button" parent="Panes/OptionsDust"]
+[node name="ButtonHigh" type="Button" parent="Panes/Dust"]
 margin_top = 326.0
-margin_right = 862.0
+margin_right = 468.0
 margin_bottom = 405.0
 toggle_mode = true
 group = ExtResource( 3 )
 text = "High"
 
-[node name="OptionsShadows" type="VBoxContainer" parent="Panes"]
-margin_left = 866.0
-margin_right = 1728.0
+[node name="Shadows" type="VBoxContainer" parent="Panes"]
+margin_left = 472.0
+margin_right = 888.0
 margin_bottom = 405.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Panes/OptionsShadows"]
-margin_right = 862.0
+[node name="Label" type="Label" parent="Panes/Shadows"]
+margin_right = 416.0
 margin_bottom = 73.0
 text = "Shadows"
 align = 1
 valign = 1
 
-[node name="ButtonOff" type="Button" parent="Panes/OptionsShadows"]
+[node name="ButtonOff" type="Button" parent="Panes/Shadows"]
 margin_top = 77.0
-margin_right = 862.0
+margin_right = 416.0
 margin_bottom = 156.0
 toggle_mode = true
 group = ExtResource( 4 )
 text = "Off"
 
-[node name="ButtonLow" type="Button" parent="Panes/OptionsShadows"]
+[node name="ButtonLow" type="Button" parent="Panes/Shadows"]
 margin_top = 160.0
-margin_right = 862.0
+margin_right = 416.0
 margin_bottom = 239.0
 toggle_mode = true
 group = ExtResource( 4 )
 text = "Low"
 
-[node name="ButtonMedium" type="Button" parent="Panes/OptionsShadows"]
+[node name="ButtonMedium" type="Button" parent="Panes/Shadows"]
 margin_top = 243.0
-margin_right = 862.0
+margin_right = 416.0
 margin_bottom = 322.0
 toggle_mode = true
 group = ExtResource( 4 )
 text = "Medium"
 
-[node name="ButtonHigh" type="Button" parent="Panes/OptionsShadows"]
+[node name="ButtonHigh" type="Button" parent="Panes/Shadows"]
 margin_top = 326.0
-margin_right = 862.0
+margin_right = 416.0
 margin_bottom = 405.0
 toggle_mode = true
 group = ExtResource( 4 )
+text = "High"
+
+[node name="RotorSounds" type="VBoxContainer" parent="Panes"]
+margin_left = 892.0
+margin_right = 1308.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panes/RotorSounds"]
+margin_right = 416.0
+margin_bottom = 73.0
+text = "Rotor Vol."
+align = 1
+valign = 1
+
+[node name="ButtonOff" type="Button" parent="Panes/RotorSounds"]
+margin_top = 77.0
+margin_right = 416.0
+margin_bottom = 156.0
+toggle_mode = true
+group = ExtResource( 5 )
+text = "Off"
+
+[node name="ButtonLow" type="Button" parent="Panes/RotorSounds"]
+margin_top = 160.0
+margin_right = 416.0
+margin_bottom = 239.0
+toggle_mode = true
+group = ExtResource( 5 )
+text = "Low"
+
+[node name="ButtonMedium" type="Button" parent="Panes/RotorSounds"]
+margin_top = 243.0
+margin_right = 416.0
+margin_bottom = 322.0
+toggle_mode = true
+group = ExtResource( 5 )
+text = "Medium"
+
+[node name="ButtonHigh" type="Button" parent="Panes/RotorSounds"]
+margin_top = 326.0
+margin_right = 416.0
+margin_bottom = 405.0
+toggle_mode = true
+group = ExtResource( 5 )
+text = "High"
+
+[node name="WindSounds" type="VBoxContainer" parent="Panes"]
+margin_left = 1312.0
+margin_right = 1728.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panes/WindSounds"]
+margin_right = 416.0
+margin_bottom = 73.0
+text = "Wind Vol."
+align = 1
+valign = 1
+
+[node name="ButtonOff" type="Button" parent="Panes/WindSounds"]
+margin_top = 77.0
+margin_right = 416.0
+margin_bottom = 156.0
+toggle_mode = true
+group = ExtResource( 6 )
+text = "Off"
+
+[node name="ButtonLow" type="Button" parent="Panes/WindSounds"]
+margin_top = 160.0
+margin_right = 416.0
+margin_bottom = 239.0
+toggle_mode = true
+group = ExtResource( 6 )
+text = "Low"
+
+[node name="ButtonMedium" type="Button" parent="Panes/WindSounds"]
+margin_top = 243.0
+margin_right = 416.0
+margin_bottom = 322.0
+toggle_mode = true
+group = ExtResource( 6 )
+text = "Medium"
+
+[node name="ButtonHigh" type="Button" parent="Panes/WindSounds"]
+margin_top = 326.0
+margin_right = 416.0
+margin_bottom = 405.0
+toggle_mode = true
+group = ExtResource( 6 )
 text = "High"

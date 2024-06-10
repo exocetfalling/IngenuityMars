@@ -45,7 +45,9 @@ export var rotor_active : bool = false
 
 export var battery_level: float = 100
 
+var rotor_sound_vol: float = 1.0
 #var adc_data: Dictionary = {}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -214,8 +216,10 @@ func _physics_process(delta):
 	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_attitude.x, adc_roll)
 	
 	# Rotor sounds
-	$RotorSounds.unit_db = 10 * log(rotor_rpm / rotor_rpm_range_max)
-	$RotorSounds.play()
+	rotor_sound_vol = pow(rotor_rpm / rotor_rpm_range_max, 2) * Settings.opt_rotor_sounds / 3
+	$RotorSounds.unit_db = 10 * log(rotor_sound_vol)
+	if not $RotorSounds.playing:
+		$RotorSounds.play()
 	
 	# Rotor on/off
 	if adc_alt_agl < 0.25:
