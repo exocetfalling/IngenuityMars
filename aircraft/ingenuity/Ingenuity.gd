@@ -45,7 +45,9 @@ export var rotor_active : bool = false
 
 export var battery_level: float = 100
 
+var rotor_sound_vol: float = 1.0
 #var adc_data: Dictionary = {}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -108,6 +110,11 @@ func velocity_y_map(altitude_agl, throttle_pos):
 			return throttle_pos * 2
 		if altitude_agl > ALT_HIGH:
 			return throttle_pos * 3
+
+
+func _calc_sound_volume(vol_float):
+	return 10.0 * log(vol_float)
+
 
 # Takes input and makes the result vector lie within a circle, not a square
 # See https://web.archive.org/web/20240324115012/https://raw.org/article/how-to-map-a-square-to-a-circle/
@@ -204,14 +211,15 @@ func _physics_process(delta):
 	linear_velocity_target.y = velocity_y_map(adc_alt_agl, input_throttle)
 	linear_velocity_target.z = 10 * input_joystick.y
 	
-	if rotor_active == true:
-		output_throttle = clamp($PIDCalcVelocityY.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
-	else:
-		output_throttle = 0
-	
 	cmd_sas.x = 1.0 * $PIDCalcPitch.calc_PID_output(tgt_attitude.y, adc_pitch)
 	cmd_sas.y = 1.0 * $PIDCalcYaw.calc_PID_output(tgt_rates.y, -angular_velocity.y)
 	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_attitude.x, adc_roll)
+	
+	# Rotor sounds
+	rotor_sound_vol = pow(rotor_rpm / rotor_rpm_range_max, 2) * Settings.opt_rotor_sounds / 3
+	$RotorSounds.unit_db = 10 * log(rotor_sound_vol)
+	if not $RotorSounds.playing:
+		$RotorSounds.play()
 	
 	# Rotor on/off
 	if adc_alt_agl < 0.25:
@@ -230,9 +238,15 @@ func _physics_process(delta):
 				rotor_active = false
 	
 	if rotor_active:
+		output_throttle = clamp(\
+			$PIDCalcVelocityY.calc_PID_output(\
+				linear_velocity_target.y, \
+				linear_velocity.y), \
+			0, 1)
 		rotor_rpm_tgt = 2500
 	else:
 		rotor_rpm_tgt = 0
+		output_throttle = 0
 	
 	rotor_rpm = lerp(rotor_rpm, rotor_rpm_tgt, 0.05)
 	rotor_angular_velocity = rotor_rpm * 0.10472

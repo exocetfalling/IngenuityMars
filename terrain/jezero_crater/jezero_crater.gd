@@ -21,7 +21,11 @@ func _ready():
 	else:
 		$Sun.shadow_enabled = false
 
+	if Settings.opt_wind_sounds > 0:
+		$WindSounds.volume_db = 10 * log(Settings.opt_wind_sounds / 3) - 3
+		$WindSounds.play()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	pass
