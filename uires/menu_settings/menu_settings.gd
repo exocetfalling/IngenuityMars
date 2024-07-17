@@ -10,6 +10,7 @@ extends Control
 func _ready():
 	Settings.load_data()
 	
+	# Set SpinBox values from settings on load
 	$Options/DustEffects.value = Settings.opt_dust_effects
 	$Options/Shadows.value = Settings.opt_shadows
 	$Options/RotorSounds.value = Settings.opt_rotor_sounds
@@ -19,6 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Set settings values from SpinBox at runtime
 	Settings.opt_dust_effects = $Options/DustEffects.value
 	Settings.opt_shadows = $Options/Shadows.value
 	Settings.opt_rotor_sounds = $Options/RotorSounds.value
