@@ -10,8 +10,8 @@ extends Node
 # 1 -> low
 # 2 -> med
 # 3 -> high
-export var opt_shadows: int = 2
-export var opt_dust_effects: int = 2
+export var opt_shadows: int = 1
+export var opt_dust_effects: int = 1
 export var opt_rotor_sounds: int = 2
 export var opt_wind_sounds: int = 2
 
@@ -34,8 +34,8 @@ func load_data():
 		return 0
 
 	# Load data
-	opt_dust_effects = config.get_value("graphics", "opt_dust_effects", 2)
-	opt_shadows = config.get_value("graphics", "opt_shadows", 2)
+	opt_dust_effects = config.get_value("graphics", "opt_dust_effects", 1)
+	opt_shadows = config.get_value("graphics", "opt_shadows", 1)
 	opt_rotor_sounds = config.get_value("sounds", "opt_rotor_sounds", 2)
 	opt_wind_sounds = config.get_value("sounds", "opt_wind_sounds", 2)
 
