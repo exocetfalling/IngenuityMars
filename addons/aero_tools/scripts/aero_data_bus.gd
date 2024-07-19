@@ -36,6 +36,7 @@ var aircraft_cam_global_rotation_deg : Vector3 = Vector3.ZERO
 var aircraft_linear_velocity : Vector3 = Vector3.ZERO
 var aircraft_linear_velocity_local : Vector3 = Vector3.ZERO
 var aircraft_global_translation : Vector3 = Vector3.ZERO
+var aircraft_battery_level: float = 0
 
 
 # Called when the node enters the scene tree for the first time.

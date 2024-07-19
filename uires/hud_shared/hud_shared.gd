@@ -37,7 +37,7 @@ func _process(delta):
 	get_input(delta)
 	
 	$GaugeSPD.value_displayed = AeroDataBus.aircraft_spd_true
-	$GaugeHDG.value_displayed = AeroDataBus.aircraft_hdg
+	$GaugeBAT.value_displayed = AeroDataBus.aircraft_battery_level
 	$GaugeALT.value_displayed = AeroDataBus.aircraft_alt_asl
 	$GaugeVVT.value_displayed = AeroDataBus.aircraft_spd_vertical_tgt
 	$GaugeVVI.value_displayed = AeroDataBus.aircraft_spd_vertical
@@ -83,6 +83,14 @@ func _process(delta):
 		$ButtonWptInc.disabled = true
 		$Minimap/Centre/Waypoint.visible = false
 		$ButtonWptDisp.text = "WPT XX"
+	
+	# Messages/alerts for player
+	if AeroDataBus.aircraft_battery_level < 25:
+		$Messages.text = "BATT LOW"
+	elif AeroDataBus.aircraft_alt_asl > 25:
+		$Messages.text = "ABOVE MAX ALT"
+	else:
+		$Messages.text = ""
 
 
 func get_input(delta):

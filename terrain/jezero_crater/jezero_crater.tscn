@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://resources/mars_env.tres" type="Environment" id=7]
 [ext_resource path="res://terrain/jezero_crater/jezero_crater.gd" type="Script" id=8]
 [ext_resource path="res://addons/zylann.scatter/scatter3d.gd" type="Script" id=9]
+[ext_resource path="res://sound/mars_wind.mp3" type="AudioStream" id=10]
 [ext_resource path="res://terrain/jezero_crater/jezero_crater_slot1_albedo_bump.packed_tex" type="Texture" id=11]
 [ext_resource path="res://terrain/jezero_crater/jezero_crater_slot1_normal_roughness.packed_tex" type="Texture" id=12]
 
@@ -70,3 +71,6 @@ transform = Transform( 0.70828, 0.705931, 3.08572e-08, 0, -4.37114e-08, 1, 0.705
 transform = Transform( 0.472133, 0.881527, 3.85328e-08, 0, -4.37114e-08, 1, 0.881527, -0.472133, -2.06376e-08, 176.537, -4.57764e-05, 206.36 )
 
 [node name="Spatial" type="Spatial" parent="."]
+
+[node name="WindSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )

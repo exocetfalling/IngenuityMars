@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://uires/menu_settings/menu_settings.gd" type="Script" id=2]
-[ext_resource path="res://uires/menu_settings/dust_button_group.tres" type="ButtonGroup" id=3]
-[ext_resource path="res://uires/menu_settings/shadows_button_group.tres" type="ButtonGroup" id=4]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 1 )
@@ -35,6 +33,79 @@ text = "Settings"
 align = 1
 valign = 1
 
+[node name="Options" type="GridContainer" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.8
+size_flags_horizontal = 2
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 2
+
+[node name="Label1" type="Label" parent="Options"]
+margin_top = 5.0
+margin_right = 1229.0
+margin_bottom = 78.0
+size_flags_horizontal = 3
+text = "Dust Effects"
+
+[node name="DustEffects" type="SpinBox" parent="Options"]
+modulate = Color( 0, 0.541176, 0.858824, 1 )
+margin_left = 1234.0
+margin_right = 1728.0
+margin_bottom = 83.0
+max_value = 3.0
+align = 1
+prefix = "Level"
+
+[node name="Label2" type="Label" parent="Options"]
+margin_top = 93.0
+margin_right = 1229.0
+margin_bottom = 166.0
+text = "Shadows"
+
+[node name="Shadows" type="SpinBox" parent="Options"]
+modulate = Color( 0, 0.541176, 0.858824, 1 )
+margin_left = 1234.0
+margin_top = 88.0
+margin_right = 1728.0
+margin_bottom = 171.0
+max_value = 3.0
+align = 1
+prefix = "Level"
+
+[node name="Label3" type="Label" parent="Options"]
+margin_top = 181.0
+margin_right = 1229.0
+margin_bottom = 254.0
+text = "Rotor Sounds"
+
+[node name="RotorSounds" type="SpinBox" parent="Options"]
+modulate = Color( 0, 0.541176, 0.858824, 1 )
+margin_left = 1234.0
+margin_top = 176.0
+margin_right = 1728.0
+margin_bottom = 259.0
+max_value = 3.0
+align = 1
+prefix = "Level"
+
+[node name="Label4" type="Label" parent="Options"]
+margin_top = 269.0
+margin_right = 1229.0
+margin_bottom = 342.0
+text = "Wind Sounds"
+
+[node name="WindSounds" type="SpinBox" parent="Options"]
+modulate = Color( 0, 0.541176, 0.858824, 1 )
+margin_left = 1234.0
+margin_top = 264.0
+margin_right = 1728.0
+margin_bottom = 347.0
+max_value = 3.0
+align = 1
+prefix = "Level"
+
 [node name="ButtonSave" type="Button" parent="."]
 anchor_left = 0.8
 anchor_top = 0.9
@@ -47,100 +118,3 @@ anchor_top = 0.9
 anchor_right = 0.2
 anchor_bottom = 1.0
 text = "Back"
-
-[node name="Panes" type="HBoxContainer" parent="."]
-anchor_top = 0.2
-anchor_right = 1.0
-anchor_bottom = 0.6
-alignment = 1
-
-[node name="OptionsDust" type="VBoxContainer" parent="Panes"]
-margin_right = 862.0
-margin_bottom = 405.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="Panes/OptionsDust"]
-margin_right = 862.0
-margin_bottom = 73.0
-text = "Dust Effects"
-align = 1
-valign = 1
-
-[node name="ButtonOff" type="Button" parent="Panes/OptionsDust"]
-margin_top = 77.0
-margin_right = 862.0
-margin_bottom = 156.0
-toggle_mode = true
-group = ExtResource( 3 )
-text = "Off"
-
-[node name="ButtonLow" type="Button" parent="Panes/OptionsDust"]
-margin_top = 160.0
-margin_right = 862.0
-margin_bottom = 239.0
-toggle_mode = true
-group = ExtResource( 3 )
-text = "Low"
-
-[node name="ButtonMedium" type="Button" parent="Panes/OptionsDust"]
-margin_top = 243.0
-margin_right = 862.0
-margin_bottom = 322.0
-toggle_mode = true
-group = ExtResource( 3 )
-text = "Medium"
-
-[node name="ButtonHigh" type="Button" parent="Panes/OptionsDust"]
-margin_top = 326.0
-margin_right = 862.0
-margin_bottom = 405.0
-toggle_mode = true
-group = ExtResource( 3 )
-text = "High"
-
-[node name="OptionsShadows" type="VBoxContainer" parent="Panes"]
-margin_left = 866.0
-margin_right = 1728.0
-margin_bottom = 405.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="Panes/OptionsShadows"]
-margin_right = 862.0
-margin_bottom = 73.0
-text = "Shadows"
-align = 1
-valign = 1
-
-[node name="ButtonOff" type="Button" parent="Panes/OptionsShadows"]
-margin_top = 77.0
-margin_right = 862.0
-margin_bottom = 156.0
-toggle_mode = true
-group = ExtResource( 4 )
-text = "Off"
-
-[node name="ButtonLow" type="Button" parent="Panes/OptionsShadows"]
-margin_top = 160.0
-margin_right = 862.0
-margin_bottom = 239.0
-toggle_mode = true
-group = ExtResource( 4 )
-text = "Low"
-
-[node name="ButtonMedium" type="Button" parent="Panes/OptionsShadows"]
-margin_top = 243.0
-margin_right = 862.0
-margin_bottom = 322.0
-toggle_mode = true
-group = ExtResource( 4 )
-text = "Medium"
-
-[node name="ButtonHigh" type="Button" parent="Panes/OptionsShadows"]
-margin_top = 326.0
-margin_right = 862.0
-margin_bottom = 405.0
-toggle_mode = true
-group = ExtResource( 4 )
-text = "High"

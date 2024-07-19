@@ -5,7 +5,9 @@ extends AeroBody
 # var a = 2
 # var b = "text"
 var cmd_sas : Vector3 = Vector3.ZERO
-var sas_mode : int = 2
+export var sas_mode : int = 2
+var att_limit : float = 20 # Maximum angle from vertical permitted
+var tgt_attitude : Vector2 = Vector2.ZERO # x for roll, y for pitch 
 
 var rotation_target : Vector3 = Vector3.ZERO
 
@@ -41,7 +43,11 @@ var camera_mouse_delta = 0
 var input_hold_time : float = 0
 export var rotor_active : bool = false
 
+export var battery_level: float = 100
+
+var rotor_sound_vol: float = 1.0
 #var adc_data: Dictionary = {}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,6 +66,8 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "adc_alt_agl", "round")
 #	DebugOverlay.stats.add_property(self, "thrust_current", "round")
 #	DebugOverlay.stats.add_property(self, "global_translation", "round")
+#	DebugOverlay.stats.add_property(self, "adc_pitch", "round")
+#	DebugOverlay.stats.add_property(self, "adc_roll", "round")
 	pass # Replace with function body.
 	
 func calc_atmo_properties(height_metres):
@@ -104,6 +112,21 @@ func velocity_y_map(altitude_agl, throttle_pos):
 			return throttle_pos * 3
 
 
+func _calc_sound_volume(vol_float):
+	return 10.0 * log(vol_float)
+
+
+# Takes input and makes the result vector lie within a circle, not a square
+# See https://web.archive.org/web/20240324115012/https://raw.org/article/how-to-map-a-square-to-a-circle/
+func map_vector_square_to_circle(vector_square: Vector2):
+	var vector_circle: Vector2 = Vector2.ZERO
+	
+	vector_circle.x = vector_square.x * sqrt(1 - pow(vector_square.y, 2) / 2)
+	vector_circle.y = vector_square.y * sqrt(1 - pow(vector_square.x, 2) / 2)
+	
+	return vector_circle
+
+
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta): 
 	if (control_type == 1):
@@ -134,6 +157,8 @@ func _physics_process(delta):
 		AeroDataBus.aircraft_linear_velocity_local = linear_velocity_local
 		AeroDataBus.aircraft_global_translation = global_translation
 		
+		AeroDataBus.aircraft_battery_level = battery_level
+		
 #		adc_data["pitch"] = adc_pitch
 #		adc_data["roll"] = adc_roll
 #
@@ -162,26 +187,39 @@ func _physics_process(delta):
 	linear_velocity_rotated = linear_velocity.rotated(Vector3.UP, -global_rotation.y)
 	
 	if output_throttle > 0.01:
+		# Basic attitude mode
 		if (sas_mode == 1):
-			tgt_pitch = 20 * input_joystick.y
-			tgt_roll = 20 * input_joystick.x
-			
+			tgt_attitude.y = 20 * input_joystick.y
+			tgt_attitude.x = 20 * input_joystick.x
+		# Velocity referenced mode
 		if (sas_mode == 2):
-			tgt_pitch = clamp($PIDCalcVelocityZ.calc_PID_output(linear_velocity_target.z, linear_velocity_rotated.z), -20, 20)
-			tgt_roll = clamp($PIDCalcVelocityX.calc_PID_output(linear_velocity_target.x, linear_velocity_rotated.x), -20, 20)
+			tgt_attitude.y = $PIDCalcVelocityZ.calc_PID_output(\
+				linear_velocity_target.z, \
+				linear_velocity_rotated.z \
+			)
+			tgt_attitude.x = $PIDCalcVelocityX.calc_PID_output(\
+					linear_velocity_target.x, \
+					linear_velocity_rotated.x \
+			)
 		
+		# Keep attitude within limits 
+		if tgt_attitude.length() > att_limit:
+			tgt_attitude = tgt_attitude.normalized() * att_limit
+	
+	
 	linear_velocity_target.x = 10 * input_joystick.x
 	linear_velocity_target.y = velocity_y_map(adc_alt_agl, input_throttle)
 	linear_velocity_target.z = 10 * input_joystick.y
 	
-	if rotor_active == true:
-		output_throttle = clamp($PIDCalcVelocityY.calc_PID_output(linear_velocity_target.y, linear_velocity.y), 0, 1)
-	else:
-		output_throttle = 0
-	
-	cmd_sas.x = 1.0 * $PIDCalcPitch.calc_PID_output(tgt_pitch, adc_pitch)
+	cmd_sas.x = 1.0 * $PIDCalcPitch.calc_PID_output(tgt_attitude.y, adc_pitch)
 	cmd_sas.y = 1.0 * $PIDCalcYaw.calc_PID_output(tgt_rates.y, -angular_velocity.y)
-	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_roll, adc_roll)
+	cmd_sas.z = 1.0 * $PIDCalcRoll.calc_PID_output(tgt_attitude.x, adc_roll)
+	
+	# Rotor sounds
+	rotor_sound_vol = pow(rotor_rpm / rotor_rpm_range_max, 2) * Settings.opt_rotor_sounds / 3
+	$RotorSounds.unit_db = 10 * log(rotor_sound_vol)
+	if not $RotorSounds.playing:
+		$RotorSounds.play()
 	
 	# Rotor on/off
 	if adc_alt_agl < 0.25:
@@ -200,9 +238,15 @@ func _physics_process(delta):
 				rotor_active = false
 	
 	if rotor_active:
+		output_throttle = clamp(\
+			$PIDCalcVelocityY.calc_PID_output(\
+				linear_velocity_target.y, \
+				linear_velocity.y), \
+			0, 1)
 		rotor_rpm_tgt = 2500
 	else:
 		rotor_rpm_tgt = 0
+		output_throttle = 0
 	
 	rotor_rpm = lerp(rotor_rpm, rotor_rpm_tgt, 0.05)
 	rotor_angular_velocity = rotor_rpm * 0.10472
@@ -211,6 +255,13 @@ func _physics_process(delta):
 	
 	# thrust_current = thrust_rated * output_throttle * rotor_rpm / rotor_rpm_range_max
 	thrust_current = 0.5 * air_density * pow((rotor_angular_velocity * 0.605), 2) * 0.1 * rotor_cl
+	
+	# Battery consumption
+	if rotor_active:
+		battery_level -= rotor_rpm / rotor_rpm_range_min * 0.9 * delta
+	if battery_level < 0:
+		rotor_active = false
+	
 	
 	add_force_local(Vector3(0, thrust_current, 0), Vector3.ZERO)
 	
@@ -263,6 +314,9 @@ func get_input(delta):
 		# Joystick input as axes
 		input_joystick.x = Input.get_axis("roll_left", "roll_right")
 		input_joystick.y = Input.get_axis("pitch_down", "pitch_up")
+		
+		# Circle the square input 
+		input_joystick = map_vector_square_to_circle(input_joystick)
 		
 		# Yaw input
 		input_rudder = Input.get_axis("yaw_left", "yaw_right")
