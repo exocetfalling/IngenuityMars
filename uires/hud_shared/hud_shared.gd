@@ -87,7 +87,7 @@ func _process(delta):
 	# Messages/alerts for player
 	if AeroDataBus.aircraft_battery_level < 25:
 		$Messages.text = "BATT LOW"
-	elif AeroDataBus.aircraft_alt_agl > 50:
+	elif AeroDataBus.aircraft_alt_asl > 25:
 		$Messages.text = "ABOVE MAX ALT"
 	else:
 		$Messages.text = ""
