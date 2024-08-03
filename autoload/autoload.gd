@@ -6,6 +6,8 @@ extends Control
 # var b = "text"
 
 var start_pos: Vector3 = Vector3(0, 0, 0)
+var mission_name: String = ""
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +19,7 @@ func _ready():
 func _process(delta):
 	get_input(delta)
 	pass
+
 
 func get_input(delta):
 

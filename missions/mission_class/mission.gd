@@ -14,6 +14,9 @@ export var goals_text: PoolStringArray
 
 enum goal_type {LOCATION, TIME, WAIT}
 
+var is_complete: bool = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
