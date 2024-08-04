@@ -13,6 +13,8 @@ func _ready():
 		""
 	]
 	
+	$Ingenuity/HUDShared.wpt_array = wpt_array # Copy mission waypoints to craft
+	
 	pass # Replace with function body.
 
 
