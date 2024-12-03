@@ -22,4 +22,5 @@ func _ready():
 func _process(delta):
 	if $Charger.body_in_area:
 		is_complete = true
+		$Ingenuity.input_throttle
 	pass
