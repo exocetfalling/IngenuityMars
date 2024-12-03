@@ -50,6 +50,11 @@ _global_script_classes=[ {
 "path": "res://missions/mission_classes/mission.gd"
 }, {
 "base": "Node",
+"class": "MissionGoal",
+"language": "GDScript",
+"path": "res://missions/mission_classes/mission_goal.gd"
+}, {
+"base": "Node",
 "class": "PID_Calc",
 "language": "GDScript",
 "path": "res://addons/aero_tools/scripts/aero_pid_calc.gd"
@@ -68,6 +73,7 @@ _global_script_class_icons={
 "HTerrainDataLoader": "",
 "HTerrainDataSaver": "",
 "Mission": "",
+"MissionGoal": "",
 "PID_Calc": "",
 "VirtualJoystick": ""
 }

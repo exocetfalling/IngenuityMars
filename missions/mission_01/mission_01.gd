@@ -7,12 +7,6 @@ extends Mission
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	title_text = ""
-	goals_text = [ \
-		"",
-		""
-	]
-	
 	$Ingenuity/HUDShared.wpt_array = wpt_array # Copy mission waypoints to craft
 	
 	pass # Replace with function body.
