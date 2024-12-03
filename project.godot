@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Mission",
 "language": "GDScript",
-"path": "res://missions/mission_class/mission.gd"
+"path": "res://missions/mission_classes/mission.gd"
 }, {
 "base": "Node",
 "class": "PID_Calc",
