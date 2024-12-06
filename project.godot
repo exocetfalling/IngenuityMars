@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://missions/mission_classes/mission.gd"
 }, {
-"base": "Node",
+"base": "Spatial",
 "class": "MissionGoal",
 "language": "GDScript",
 "path": "res://missions/mission_classes/mission_goal.gd"

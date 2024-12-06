@@ -8,19 +8,25 @@ class_name Mission
 # var b = "text"
 export var use_mission_waypoints: bool = true
 
-export var goals_array: Array = []
-export var wpt_array: PoolVector3Array = [Vector3.ZERO]
+var goals_array: Array = []
+var wpt_array: PoolVector3Array = []
 
 export var title_text: String
-export var goals_text: PoolStringArray
+var goals_text: PoolStringArray
 
-#enum goal_type {LOCATION, TIME, WAIT}
+var timer_goal: float = 0
 
 var is_complete: bool = false
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for child in get_children():
+		if child is MissionGoal:
+			goals_array.append(child)
+			wpt_array.append(child.translation)
+	
+	if use_mission_waypoints:
+		$Ingenuity/HUDShared.wpt_array = wpt_array # Copy mission waypoints to craft
 	pass # Replace with function body.
 
 

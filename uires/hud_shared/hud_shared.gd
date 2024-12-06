@@ -59,16 +59,6 @@ func _process(delta):
 		$Minimap/Centre/Waypoint.position = 50 * wpt_vector.normalized()
 		$Minimap/Centre/Waypoint.default_color = Color(1, 1, 1, 0.1)
 	
-	# Buttons
-	if ($ButtonPause.pressed == true):
-		pause_handle()
-	
-	if $ButtonWptDec.pressed == true and wpt_index > 0:
-		wpt_index -= 1
-	
-	if $ButtonWptInc.pressed == true and wpt_index < len(wpt_array) - 1:
-		wpt_index += 1
-	
 	# If waypoint button pushed in
 	# Enable increase/decrease buttons
 	# Show waypoint symbol and number
@@ -101,3 +91,17 @@ func get_input(delta):
 	# UI visibility input (for screenshots)
 	if (Input.is_action_just_pressed("hud_toggle")):
 		hud_visibility_handle()
+
+# Buttons
+func _on_ButtonWptDec_pressed():
+	if wpt_index > 0:
+		wpt_index -= 1
+
+
+func _on_ButtonWptInc_pressed():
+	if wpt_index < len(wpt_array) - 1:
+		wpt_index += 1
+
+
+func _on_ButtonPause_pressed():
+	pause_handle()

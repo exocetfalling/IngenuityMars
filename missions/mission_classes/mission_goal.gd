@@ -1,4 +1,4 @@
-extends Node
+extends Spatial
 
 class_name MissionGoal
 
@@ -6,11 +6,11 @@ class_name MissionGoal
 # var a = 2
 # var b = "text"
 
-# export(String, "Location", "Time", "Leah") var goal_type
-#var goal_data: Array = [Vector3.ZERO, 0.00]
-export var goal_location: Vector3 = Vector3.ZERO
-export var goal_duration: float = 0
+export var goal_radius: float = 5
+export var goal_duration: float = 60
 
+export var goal_title: String
+export var goal_description: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
