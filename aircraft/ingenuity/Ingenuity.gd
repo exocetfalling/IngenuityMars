@@ -319,6 +319,9 @@ func _physics_process(delta):
 			$DustEffect.translation = Vector3.ZERO
 			$DustEffect.rotation = Vector3.ZERO
 	
+	update_cas_messages([])
+
+
 func get_input(delta):
 	# Check if aircraft is under player control
 	if (control_type == 1):
