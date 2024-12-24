@@ -156,7 +156,10 @@ anchor_bottom = 0.7
 margin_left = -507.0
 margin_top = -73.0
 margin_right = 507.0
-text = "NO CAS MSGS"
+text = "NO CAS MSGS
+REACH WPT XX
+000 SEC LEFT
+"
 align = 1
 clip_text = true
 
