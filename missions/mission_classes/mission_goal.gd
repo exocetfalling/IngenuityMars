@@ -6,19 +6,19 @@ class_name MissionGoal
 # var a = 2
 # var b = "text"
 
-export var goal_radius: float = 5
-export var goal_duration: float = 60
+export var radius: float = 5
+export var duration: float = 60
 
-export var goal_title: String
-export var goal_description: String
+export var title: String
+export var description: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
-#func get_goal_data():
-#	return goal_data
+#func get_data():
+#	return data
 
 
 
