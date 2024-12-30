@@ -18,12 +18,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25841, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, -200 )
 
 [node name="MissionGoal01" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -100 )
 script = ExtResource( 5 )
 
 [node name="MissionGoal02" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -50 )
 script = ExtResource( 5 )
 
 [node name="MissionGoal03" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -25 )
 script = ExtResource( 5 )
 
 [node name="MissionGoal04" type="Spatial" parent="."]

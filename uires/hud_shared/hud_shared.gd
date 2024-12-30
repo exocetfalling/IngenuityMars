@@ -10,6 +10,10 @@ export var wpt_array: PoolVector3Array = [Vector3.ZERO]
 var wpt_vector : Vector2 = Vector2.ZERO
 var wpt_index: int = 0
 
+var memo_duration: float = 0
+var memo_active: bool = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -22,6 +26,7 @@ func pause_handle():
 		$MenuPause.visible = false
 		get_tree().paused = false
 
+
 func hud_visibility_handle():
 	if hud_visible == true:
 		hud_visible = false
@@ -31,6 +36,24 @@ func hud_visibility_handle():
 		hud_visible = true
 		visible = true
 		$UI.visible = true
+
+
+func update_cas_warnings():
+	$MsgBlock/Warnings.text = ""
+	
+	if AeroDataBus.aircraft_battery_level <= 25:
+		$MsgBlock/Warnings.text += "BATT LOW" + "\n"
+	if AeroDataBus.aircraft_alt_agl >= 25:
+		$MsgBlock/Warnings.text += "ABOVE MAX ALT" + "\n"
+
+
+func set_cas_memos(message_array: PoolStringArray):
+	memo_active = true
+	
+	$MsgBlock/Memos.text = ""
+	
+	for msg in message_array:
+		$MsgBlock/Memos.text += msg + "\n"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -73,6 +96,16 @@ func _process(delta):
 		$ButtonWptInc.disabled = true
 		$Minimap/Centre/Waypoint.visible = false
 		$ButtonWptDisp.text = "WPT XX"
+	
+	# CAS warnings/memos
+	update_cas_warnings()
+	
+	if memo_active:
+		memo_duration += delta
+		
+		if memo_duration > 5:
+			memo_active = false
+			set_cas_memos([])
 
 
 func get_input(delta):

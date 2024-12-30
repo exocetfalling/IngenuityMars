@@ -42,6 +42,7 @@ func _physics_process(delta):
 	if (goals_array[goal_index].global_translation - $Ingenuity.global_translation).length() < goals_array[goal_index].radius:
 		if goal_index < goals_array.size() - 1:
 			goal_index += 1
+			$Ingenuity/HUDShared.set_cas_memos(["SEL NEXT WPT"])
 		else:
 			is_complete = true
-			$Ingenuity.update_cas_messages(["MISSION COMPLETE"])
+			$Ingenuity/HUDShared.set_cas_memos(["MISSION COMPLETE"])

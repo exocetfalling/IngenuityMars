@@ -127,20 +127,6 @@ func map_vector_square_to_circle(vector_square: Vector2):
 	return vector_circle
 
 
-func update_cas_messages(message_array: PoolStringArray):
-	if AeroDataBus.aircraft_battery_level <= 25:
-		message_array.append("BATT LOW")
-	if AeroDataBus.aircraft_alt_agl >= 25:
-		message_array.append("ABOVE MAX ALT")
-	
-	$HUDShared/Messages.text = ""
-	
-	for msg in message_array:
-		$HUDShared/Messages.text += msg + "\n"
-	
-	message_array = []
-
-
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta): 
 	if (control_type == 1):
@@ -318,8 +304,6 @@ func _physics_process(delta):
 			$DustEffect.fx_intensity = 0
 			$DustEffect.translation = Vector3.ZERO
 			$DustEffect.rotation = Vector3.ZERO
-	
-	update_cas_messages([])
 
 
 func get_input(delta):
