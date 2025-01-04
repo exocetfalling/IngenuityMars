@@ -15,7 +15,7 @@ var wpt_array: PoolVector3Array = []
 
 export var title_text: String
 var goals_text: PoolStringArray
-var goal_index: int = 1
+var goal_index: int = 0
 
 var time_elapsed: float = 0
 var time_left_goal: float = 0
@@ -38,11 +38,13 @@ func _ready():
 func _physics_process(delta):
 	time_elapsed += delta
 	time_left_goal -= delta
-	
+
 	if (goals_array[goal_index].global_translation - $Ingenuity.global_translation).length() < goals_array[goal_index].radius:
 		if goal_index < goals_array.size() - 1:
 			goal_index += 1
-			$Ingenuity/HUDShared.set_cas_memos(["SEL NEXT WPT"])
-		else:
+#			print("Waypoint reached: ", goal_index)
+			$Ingenuity/HUDShared.set_cas_memos(["WPT REACHED", "SEL NEXT WPT"])
+		elif is_complete == false:
 			is_complete = true
+#			print("Mission complete. ")
 			$Ingenuity/HUDShared.set_cas_memos(["MISSION COMPLETE"])

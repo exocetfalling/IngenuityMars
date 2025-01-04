@@ -105,6 +105,7 @@ func _process(delta):
 		
 		if memo_duration > 5:
 			memo_active = false
+			memo_duration = 0
 			set_cas_memos([])
 
 
