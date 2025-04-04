@@ -304,7 +304,8 @@ func _physics_process(delta):
 			$DustEffect.fx_intensity = 0
 			$DustEffect.translation = Vector3.ZERO
 			$DustEffect.rotation = Vector3.ZERO
-	
+
+
 func get_input(delta):
 	# Check if aircraft is under player control
 	if (control_type == 1):

@@ -137,6 +137,9 @@ script = ExtResource( 5 )
 
 [node name="HUDShared" parent="." instance=ExtResource( 4 )]
 
+[node name="MsgBlock" parent="HUDShared" index="13"]
+show_behind_parent = true
+
 [node name="DustRayCast" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, -5, 0 )

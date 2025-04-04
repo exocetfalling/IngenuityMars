@@ -19,6 +19,7 @@ shape = SubResource( 1 )
 [node name="CSGCylinder" type="CSGCylinder" parent="."]
 radius = 1.5
 height = 0.02
+sides = 6
 smooth_faces = false
 material = SubResource( 2 )
 
