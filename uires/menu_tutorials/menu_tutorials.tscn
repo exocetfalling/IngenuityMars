@@ -14,17 +14,17 @@ script = ExtResource( 2 )
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 0.8
-margin_right = 8.0
-margin_bottom = 95.0
-tab_align = 0
+offset_right = 8.0
+offset_bottom = 95.0
+tab_alignment = 0
 
 [node name="HUD" type="RichTextLabel" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 91.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 91.0
+offset_right = -4.0
+offset_bottom = -4.0
 text = "HUD Data:
 
 SPD -> Speed
@@ -37,10 +37,10 @@ VVI -> Vertical velocity indicator "
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 91.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 91.0
+offset_right = -4.0
+offset_bottom = -4.0
 text = "Controls:
 On screen, there are two virtual joysticks. 
 
@@ -65,10 +65,10 @@ To deactivate the rotors, move the left stick backwards for one second while on 
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 91.0
-margin_right = -4.0
-margin_bottom = -4.0
+offset_left = 4.0
+offset_top = 91.0
+offset_right = -4.0
+offset_bottom = -4.0
 text = "- Stability augmentation system available
 - Stick position controls velocity
   -> Limit 10 m/s horizontal

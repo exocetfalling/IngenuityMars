@@ -1,8 +1,0 @@
-{
-	"contains_albedo": false,
-	"resolution": 1024,
-	"src": {
-		"a": "res://assets/pbr_materials/ground_tiled/ground_tiled_roughness.png",
-		"rgb": "res://assets/pbr_materials/ground_tiled/ground_tiled_normal.png"
-	}
-}

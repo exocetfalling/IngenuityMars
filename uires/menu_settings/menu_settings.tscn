@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="FontFile" id=1]
 [ext_resource path="res://uires/menu_settings/menu_settings.gd" type="Script" id=2]
 
 [sub_resource type="Theme" id=1]
@@ -9,7 +9,7 @@ Button/colors/font_color = Color( 0, 0.541176, 0.858824, 1 )
 Button/colors/font_color_disabled = Color( 0.541176, 0.858824, 1, 0.254902 )
 Button/colors/font_color_hover = Color( 0, 0.705882, 0.858824, 1 )
 Button/colors/font_color_pressed = Color( 0, 0.541176, 0.858824, 1 )
-Button/constants/hseparation = 2
+Button/constants/h_separation = 2
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = null
@@ -38,70 +38,70 @@ anchor_top = 0.2
 anchor_right = 1.0
 anchor_bottom = 0.8
 size_flags_horizontal = 2
-custom_constants/vseparation = 5
-custom_constants/hseparation = 5
+theme_override_constants/v_separation = 5
+theme_override_constants/h_separation = 5
 columns = 2
 
 [node name="Label1" type="Label" parent="Options"]
-margin_top = 5.0
-margin_right = 1229.0
-margin_bottom = 78.0
+offset_top = 5.0
+offset_right = 1229.0
+offset_bottom = 78.0
 size_flags_horizontal = 3
 text = "Dust Effects"
 
 [node name="DustEffects" type="SpinBox" parent="Options"]
 modulate = Color( 0, 0.541176, 0.858824, 1 )
-margin_left = 1234.0
-margin_right = 1728.0
-margin_bottom = 83.0
+offset_left = 1234.0
+offset_right = 1728.0
+offset_bottom = 83.0
 max_value = 3.0
 align = 1
 prefix = "Level"
 
 [node name="Label2" type="Label" parent="Options"]
-margin_top = 93.0
-margin_right = 1229.0
-margin_bottom = 166.0
+offset_top = 93.0
+offset_right = 1229.0
+offset_bottom = 166.0
 text = "Shadows"
 
 [node name="Shadows" type="SpinBox" parent="Options"]
 modulate = Color( 0, 0.541176, 0.858824, 1 )
-margin_left = 1234.0
-margin_top = 88.0
-margin_right = 1728.0
-margin_bottom = 171.0
+offset_left = 1234.0
+offset_top = 88.0
+offset_right = 1728.0
+offset_bottom = 171.0
 max_value = 3.0
 align = 1
 prefix = "Level"
 
 [node name="Label3" type="Label" parent="Options"]
-margin_top = 181.0
-margin_right = 1229.0
-margin_bottom = 254.0
+offset_top = 181.0
+offset_right = 1229.0
+offset_bottom = 254.0
 text = "Rotor Sounds"
 
 [node name="RotorSounds" type="SpinBox" parent="Options"]
 modulate = Color( 0, 0.541176, 0.858824, 1 )
-margin_left = 1234.0
-margin_top = 176.0
-margin_right = 1728.0
-margin_bottom = 259.0
+offset_left = 1234.0
+offset_top = 176.0
+offset_right = 1728.0
+offset_bottom = 259.0
 max_value = 3.0
 align = 1
 prefix = "Level"
 
 [node name="Label4" type="Label" parent="Options"]
-margin_top = 269.0
-margin_right = 1229.0
-margin_bottom = 342.0
+offset_top = 269.0
+offset_right = 1229.0
+offset_bottom = 342.0
 text = "Wind Sounds"
 
 [node name="WindSounds" type="SpinBox" parent="Options"]
 modulate = Color( 0, 0.541176, 0.858824, 1 )
-margin_left = 1234.0
-margin_top = 264.0
-margin_right = 1728.0
-margin_bottom = 347.0
+offset_left = 1234.0
+offset_top = 264.0
+offset_right = 1728.0
+offset_bottom = 347.0
 max_value = 3.0
 align = 1
 prefix = "Level"

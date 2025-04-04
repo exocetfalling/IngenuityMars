@@ -1,13 +1,13 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://uires/hud_shared/hud_shared_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://uires/hud_shared/hud_shared_font.tres" type="FontFile" id=1]
 
 [node name="Minimap" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1670.0
-margin_bottom = -830.0
-rect_min_size = Vector2( 250, 250 )
+offset_right = -1670.0
+offset_bottom = -830.0
+custom_minimum_size = Vector2( 250, 250 )
 mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -16,86 +16,86 @@ size_flags_vertical = 4
 position = Vector2( 125, 125 )
 
 [node name="Ownship" type="Polygon2D" parent="Centre"]
-polygon = PoolVector2Array( 0, -5, 5, 0, 0, 5, -5, 0 )
+polygon = PackedVector2Array( 0, -5, 5, 0, 0, 5, -5, 0 )
 
 [node name="Waypoint" type="Line2D" parent="Centre"]
-points = PoolVector2Array( 0, 0, 0, -10, 0, 0, 10, 0, 0, 0, 0, 10, 0, 0, -10, 0, 0, 0 )
+points = PackedVector2Array( 0, 0, 0, -10, 0, 0, 10, 0, 0, 0, 0, 10, 0, 0, -10, 0, 0, 0 )
 width = 3.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="MarkerN" type="Line2D" parent="Centre"]
-points = PoolVector2Array( 0, -80, 10, -70, 0, -80, -10, -70, 0, -80 )
+points = PackedVector2Array( 0, -80, 10, -70, 0, -80, -10, -70, 0, -80 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="Label" type="Label" parent="Centre/MarkerN"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -10.0
-margin_top = -122.0
-margin_right = 30.008
-margin_bottom = -42.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 1 )
+offset_left = -10.0
+offset_top = -122.0
+offset_right = 30.008
+offset_bottom = -42.0
+scale = Vector2( 0.5, 0.5 )
+theme_override_fonts/font = ExtResource( 1 )
 text = "N"
 align = 1
 
 [node name="MarkerE" type="Line2D" parent="Centre"]
 rotation = 1.5708
-points = PoolVector2Array( 0, -80, 10, -70, 0, -80, -10, -70, 0, -80 )
+points = PackedVector2Array( 0, -80, 10, -70, 0, -80, -10, -70, 0, -80 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="Label" type="Label" parent="Centre/MarkerE"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -10.0
-margin_top = -122.0
-margin_right = 30.008
-margin_bottom = -42.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 1 )
+offset_left = -10.0
+offset_top = -122.0
+offset_right = 30.008
+offset_bottom = -42.0
+scale = Vector2( 0.5, 0.5 )
+theme_override_fonts/font = ExtResource( 1 )
 text = "E"
 align = 1
 
 [node name="MarkerS" type="Line2D" parent="Centre"]
 rotation = 3.14159
-points = PoolVector2Array( 0, -80, 10, -70, 0, -80, -10, -70, 0, -80 )
+points = PackedVector2Array( 0, -80, 10, -70, 0, -80, -10, -70, 0, -80 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="Label" type="Label" parent="Centre/MarkerS"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -10.0
-margin_top = -122.0
-margin_right = 30.008
-margin_bottom = -42.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 1 )
+offset_left = -10.0
+offset_top = -122.0
+offset_right = 30.008
+offset_bottom = -42.0
+scale = Vector2( 0.5, 0.5 )
+theme_override_fonts/font = ExtResource( 1 )
 text = "S"
 align = 1
 
 [node name="MarkerW" type="Line2D" parent="Centre"]
 rotation = 4.71239
-points = PoolVector2Array( 0, -80, 10, -70, 0, -80, -10, -70, 0, -80 )
+points = PackedVector2Array( 0, -80, 10, -70, 0, -80, -10, -70, 0, -80 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="Label" type="Label" parent="Centre/MarkerW"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -10.0
-margin_top = -122.0
-margin_right = 30.008
-margin_bottom = -42.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 1 )
+offset_left = -10.0
+offset_top = -122.0
+offset_right = 30.008
+offset_bottom = -42.0
+scale = Vector2( 0.5, 0.5 )
+theme_override_fonts/font = ExtResource( 1 )
 text = "W"
 align = 1
 
 [node name="FlightPath" type="Line2D" parent="Centre"]
-points = PoolVector2Array( 0, 0, 0, 0 )
+points = PackedVector2Array( 0, 0, 0, 0 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2

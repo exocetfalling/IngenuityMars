@@ -11,7 +11,7 @@
 [sub_resource type="InputEventAction" id=1]
 action = "ui_cancel"
 
-[sub_resource type="ShortCut" id=2]
+[sub_resource type="Shortcut" id=2]
 shortcut = SubResource( 1 )
 
 [node name="HUDShared" type="Control"]
@@ -63,8 +63,8 @@ anchor_left = 0.9
 anchor_top = 0.6
 anchor_right = 0.9
 anchor_bottom = 0.6
-margin_right = 180.0
-margin_bottom = 150.0
+offset_right = 180.0
+offset_bottom = 150.0
 grow_horizontal = 2
 label_displayed = "VVI"
 value_format_string = "%+0.1f"
@@ -83,8 +83,8 @@ action_down = "throttle_down"
 modulate = Color( 0.196078, 0.196078, 0.196078, 0.196078 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -250.0
-margin_right = -50.0
+offset_left = -250.0
+offset_right = -50.0
 clampzone_size = 100.0
 action_left = "roll_left"
 action_right = "roll_right"
@@ -95,7 +95,7 @@ action_down = "pitch_up"
 visible = false
 
 [node name="ButtonPause" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
 anchor_right = 0.15
 grow_horizontal = 2
 shortcut_in_tooltip = false
@@ -103,7 +103,7 @@ shortcut = SubResource( 2 )
 text = "PAUSE"
 
 [node name="ButtonCamera" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
 anchor_left = 0.85
 anchor_right = 1.0
 grow_horizontal = 2
@@ -112,7 +112,7 @@ shortcut = SubResource( 2 )
 text = "CAMERA"
 
 [node name="ButtonWptDec" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
 anchor_left = 0.3
 anchor_right = 0.4
 grow_horizontal = 2
@@ -120,7 +120,7 @@ shortcut_in_tooltip = false
 text = "<<"
 
 [node name="ButtonWptDisp" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
 anchor_left = 0.4
 anchor_right = 0.6
 grow_horizontal = 2
@@ -130,7 +130,7 @@ keep_pressed_outside = true
 text = "WPT XX"
 
 [node name="ButtonWptInc" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
 anchor_left = 0.6
 anchor_right = 0.7
 grow_horizontal = 2
@@ -142,28 +142,28 @@ modulate = Color( 0, 1, 0, 1 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-margin_left = -125.0
-margin_top = -250.0
-margin_right = 125.0
-margin_bottom = 0.0
+offset_left = -125.0
+offset_top = -250.0
+offset_right = 125.0
+offset_bottom = 0.0
 
 [node name="MsgBlock" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -168.28
-margin_right = 960.0
-margin_bottom = 168.28
+offset_left = -960.0
+offset_top = -168.28
+offset_right = 960.0
+offset_bottom = 168.28
 mouse_filter = 2
 alignment = 1
 
 [node name="Warnings" type="Label" parent="MsgBlock"]
 show_behind_parent = true
-margin_top = 17.0
-margin_right = 1920.0
-margin_bottom = 242.0
+offset_top = 17.0
+offset_right = 1920.0
+offset_bottom = 242.0
 text = "BATT LOW
 ABOVE MAX ALT
 LIDAR INOP"
@@ -172,9 +172,9 @@ clip_text = true
 
 [node name="Memos" type="Label" parent="MsgBlock"]
 show_behind_parent = true
-margin_top = 246.0
-margin_right = 1920.0
-margin_bottom = 319.0
+offset_top = 246.0
+offset_right = 1920.0
+offset_bottom = 319.0
 align = 1
 clip_text = true
 

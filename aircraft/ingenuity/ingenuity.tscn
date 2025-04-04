@@ -1,154 +1,252 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://jg4mqk27bw1n"]
 
-[ext_resource path="res://aircraft/ingenuity/ingenuity.gd" type="Script" id=1]
-[ext_resource path="res://aircraft/ingenuity/model/Ingenuity_v3_model.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/aero_tools/scripts/aero_pid_calc.gd" type="Script" id=3]
-[ext_resource path="res://uires/hud_shared/hud_shared.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/aero_tools/scripts/aero_surface.gd" type="Script" id=5]
-[ext_resource path="res://effects/dust_effect/dust_effect.tscn" type="PackedScene" id=6]
-[ext_resource path="res://aircraft/ingenuity/sound/heli_flying.mp3" type="AudioStream" id=7]
+[ext_resource type="Script" path="res://aircraft/ingenuity/ingenuity.gd" id="1"]
+[ext_resource type="PackedScene" path="res://aircraft/ingenuity/model/Ingenuity_v3_model.tscn" id="2"]
+[ext_resource type="Script" path="res://addons/aero_tools/scripts/aero_pid_calc.gd" id="3"]
+[ext_resource type="PackedScene" path="res://uires/hud_shared/hud_shared.tscn" id="4"]
+[ext_resource type="Script" path="res://addons/aero_tools/scripts/aero_surface.gd" id="5"]
+[ext_resource type="PackedScene" path="res://effects/dust_effect/dust_effect.tscn" id="6"]
+[ext_resource type="AudioStream" uid="uid://ctjcqtl3r4gay" path="res://aircraft/ingenuity/sound/heli_flying.mp3" id="7"]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 margin = 0.001
-extents = Vector3( 0.311, 0.25, 0.311 )
+size = Vector3(0.622, 0.5, 0.622)
 
-[node name="Ingenuity" type="VehicleBody"]
+[node name="Ingenuity" type="VehicleBody3D"]
 mass = 1.8
-continuous_cd = true
 can_sleep = false
+continuous_cd = true
 angular_damp = 1.0
-script = ExtResource( 1 )
+script = ExtResource("1")
 control_type = 1
 
-[node name="Ingenuity_v3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.207, 0 )
+[node name="Ingenuity_v3" parent="." instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.207, 0)
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.202194, 0 )
-shape = SubResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.202194, 0)
+shape = SubResource("1")
 
-[node name="RadioAltimeter" type="RayCast" parent="."]
-enabled = true
-cast_to = Vector3( 0, -10, 0 )
+[node name="RadioAltimeter" type="RayCast3D" parent="."]
+target_position = Vector3(0, -10, 0)
 
 [node name="PIDCalcPitch" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 0.01
 term_D = 0.01
 param_tuning_active = false
 
 [node name="PIDCalcRoll" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 0.01
 term_D = 0.01
 param_tuning_active = false
 
 [node name="PIDCalcYaw" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 0.2
 term_D = 0.01
 param_tuning_active = false
 
 [node name="PIDCalcVelocityX" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 8.0
 param_tuning_active = false
 
 [node name="PIDCalcVelocityY" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 3.0
 term_I = 1.5
 param_tuning_active = false
 
 [node name="PIDCalcVelocityZ" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 8.0
 param_tuning_active = false
 
 [node name="PIDCalcPositionX" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 2.0
 term_I = 0.5
 term_D = 0.1
 param_tuning_active = false
 
 [node name="PIDCalcPositionY" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 2.0
 term_I = 0.5
 term_D = 0.1
 param_tuning_active = false
 
 [node name="PIDCalcPositionZ" type="Node" parent="."]
-script = ExtResource( 3 )
+script = ExtResource("3")
 term_P = 2.0
 term_I = 0.5
 term_D = 0.1
 param_tuning_active = false
 
-[node name="VehicleWheel1" type="VehicleWheel" parent="."]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.3, -0.18, -0.3 )
+[node name="VehicleWheel1" type="VehicleWheel3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.3, -0.18, -0.3)
 wheel_radius = 0.01
 wheel_rest_length = 0.02
 wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
-[node name="VehicleWheel2" type="VehicleWheel" parent="."]
-transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.3, -0.18, -0.3 )
+[node name="VehicleWheel2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.3, -0.18, -0.3)
 wheel_radius = 0.01
 wheel_rest_length = 0.02
 wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
-[node name="VehicleWheel3" type="VehicleWheel" parent="."]
-transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.3, -0.18, 0.3 )
+[node name="VehicleWheel3" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.3, -0.18, 0.3)
 wheel_radius = 0.01
 wheel_rest_length = 0.02
 wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
-[node name="VehicleWheel4" type="VehicleWheel" parent="."]
-transform = Transform( -0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.3, -0.18, 0.3 )
+[node name="VehicleWheel4" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.3, -0.18, 0.3)
 wheel_radius = 0.01
 wheel_rest_length = 0.02
 wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
-[node name="CameraExt" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.3, 1 )
+[node name="CameraExt" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.3, 1)
 current = true
 far = 100000.0
 
-[node name="CameraRTE" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.08, -0.1 )
+[node name="CameraRTE" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.08, -0.1)
 fov = 80.0
 far = 100000.0
 
-[node name="CameraNAV" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0 )
+[node name="CameraNAV" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
 far = 100000.0
 
-[node name="AeroSurfaceRef" type="Spatial" parent="."]
-script = ExtResource( 5 )
+[node name="AeroSurfaceRef" type="Node3D" parent="."]
+script = ExtResource("5")
 
-[node name="HUDShared" parent="." instance=ExtResource( 4 )]
+[node name="HUDShared" parent="." instance=ExtResource("4")]
+layout_mode = 3
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GaugeSPD" parent="HUDShared" index="0"]
+anchors_preset = 0
+
+[node name="GaugeBAT" parent="HUDShared" index="1"]
+anchors_preset = 0
+
+[node name="GaugeALT" parent="HUDShared" index="2"]
+anchors_preset = 0
+
+[node name="GaugeVVT" parent="HUDShared" index="3"]
+anchors_preset = 0
+
+[node name="GaugeVVI" parent="HUDShared" index="4"]
+anchors_preset = 0
+
+[node name="VJoyLeft" parent="HUDShared/UI" index="0"]
+layout_mode = 3
+anchors_preset = 2
+offset_left = 0.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="VJoyRight" parent="HUDShared/UI" index="1"]
+layout_mode = 3
+anchors_preset = 3
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MenuPause" parent="HUDShared" index="6"]
+anchors_preset = 0
+
+[node name="ButtonPause" parent="HUDShared" index="7"]
+layout_mode = 0
+anchor_right = 0.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 1
+
+[node name="ButtonCamera" parent="HUDShared" index="8"]
+layout_mode = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 1
+
+[node name="ButtonWptDec" parent="HUDShared" index="9"]
+layout_mode = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 1
+
+[node name="ButtonWptDisp" parent="HUDShared" index="10"]
+layout_mode = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 1
+
+[node name="ButtonWptInc" parent="HUDShared" index="11"]
+layout_mode = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 1
+
+[node name="Minimap" parent="HUDShared" index="12"]
+anchors_preset = 0
 
 [node name="MsgBlock" parent="HUDShared" index="13"]
 show_behind_parent = true
+layout_mode = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1920.0
+offset_bottom = 336.56
 
-[node name="DustRayCast" type="RayCast" parent="."]
-enabled = true
-cast_to = Vector3( 0, -5, 0 )
+[node name="Warnings" parent="HUDShared/MsgBlock" index="0"]
+layout_mode = 2
+horizontal_alignment = 1
 
-[node name="DustEffect" parent="." instance=ExtResource( 6 )]
+[node name="Memos" parent="HUDShared/MsgBlock" index="1"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="DustRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -5, 0)
+
+[node name="DustEffect" parent="." instance=ExtResource("6")]
 visible = false
 
 [node name="RotorSounds" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource("7")
 attenuation_model = 1
 max_db = 1.0
 doppler_tracking = 2

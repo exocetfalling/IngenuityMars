@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/heli_flying.mp3-bc66f8bc1340b2fc36384a1902293fc3.mp3str"
+uid="uid://ctjcqtl3r4gay"
+path="res://.godot/imported/heli_flying.mp3-bc66f8bc1340b2fc36384a1902293fc3.mp3str"
 
 [deps]
 
 source_file="res://aircraft/ingenuity/sound/heli_flying.mp3"
-dest_files=[ "res://.import/heli_flying.mp3-bc66f8bc1340b2fc36384a1902293fc3.mp3str" ]
+dest_files=["res://.godot/imported/heli_flying.mp3-bc66f8bc1340b2fc36384a1902293fc3.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

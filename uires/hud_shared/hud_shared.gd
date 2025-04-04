@@ -6,7 +6,7 @@ extends Control
 # var b = "text"
 var hud_visible: bool = true
 
-export var wpt_array: PoolVector3Array = [Vector3.ZERO]
+@export var wpt_array: PackedVector3Array = [Vector3.ZERO]
 var wpt_vector : Vector2 = Vector2.ZERO
 var wpt_index: int = 0
 
@@ -47,7 +47,7 @@ func update_cas_warnings():
 		$MsgBlock/Warnings.text += "ABOVE MAX ALT" + "\n"
 
 
-func set_cas_memos(message_array: PoolStringArray):
+func set_cas_memos(message_array: PackedStringArray):
 	memo_active = true
 	
 	$MsgBlock/Memos.text = ""

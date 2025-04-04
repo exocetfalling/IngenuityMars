@@ -1,77 +1,36 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://cvp4faun7lbwx"]
 
-[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=1]
-[ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=2]
-[ext_resource path="res://terrain/jezero_crater/data.hterrain" type="Resource" id=3]
-[ext_resource path="res://terrain/jezero_crater/jezero_crater_slot0_albedo_bump.packed_tex" type="Texture" id=4]
-[ext_resource path="res://terrain/jezero_crater/jezero_crater_slot0_normal_roughness.packed_tex" type="Texture" id=5]
-[ext_resource path="res://scenes/rock.tscn" type="PackedScene" id=6]
-[ext_resource path="res://resources/mars_env.tres" type="Environment" id=7]
-[ext_resource path="res://terrain/jezero_crater/jezero_crater.gd" type="Script" id=8]
-[ext_resource path="res://addons/zylann.scatter/scatter3d.gd" type="Script" id=9]
-[ext_resource path="res://sound/mars_wind.mp3" type="AudioStream" id=10]
-[ext_resource path="res://terrain/jezero_crater/jezero_crater_slot1_albedo_bump.packed_tex" type="Texture" id=11]
-[ext_resource path="res://terrain/jezero_crater/jezero_crater_slot1_normal_roughness.packed_tex" type="Texture" id=12]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2"]
+[ext_resource type="Resource" path="res://terrain/jezero_crater/data.hterrain" id="2_1gk8p"]
+[ext_resource type="Texture2D" uid="uid://qpri3ayeq3w0" path="res://terrain/jezero_crater/jezero_crater_slot0_albedo_bump.png" id="3_7l5c7"]
+[ext_resource type="Texture2D" uid="uid://c54isfrb432nn" path="res://terrain/jezero_crater/jezero_crater_slot1_albedo_bump.png" id="4_wushs"]
+[ext_resource type="Texture2D" uid="uid://cfyvq6tt5n4n8" path="res://terrain/jezero_crater/jezero_crater_slot0_normal_roughness.png" id="5_dr3hd"]
+[ext_resource type="Texture2D" uid="uid://cwymkiqiv1xei" path="res://terrain/jezero_crater/jezero_crater_slot1_normal_roughness.png" id="6_uejgw"]
 
-[sub_resource type="Resource" id=3]
-script = ExtResource( 2 )
+[sub_resource type="Resource" id="Resource_eg5mp"]
+script = ExtResource("2")
 mode = 0
-textures = [ [ ExtResource( 4 ), ExtResource( 11 ) ], [ ExtResource( 5 ), ExtResource( 12 ) ] ]
+textures = [[ExtResource("3_7l5c7"), ExtResource("4_wushs")], [ExtResource("5_dr3hd"), ExtResource("6_uejgw")]]
 
-[node name="JezeroCrater" type="Spatial"]
-script = ExtResource( 8 )
-
-[node name="Sun" type="DirectionalLight" parent="."]
-transform = Transform( -1, 5.01436e-08, -7.16125e-08, 0, 0.819152, 0.573576, 8.74228e-08, 0.573576, -0.819152, 0, 2700, -4000 )
-light_color = Color( 0.878431, 0.847059, 0.764706, 1 )
-light_indirect_energy = 0.1
-shadow_enabled = true
-shadow_bias = 0.01
-shadow_contact = 0.2
-directional_shadow_depth_range = 1
-directional_shadow_max_distance = 20.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 7 )
-
-[node name="HTerrain" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30000, 0, -30000 )
-script = ExtResource( 1 )
-__meta__ = {
-"_editor_description_": "scale 29.297
-trans.( -30000, 0, -30000)"
-}
-lod_scale = 2.0
-map_scale = Vector3( 29.297, 29.297, 29.297 )
-_terrain_data = ExtResource( 3 )
+[node name="JezeroCrater" type="Node3D"]
+script = ExtResource("1")
+centered = true
+_terrain_data = ExtResource("2_1gk8p")
 chunk_size = 32
 collision_enabled = true
 collision_layer = 1
 collision_mask = 1
-shader_type = "Classic4Lite"
+shader_type = "Classic4"
 custom_shader = null
 custom_globalmap_shader = null
-texture_set = SubResource( 3 )
-shader_params/u_ground_uv_scale = 0.2
+texture_set = SubResource("Resource_eg5mp")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale_per_texture = Vector4(0.263, 0.263, 0.263, 0.263)
 shader_params/u_depth_blending = true
-shader_params/u_triplanar = false
-shader_params/u_tile_reduction = Plane( 1, 1, 1, 1 )
-
-[node name="Scatter3D" type="Spatial" parent="."]
-script = ExtResource( 9 )
-_scenes = [ ExtResource( 6 ) ]
-
-[node name="Rock" parent="Scatter3D" instance=ExtResource( 6 )]
-transform = Transform( 0.476469, -0.879191, -3.84307e-08, 0, -4.37114e-08, 1, -0.879191, -0.476469, -2.08271e-08, 193.977, -4.57764e-05, 271.525 )
-
-[node name="Rock2" parent="Scatter3D" instance=ExtResource( 6 )]
-transform = Transform( 0.70828, 0.705931, 3.08572e-08, 0, -4.37114e-08, 1, 0.705931, -0.70828, -3.09599e-08, 215.981, -4.57764e-05, 221.096 )
-
-[node name="Rock3" parent="Scatter3D" instance=ExtResource( 6 )]
-transform = Transform( 0.472133, 0.881527, 3.85328e-08, 0, -4.37114e-08, 1, 0.881527, -0.472133, -2.06376e-08, 176.537, -4.57764e-05, 206.36 )
-
-[node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50000, 0 )
-
-[node name="WindSounds" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+shader_params/u_triplanar = true
+shader_params/u_tile_reduction = Vector4(1, 1, 1, 1)
+shader_params/u_globalmap_blend_start = null
+shader_params/u_globalmap_blend_distance = null
+shader_params/u_colormap_opacity_per_texture = null

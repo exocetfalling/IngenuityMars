@@ -20,26 +20,27 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ($Options/ButtonFreeFlight.pressed == true):
+	if ($Options/ButtonFreeFlight.button_pressed == true):
 #		get_tree().change_scene("res://uires/menu_free_flight/menu_free_flight.tscn")
 		$LoadingNotice.visible = true
 		$Options.visible = false
 		$Timer.start()
 	
-	if ($Options/ButtonTutorials.pressed == true):
-		get_tree().change_scene("res://uires/menu_tutorials/menu_tutorials.tscn")
+	if ($Options/ButtonTutorials.button_pressed == true):
+		get_tree().change_scene_to_file("res://uires/menu_tutorials/menu_tutorials.tscn")
 	
-	if ($Options/ButtonMissions.pressed == true):
+	if ($Options/ButtonMissions.button_pressed == true):
 		pass
 	
-	if ($Options/ButtonCredits.pressed == true):
-		get_tree().change_scene("res://uires/menu_credits/menu_credits.tscn")
+	if ($Options/ButtonCredits.button_pressed == true):
+		get_tree().change_scene_to_file("res://uires/menu_credits/menu_credits.tscn")
 	
-	if ($Options/ButtonSettings.pressed == true):
-		get_tree().change_scene("res://uires/menu_settings/menu_settings.tscn")
+	if ($Options/ButtonSettings.button_pressed == true):
+		get_tree().change_scene_to_file("res://uires/menu_settings/menu_settings.tscn")
 	
-	if ($Options/ButtonExit.pressed == true):
-		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+	if ($Options/ButtonExit.button_pressed == true):
+		#get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+		pass
 	
 	if (get_tree().paused == true):
 		get_tree().paused = false
@@ -49,4 +50,4 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	get_tree().change_scene("res://scenes/test_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/test_scene.tscn")

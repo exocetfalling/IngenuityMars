@@ -2,6 +2,6 @@
 
 [ext_resource path="res://assets/rock/rock_small.obj" type="ArrayMesh" id=1]
 
-[node name="Rock" type="MeshInstance"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+[node name="Rock" type="MeshInstance3D"]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 mesh = ExtResource( 1 )

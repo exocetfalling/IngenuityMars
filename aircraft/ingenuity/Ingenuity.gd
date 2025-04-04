@@ -5,7 +5,7 @@ extends AeroBody
 # var a = 2
 # var b = "text"
 var cmd_sas : Vector3 = Vector3.ZERO
-export var sas_mode : int = 2
+@export var sas_mode : int = 2
 var att_limit : float = 20 # Maximum angle from vertical permitted
 var tgt_attitude : Vector2 = Vector2.ZERO # x for roll, y for pitch 
 
@@ -41,9 +41,9 @@ var camera_mode : int = 0
 var camera_mouse_delta = 0
 
 var input_hold_time : float = 0
-export var rotor_active : bool = false
+@export var rotor_active : bool = false
 
-export var battery_level: float = 100
+@export var battery_level: float = 100
 
 var rotor_sound_vol: float = 1.0
 #var adc_data: Dictionary = {}
@@ -155,7 +155,7 @@ func _physics_process(delta):
 		
 		AeroDataBus.aircraft_linear_velocity = linear_velocity
 		AeroDataBus.aircraft_linear_velocity_local = linear_velocity_local
-		AeroDataBus.aircraft_global_translation = global_translation
+		AeroDataBus.aircraft_global_translation = global_position
 		
 		AeroDataBus.aircraft_battery_level = battery_level
 		
@@ -168,7 +168,7 @@ func _physics_process(delta):
 	
 	
 	if ($RadioAltimeter.is_colliding() == true):
-		adc_alt_agl = (global_translation - $RadioAltimeter.get_collision_point()).length()
+		adc_alt_agl = (global_position - $RadioAltimeter.get_collision_point()).length()
 	else:
 		# Set value to show sensor is out of range
 		adc_alt_agl = 9999
@@ -180,9 +180,9 @@ func _physics_process(delta):
 	
 	calc_atmo_properties(global_transform.origin.y)
 	
-	tgt_rates.x = deg2rad(input_joystick.y * 10)
-	tgt_rates.y = deg2rad(input_rudder * 60)
-	tgt_rates.z = deg2rad(input_joystick.x * 10)
+	tgt_rates.x = deg_to_rad(input_joystick.y * 10)
+	tgt_rates.y = deg_to_rad(input_rudder * 60)
+	tgt_rates.z = deg_to_rad(input_joystick.x * 10)
 	
 	linear_velocity_rotated = linear_velocity.rotated(Vector3.UP, -global_rotation.y)
 	
@@ -217,7 +217,7 @@ func _physics_process(delta):
 	
 	# Rotor sounds
 	rotor_sound_vol = pow(rotor_rpm / rotor_rpm_range_max, 2) * Settings.opt_rotor_sounds / 3
-	$RotorSounds.unit_db = 10 * log(rotor_sound_vol)
+	$RotorSounds.volume_db = 10 * log(rotor_sound_vol)
 	if not $RotorSounds.playing:
 		$RotorSounds.play()
 	
@@ -269,7 +269,7 @@ func _physics_process(delta):
 	add_torque_local(Vector3(cmd_sas.x, -cmd_sas.y, -cmd_sas.z))
 	
 	# Basic drag
-	add_central_force(-0.2 * air_density * (linear_velocity + linear_velocity_wind).length_squared() * (linear_velocity + linear_velocity_wind).normalized())
+	apply_central_force(-0.2 * air_density * (linear_velocity + linear_velocity_wind).length_squared() * (linear_velocity + linear_velocity_wind).normalized())
 	
 	# Reset integral on ground
 	if (adc_alt_agl < 0.25):
@@ -293,7 +293,7 @@ func _physics_process(delta):
 	# Dust effects
 	if Settings.opt_dust_effects > 0:
 		if $DustRayCast.is_colliding():
-			$DustEffect.global_translation = $DustRayCast.get_collision_point()
+			$DustEffect.global_position = $DustRayCast.get_collision_point()
 			$DustEffect.global_transform.basis = align_up(global_transform.basis, $DustRayCast.get_collision_normal())
 			$DustEffect.fx_intensity = clamp(thrust_current / adc_alt_agl * 2, 0, 1)
 #			$DustEffect.fx_intensity = clamp(output_throttle, 0, 1)
@@ -302,7 +302,7 @@ func _physics_process(delta):
 		else:
 			$DustEffect.visible = false
 			$DustEffect.fx_intensity = 0
-			$DustEffect.translation = Vector3.ZERO
+			$DustEffect.position = Vector3.ZERO
 			$DustEffect.rotation = Vector3.ZERO
 
 
