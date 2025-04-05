@@ -1,7 +1,7 @@
 res://resources/default_env.tres
 res://uires/menu_main/menu_main.tscn
+res://terrain/jezero_crater/height.res
+res://terrain/jezero_crater/data.hterrain
 res://scenes/test_scene.tscn
 res://aircraft/ingenuity/ingenuity.tscn
 res://terrain/jezero_crater/jezero_crater.tscn
-res://terrain/jezero_crater/height.res
-res://terrain/jezero_crater/data.hterrain

@@ -15,6 +15,7 @@ textures = [[ExtResource("3_7l5c7"), ExtResource("4_wushs")], [ExtResource("5_dr
 
 [node name="JezeroCrater" type="Node3D"]
 script = ExtResource("1")
+map_scale = Vector3(3.803, 1, 3.803)
 centered = true
 _terrain_data = ExtResource("2_1gk8p")
 chunk_size = 32

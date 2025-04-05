@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1743771266
+::res://::1743818830
 export_presets.cfg::TextFile::-1::1711023148::0::1::::<><>::
 README.md::TextFile::-1::1687931162::0::1::::<><>::
 ::res://addons/::1743762264
@@ -360,16 +360,16 @@ test_scene.tscn::PackedScene::1642798918759552148::1743771627::0::1::::<><>::uid
 ::res://sound/::1743762091
 mars_wind.mp3::AudioStreamMP3::331290240201785189::1721371286::1743762091::1::::<><>::
 ::res://terrain/::1743764845
-::res://terrain/jezero_crater/::1743771629
+::res://terrain/jezero_crater/::1743771721
 color.png::CompressedTexture2D::4576085013036099758::1743771380::1743771720::1::::<><>::
+data.hterrain::Resource::-1::1743771626::0::1::::<><>::
+height.res::Image::7106153543471228578::1743771626::0::1::::<><>::
 jezero_crater.tscn::PackedScene::6279542503385476607::1743771629::0::1::::<><>::res://addons/zylann.hterrain/hterrain.gd<>res://addons/zylann.hterrain/hterrain_texture_set.gd<>res://terrain/jezero_crater/data.hterrain<>uid://qpri3ayeq3w0::::res://terrain/jezero_crater/jezero_crater_slot0_albedo_bump.png<>uid://c54isfrb432nn::::res://terrain/jezero_crater/jezero_crater_slot1_albedo_bump.png<>uid://cfyvq6tt5n4n8::::res://terrain/jezero_crater/jezero_crater_slot0_normal_roughness.png<>uid://cwymkiqiv1xei::::res://terrain/jezero_crater/jezero_crater_slot1_normal_roughness.png
 jezero_crater_slot0_albedo_bump.png::CompressedTexture2D::1155035111497945397::1743770787::1743770796::1::::<><>::
 jezero_crater_slot0_normal_roughness.png::CompressedTexture2D::5174635939703419191::1743770792::1743770796::1::::<><>::
 jezero_crater_slot1_albedo_bump.png::CompressedTexture2D::6938891800591074115::1743770789::1743770796::1::::<><>::
 jezero_crater_slot1_normal_roughness.png::CompressedTexture2D::6367287900668862604::1743770794::1743770796::1::::<><>::
 mars_map.png::CompressedTexture2D::2830523209703273971::1743768171::1743768229::1::::<><>::
-height.res::Image::7106153543471228578::1743771626::0::1::::<><>::
-data.hterrain::Resource::-1::1743771626::0::1::::<><>::
 normal.png::CompressedTexture2D::1951054052388511446::1743771627::1743771721::1::::<><>::
 splat.png::CompressedTexture2D::8764294725161952062::1743771379::1743771721::1::::<><>::
 ::res://uires/::1705546424
