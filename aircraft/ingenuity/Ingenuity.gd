@@ -64,7 +64,7 @@ func _ready():
 #	DebugOverlay.stats.add_property(self, "air_density", "")
 #	DebugOverlay.stats.add_property(self, "wpt_current", "")
 #	DebugOverlay.stats.add_property(self, "adc_alt_agl", "round")
-#	DebugOverlay.stats.add_property(self, "thrust_current", "round")
+	#DebugOverlay.stats.add_property(self, "thrust_current", "round")
 #	DebugOverlay.stats.add_property(self, "global_translation", "round")
 #	DebugOverlay.stats.add_property(self, "adc_pitch", "round")
 #	DebugOverlay.stats.add_property(self, "adc_roll", "round")
@@ -129,6 +129,8 @@ func map_vector_square_to_circle(vector_square: Vector2):
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta): 
+	super(delta)
+	
 	if (control_type == 1):
 		# Panel updates
 		AeroDataBus.aircraft_pitch = adc_pitch
@@ -263,10 +265,10 @@ func _physics_process(delta):
 		rotor_active = false
 	
 	
-	add_force_local(Vector3(0, thrust_current, 0), Vector3.ZERO)
+	apply_force_local(Vector3(0, thrust_current, 0), Vector3.ZERO)
 	
 #		add_torque_local(20 * Vector3(input_joystick.y, -input_rudder, -input_joystick.x))
-	add_torque_local(Vector3(cmd_sas.x, -cmd_sas.y, -cmd_sas.z))
+	apply_torque_local(Vector3(cmd_sas.x, -cmd_sas.y, -cmd_sas.z))
 	
 	# Basic drag
 	apply_central_force(-0.2 * air_density * (linear_velocity + linear_velocity_wind).length_squared() * (linear_velocity + linear_velocity_wind).normalized())
@@ -307,6 +309,8 @@ func _physics_process(delta):
 
 
 func get_input(delta):
+	super(delta)
+	
 	# Check if aircraft is under player control
 	if (control_type == 1):
 		# Throttle input

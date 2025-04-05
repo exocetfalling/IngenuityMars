@@ -5,6 +5,7 @@
 
 [sub_resource type="Theme" id="1"]
 default_font = ExtResource("1")
+default_font_size = 50
 Button/colors/font_color = Color(0, 0.541176, 0.858824, 1)
 Button/colors/font_color_disabled = Color(0.541176, 0.858824, 1, 0.254902)
 Button/colors/font_color_hover = Color(0, 0.705882, 0.858824, 1)

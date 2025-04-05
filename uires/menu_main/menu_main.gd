@@ -41,10 +41,6 @@ func _process(delta):
 	if ($Options/ButtonExit.button_pressed == true):
 		#get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 		pass
-	
-	if (get_tree().paused == true):
-		get_tree().paused = false
-	pass
 
 
 

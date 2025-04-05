@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://aircraft/ingenuity/ingenuity.gd" id="1"]
 [ext_resource type="PackedScene" path="res://aircraft/ingenuity/model/Ingenuity_v3_model.tscn" id="2"]
 [ext_resource type="Script" path="res://addons/aero_tools/scripts/aero_pid_calc.gd" id="3"]
-[ext_resource type="PackedScene" path="res://uires/hud_shared/hud_shared.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://byecdl5cchhtc" path="res://uires/hud_shared/hud_shared.tscn" id="4"]
 [ext_resource type="Script" path="res://addons/aero_tools/scripts/aero_surface.gd" id="5"]
 [ext_resource type="PackedScene" path="res://effects/dust_effect/dust_effect.tscn" id="6"]
 [ext_resource type="AudioStream" uid="uid://ctjcqtl3r4gay" path="res://aircraft/ingenuity/sound/heli_flying.mp3" id="7"]
@@ -135,109 +135,6 @@ far = 100000.0
 script = ExtResource("5")
 
 [node name="HUDShared" parent="." instance=ExtResource("4")]
-layout_mode = 3
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GaugeSPD" parent="HUDShared" index="0"]
-anchors_preset = 0
-
-[node name="GaugeBAT" parent="HUDShared" index="1"]
-anchors_preset = 0
-
-[node name="GaugeALT" parent="HUDShared" index="2"]
-anchors_preset = 0
-
-[node name="GaugeVVT" parent="HUDShared" index="3"]
-anchors_preset = 0
-
-[node name="GaugeVVI" parent="HUDShared" index="4"]
-anchors_preset = 0
-
-[node name="VJoyLeft" parent="HUDShared/UI" index="0"]
-layout_mode = 3
-anchors_preset = 2
-offset_left = 0.0
-offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 0.0
-grow_vertical = 0
-
-[node name="VJoyRight" parent="HUDShared/UI" index="1"]
-layout_mode = 3
-anchors_preset = 3
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="MenuPause" parent="HUDShared" index="6"]
-anchors_preset = 0
-
-[node name="ButtonPause" parent="HUDShared" index="7"]
-layout_mode = 0
-anchor_right = 0.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 1
-
-[node name="ButtonCamera" parent="HUDShared" index="8"]
-layout_mode = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 1
-
-[node name="ButtonWptDec" parent="HUDShared" index="9"]
-layout_mode = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 1
-
-[node name="ButtonWptDisp" parent="HUDShared" index="10"]
-layout_mode = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 1
-
-[node name="ButtonWptInc" parent="HUDShared" index="11"]
-layout_mode = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 1
-
-[node name="Minimap" parent="HUDShared" index="12"]
-anchors_preset = 0
-
-[node name="MsgBlock" parent="HUDShared" index="13"]
-show_behind_parent = true
-layout_mode = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 1920.0
-offset_bottom = 336.56
-
-[node name="Warnings" parent="HUDShared/MsgBlock" index="0"]
-layout_mode = 2
-horizontal_alignment = 1
-
-[node name="Memos" parent="HUDShared/MsgBlock" index="1"]
-layout_mode = 2
-horizontal_alignment = 1
 
 [node name="DustRayCast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -5, 0)
@@ -251,7 +148,4 @@ attenuation_model = 1
 max_db = 1.0
 doppler_tracking = 2
 
-[connection signal="button_up" from="HUDShared/ButtonCamera" to="." method="_on_ButtonCamera_button_up"]
-
 [editable path="Ingenuity_v3"]
-[editable path="HUDShared"]

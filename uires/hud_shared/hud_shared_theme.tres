@@ -1,17 +1,19 @@
-[gd_resource type="Theme" load_steps=2 format=2]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bvjvqvqwmxieg"]
 
-[ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="FontFile" id=1]
+[ext_resource type="FontFile" path="res://uires/menu_shared/menu_shared_font.tres" id="1"]
 
 [resource]
-default_font = ExtResource( 1 )
-Button/colors/font_color = Color( 0, 0.87451, 0, 1 )
-Button/colors/font_color_disabled = Color( 0, 0.858824, 0, 0.254902 )
-Button/colors/font_color_hover = Color( 0, 1, 0, 1 )
-Button/colors/font_color_pressed = Color( 0, 0.541176, 0, 1 )
+default_font = ExtResource("1")
+default_font_size = 50
+Button/colors/font_color = Color(0, 0.87451, 0, 1)
+Button/colors/font_color_disabled = Color(0, 0.858824, 0, 0.254902)
+Button/colors/font_color_hover = Color(0, 1, 0, 1)
+Button/colors/font_color_pressed = Color(0, 0.541176, 0, 1)
 Button/constants/hseparation = 2
+Button/font_sizes/font_size = 50
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = null
 Button/styles/normal = null
 Button/styles/pressed = null
-Label/colors/font_color = Color( 0, 1, 0, 1 )
+Label/colors/font_color = Color(0, 1, 0, 1)
