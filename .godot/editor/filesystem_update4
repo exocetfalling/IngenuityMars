@@ -1,16 +1,9 @@
 res://resources/default_env.tres
 res://uires/menu_main/menu_main.tscn
-res://terrain/jezero_crater/height.res
-res://terrain/jezero_crater/data.hterrain
 res://scenes/test_scene.tscn
 res://aircraft/ingenuity/ingenuity.tscn
 res://terrain/jezero_crater/jezero_crater.tscn
-res://aircraft/ingenuity/ingenuity.gd
-res://addons/aero_tools/scripts/aero_body.gd
 res://uires/hud_shared/hud_shared.tscn
-res://uires/hud_shared/hud_shared_theme.tres
 res://uires/minimap/minimap.tscn
 res://uires/menu_settings/menu_settings.tscn
-res://uires/menu_shared/menu_shared_theme.tres
-res://uires/menu_main/menu_main.gd
 res://uires/menu_tutorials/menu_tutorials.tscn
