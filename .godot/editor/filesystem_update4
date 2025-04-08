@@ -1,9 +1,0 @@
-res://resources/default_env.tres
-res://uires/menu_main/menu_main.tscn
-res://scenes/test_scene.tscn
-res://aircraft/ingenuity/ingenuity.tscn
-res://terrain/jezero_crater/jezero_crater.tscn
-res://uires/hud_shared/hud_shared.tscn
-res://uires/minimap/minimap.tscn
-res://uires/menu_settings/menu_settings.tscn
-res://uires/menu_tutorials/menu_tutorials.tscn
