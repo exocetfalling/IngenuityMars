@@ -86,7 +86,7 @@ func _process(delta):
 	# Enable increase/decrease buttons
 	# Show waypoint symbol and number
 	# Else, hide/disable
-	if $ButtonWptDisp.pressed:
+	if $ButtonWptDisp.button_pressed:
 		$ButtonWptDec.disabled = false
 		$ButtonWptInc.disabled = false
 		$Minimap/Centre/Waypoint.visible = true
@@ -119,15 +119,15 @@ func get_input(delta):
 		hud_visibility_handle()
 
 # Buttons
-func _on_ButtonWptDec_pressed():
+func _on_ButtonWptDec_button_pressed():
 	if wpt_index > 0:
 		wpt_index -= 1
 
 
-func _on_ButtonWptInc_pressed():
+func _on_ButtonWptInc_button_pressed():
 	if wpt_index < len(wpt_array) - 1:
 		wpt_index += 1
 
 
-func _on_ButtonPause_pressed():
+func _on_ButtonPause_button_pressed():
 	pause_handle()
