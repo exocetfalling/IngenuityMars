@@ -26,8 +26,8 @@ func _process(delta):
 	Settings.opt_rotor_sounds = $Options/RotorSounds.value
 	Settings.opt_wind_sounds = $Options/WindSounds.value
 	
-	if $ButtonBack.pressed == true:
-		get_tree().change_scene("res://uires/menu_main/menu_main.tscn")
+	if $ButtonBack.button_pressed == true:
+		get_tree().change_scene_to_file("res://uires/menu_main/menu_main.tscn")
 	
-	if $ButtonSave.pressed == true:
+	if $ButtonSave.button_pressed == true:
 		Settings.save_data()
