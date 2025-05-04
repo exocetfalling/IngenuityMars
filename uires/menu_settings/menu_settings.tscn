@@ -37,9 +37,10 @@ text = "Dust Effects"
 
 [node name="DustEffects" type="SpinBox" parent="Options"]
 modulate = Color(0, 0.541176, 0.858824, 1)
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 max_value = 3.0
+alignment = 1
 prefix = "Level"
 
 [node name="Label2" type="Label" parent="Options"]
@@ -48,9 +49,10 @@ text = "Shadows"
 
 [node name="Shadows" type="SpinBox" parent="Options"]
 modulate = Color(0, 0.541176, 0.858824, 1)
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 max_value = 3.0
+alignment = 1
 prefix = "Level"
 
 [node name="Label3" type="Label" parent="Options"]
@@ -59,9 +61,10 @@ text = "Rotor Sounds"
 
 [node name="RotorSounds" type="SpinBox" parent="Options"]
 modulate = Color(0, 0.541176, 0.858824, 1)
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 max_value = 3.0
+alignment = 1
 prefix = "Level"
 
 [node name="Label4" type="Label" parent="Options"]
@@ -70,9 +73,10 @@ text = "Wind Sounds"
 
 [node name="WindSounds" type="SpinBox" parent="Options"]
 modulate = Color(0, 0.541176, 0.858824, 1)
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 max_value = 3.0
+alignment = 1
 prefix = "Level"
 
 [node name="ButtonSave" type="Button" parent="."]

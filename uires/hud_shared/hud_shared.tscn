@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://uires/hud_shared/hud_shared.gd" id="2"]
 [ext_resource type="PackedScene" path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://uires/hud_gauge_custom/hud_gauge_custom.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://uires/menu_pause/menu_pause.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://7agoeddwuudi" path="res://uires/menu_pause/menu_pause.tscn" id="5"]
 [ext_resource type="Theme" uid="uid://bvjvqvqwmxieg" path="res://uires/hud_shared/hud_shared_theme.tres" id="6"]
 [ext_resource type="PackedScene" uid="uid://byrq1dyoh2lby" path="res://uires/minimap/minimap.tscn" id="7"]
 
@@ -76,7 +76,10 @@ value_format_string = "%+0.1f"
 [node name="VJoyLeft" parent="UI" instance=ExtResource("3")]
 modulate = Color(0.196078, 0.196078, 0.196078, 0.196078)
 layout_mode = 3
-anchors_preset = 2
+anchor_left = 0.1
+anchor_top = 0.9
+anchor_right = 0.1
+anchor_bottom = 0.9
 offset_left = 0.0
 offset_top = -200.0
 offset_right = 200.0
@@ -91,12 +94,13 @@ action_down = "throttle_down"
 [node name="VJoyRight" parent="UI" instance=ExtResource("3")]
 modulate = Color(0.196078, 0.196078, 0.196078, 0.196078)
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -250.0
+anchor_left = 0.9
+anchor_top = 0.9
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = -200.0
 offset_top = -200.0
-offset_right = -50.0
+offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -108,7 +112,8 @@ action_down = "pitch_up"
 
 [node name="MenuPause" parent="." instance=ExtResource("5")]
 visible = false
-anchors_preset = 0
+top_level = true
+layout_mode = 1
 
 [node name="ButtonPause" type="Button" parent="."]
 process_mode = 3
@@ -169,7 +174,6 @@ offset_left = -125.0
 offset_top = -250.0
 offset_right = 125.0
 offset_bottom = 0.0
-grow_horizontal = 2
 grow_vertical = 0
 
 [node name="MsgBlock" type="VBoxContainer" parent="."]
@@ -200,6 +204,6 @@ layout_mode = 2
 horizontal_alignment = 1
 clip_text = true
 
-[connection signal="pressed" from="ButtonPause" to="." method="_on_ButtonPause_pressed"]
+[connection signal="pressed" from="ButtonPause" to="." method="_on_ButtonPause_button_pressed"]
 [connection signal="pressed" from="ButtonWptDec" to="." method="_on_ButtonWptDec_pressed"]
 [connection signal="pressed" from="ButtonWptInc" to="." method="_on_ButtonWptInc_pressed"]

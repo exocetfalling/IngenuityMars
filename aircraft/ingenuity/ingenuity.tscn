@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://byecdl5cchhtc" path="res://uires/hud_shared/hud_shared.tscn" id="4"]
 [ext_resource type="Script" path="res://addons/aero_tools/scripts/aero_surface.gd" id="5"]
 [ext_resource type="PackedScene" path="res://effects/dust_effect/dust_effect.tscn" id="6"]
-[ext_resource type="AudioStream" uid="uid://ctjcqtl3r4gay" path="res://aircraft/ingenuity/sound/heli_flying.mp3" id="7"]
+[ext_resource type="AudioStream" uid="uid://cbwpn3u2rk3q0" path="res://aircraft/ingenuity/sound/heli_flying.mp3" id="7"]
 
 [sub_resource type="BoxShape3D" id="1"]
 margin = 0.001
@@ -148,4 +148,7 @@ attenuation_model = 1
 max_db = 1.0
 doppler_tracking = 2
 
+[connection signal="button_up" from="HUDShared/ButtonCamera" to="." method="_on_button_camera_up"]
+
 [editable path="Ingenuity_v3"]
+[editable path="HUDShared"]

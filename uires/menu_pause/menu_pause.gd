@@ -31,5 +31,6 @@ func _process(delta):
 		get_tree().change_scene_to_file("res://uires/menu_settings/menu_settings.tscn")
 	
 	if($Options/ButtonExit.button_pressed == true):
-		#get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+		get_tree().quit()
 		pass
