@@ -78,7 +78,7 @@ value_format_string = "%+0.1f"
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="VJoyLeft" parent="UI" instance=ExtResource("3")]
-modulate = Color(0.196078, 0.196078, 0.196078, 0.196078)
+modulate = Color(0.196078, 0.196078, 0.196078, 0.764706)
 layout_mode = 3
 anchor_left = 0.1
 anchor_top = 0.9
@@ -96,7 +96,7 @@ action_up = "throttle_up"
 action_down = "throttle_down"
 
 [node name="VJoyRight" parent="UI" instance=ExtResource("3")]
-modulate = Color(0.196078, 0.196078, 0.196078, 0.196078)
+modulate = Color(0.196078, 0.196078, 0.196078, 0.764706)
 layout_mode = 3
 anchor_left = 0.9
 anchor_top = 0.9
