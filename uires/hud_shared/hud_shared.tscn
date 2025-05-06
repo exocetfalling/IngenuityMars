@@ -21,19 +21,17 @@ theme = ExtResource("6")
 script = ExtResource("2")
 
 [node name="GaugeSPD" parent="." instance=ExtResource("1")]
-anchors_preset = 0
+layout_mode = 1
 anchor_top = 0.1
-anchor_right = 0.1
-anchor_bottom = 0.3
-grow_horizontal = 2
+anchor_bottom = 0.1
 label_displayed = "SPD"
 
 [node name="GaugeBAT" parent="." instance=ExtResource("1")]
-anchors_preset = 0
-anchor_left = 0.45
+layout_mode = 1
+anchor_left = 0.5
 anchor_top = 0.1
-anchor_right = 0.55
-anchor_bottom = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.1
 grow_horizontal = 2
 label_displayed = "BAT"
 value_displayed = 100.0
@@ -41,33 +39,39 @@ value_maximum = 100.0
 value_minimum = 0.0
 
 [node name="GaugeALT" parent="." instance=ExtResource("1")]
-anchors_preset = 0
-anchor_left = 0.9
+layout_mode = 1
+anchor_left = 1.0
 anchor_top = 0.1
 anchor_right = 1.0
-anchor_bottom = 0.3
-grow_horizontal = 2
+anchor_bottom = 0.1
+grow_horizontal = 0
 label_displayed = "ALT"
 
 [node name="GaugeVVT" parent="." instance=ExtResource("4")]
-anchors_preset = 0
-anchor_top = 0.6
-anchor_right = 0.1
-anchor_bottom = 0.6
-grow_horizontal = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -75.0
+offset_right = 180.0
+offset_bottom = 75.0
+grow_vertical = 2
 theme = null
 label_displayed = "VVT"
 value_format_string = "%+0.1f"
 
 [node name="GaugeVVI" parent="." instance=ExtResource("4")]
-anchors_preset = 0
-anchor_left = 0.9
-anchor_top = 0.6
-anchor_right = 0.9
-anchor_bottom = 0.6
-offset_right = 180.0
-offset_bottom = 150.0
-grow_horizontal = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -75.0
+offset_bottom = 75.0
+grow_horizontal = 0
+grow_vertical = 2
 label_displayed = "VVI"
 value_format_string = "%+0.1f"
 
@@ -117,35 +121,37 @@ layout_mode = 1
 
 [node name="ButtonPause" type="Button" parent="."]
 process_mode = 3
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 0.15
-grow_horizontal = 2
 shortcut = SubResource("2")
 shortcut_in_tooltip = false
 text = "PAUSE"
 
 [node name="ButtonCamera" type="Button" parent="."]
 process_mode = 3
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.85
 anchor_right = 1.0
-grow_horizontal = 2
+grow_horizontal = 0
 shortcut = SubResource("2")
 shortcut_in_tooltip = false
 text = "CAMERA"
 
 [node name="ButtonWptDec" type="Button" parent="."]
 process_mode = 3
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.3
 anchor_right = 0.4
-grow_horizontal = 2
 shortcut_in_tooltip = false
 text = "<<"
 
 [node name="ButtonWptDisp" type="Button" parent="."]
 process_mode = 3
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.4
 anchor_right = 0.6
 grow_horizontal = 2
@@ -156,7 +162,8 @@ text = "WPT XX"
 
 [node name="ButtonWptInc" type="Button" parent="."]
 process_mode = 3
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.6
 anchor_right = 0.7
 grow_horizontal = 2
@@ -177,15 +184,15 @@ offset_bottom = 0.0
 grow_vertical = 0
 
 [node name="MsgBlock" type="VBoxContainer" parent="."]
-layout_mode = 0
-anchor_left = 0.5
+layout_mode = 1
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -168.28
-offset_right = 960.0
-offset_bottom = 168.28
+offset_top = -129.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
