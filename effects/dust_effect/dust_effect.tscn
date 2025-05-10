@@ -25,7 +25,7 @@ material = SubResource("StandardMaterial3D_7x5dg")
 
 [node name="DustEffect" type="GPUParticles3D"]
 amount = 100
-preprocess = 0.5
+lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_0nciw")
 draw_pass_1 = SubResource("QuadMesh_rat10")
 script = ExtResource("1")

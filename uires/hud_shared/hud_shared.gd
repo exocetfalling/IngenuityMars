@@ -61,7 +61,7 @@ func _process(delta):
 	
 	$GaugeSPD.value_displayed = AeroDataBus.aircraft_spd_true
 	$GaugeBAT.value_displayed = AeroDataBus.aircraft_battery_level
-	$GaugeALT.value_displayed = AeroDataBus.aircraft_alt_asl
+	$GaugeALT.value_displayed = AeroDataBus.aircraft_alt_agl
 	$GaugeVVT.value_displayed = AeroDataBus.aircraft_spd_vertical_tgt
 	$GaugeVVI.value_displayed = AeroDataBus.aircraft_spd_vertical
 	
