@@ -294,18 +294,9 @@ func _physics_process(delta):
 	
 	# Dust effects
 	if Settings.opt_dust_effects > 0:
-		if $DustRayCast.is_colliding():
-			$DustEffect.global_position = $DustRayCast.get_collision_point()
-			$DustEffect.global_transform.basis = align_up(global_transform.basis, $DustRayCast.get_collision_normal())
-			$DustEffect.fx_intensity = clamp(thrust_current / adc_alt_agl * 2, 0, 1)
-#			$DustEffect.fx_intensity = clamp(output_throttle, 0, 1)
-			$DustEffect.visible = true
-			$DustRayCast.force_raycast_update()
-		else:
-			$DustEffect.visible = false
-			$DustEffect.fx_intensity = 0
-			$DustEffect.position = Vector3.ZERO
-			$DustEffect.rotation = Vector3.ZERO
+		$DustEffect.global_position = $DustRayCast.get_collision_point()
+		$DustEffect.global_transform.basis = align_up(global_transform.basis, $DustRayCast.get_collision_normal())
+		$DustEffect.fx_intensity = clamp(thrust_current / adc_alt_agl * 2, 0, 1)
 
 
 func get_input(delta):
