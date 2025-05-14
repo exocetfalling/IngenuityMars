@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 class_name MissionGoal
 
@@ -6,11 +6,11 @@ class_name MissionGoal
 # var a = 2
 # var b = "text"
 
-export var radius: float = 5
-export var duration: float = 60
+@export var radius: float = 5
+@export var duration: float = 60
 
-export var title: String
-export var description: String
+@export var title: String
+@export var description: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

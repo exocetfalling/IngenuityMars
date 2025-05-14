@@ -10,10 +10,10 @@ extends Node
 # 1 -> low
 # 2 -> med
 # 3 -> high
-export var opt_shadows: int = 1
-export var opt_dust_effects: int = 1
-export var opt_rotor_sounds: int = 2
-export var opt_wind_sounds: int = 2
+@export var opt_shadows: int = 1
+@export var opt_dust_effects: int = 1
+@export var opt_rotor_sounds: int = 2
+@export var opt_wind_sounds: int = 2
 
 
 # Called when the node enters the scene tree for the first time.
