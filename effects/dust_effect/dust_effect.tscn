@@ -9,6 +9,9 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.25
 emission_ring_radius = 1.05
 emission_ring_inner_radius = 0.95
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 0.499998
+radial_accel_max = 0.999998
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7x5dg"]
 transparency = 1
@@ -22,10 +25,10 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_rat10"]
 material = SubResource("StandardMaterial3D_7x5dg")
+size = Vector2(0.5, 0.5)
 
 [node name="DustEffect" type="GPUParticles3D"]
-amount = 100
-lifetime = 5.0
+amount = 200
 process_material = SubResource("ParticleProcessMaterial_0nciw")
 draw_pass_1 = SubResource("QuadMesh_rat10")
 script = ExtResource("1")
