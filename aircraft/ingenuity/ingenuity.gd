@@ -316,6 +316,14 @@ func get_input(delta):
 		
 		# Yaw input
 		input_rudder = Input.get_axis("yaw_left", "yaw_right")
+	
+	if Input.is_action_just_pressed("camera_switch"):
+		if ($CameraExt.current == true):
+			$CameraRTE.current = true
+		elif ($CameraRTE.current == true):
+			$CameraNAV.current = true
+		elif ($CameraNAV.current == true):
+			$CameraExt.current = true
 
 
 func align_up(node_basis, normal):
@@ -332,12 +340,3 @@ func align_up(node_basis, normal):
 	result.z *= scale.z 
 
 	return result
-
-
-func _on_button_camera_up() -> void:
-	if ($CameraExt.current == true):
-		$CameraRTE.current = true
-	elif ($CameraRTE.current == true):
-		$CameraNAV.current = true
-	elif ($CameraNAV.current == true):
-		$CameraExt.current = true

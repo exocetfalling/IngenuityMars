@@ -131,3 +131,9 @@ func _on_ButtonWptInc_button_pressed():
 
 func _on_ButtonPause_button_pressed():
 	pause_handle()
+
+
+func _on_button_camera_pressed() -> void:
+	print("Camera change requested. ")
+	Input.action_press("camera_switch", 1.0)
+	Input.action_release("camera_switch")
