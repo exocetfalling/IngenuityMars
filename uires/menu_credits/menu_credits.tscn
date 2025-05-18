@@ -16,7 +16,7 @@ script = ExtResource("2")
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.8
-text = "IngenuityMars v0.4.6
+text = "IngenuityMars
  
 Code - exocet_falling
 Model - NASA"

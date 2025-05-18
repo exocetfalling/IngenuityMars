@@ -14,6 +14,9 @@ func _ready():
 	if OS.has_feature("HTML5"):
 		$Options/ButtonExit.visible = false
 	
+	# Populate version number
+	$Label.text = "INGENUITY MARS V" + ProjectSettings.get_setting("application/config/version")
+	
 #	preload("res://scenes/test_scene.tscn")
 	pass # Replace with function body.
 
