@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dw302pnavcrap"]
 
-[ext_resource path="res://uires/hud_shared/hud_shared_theme.tres" type="Theme" id=1]
-[ext_resource path="res://uires/hud_gauge_numeric/hud_gauge_numeric.gd" type="Script" id=2]
+[ext_resource type="Theme" uid="uid://bvjvqvqwmxieg" path="res://uires/hud_shared/hud_shared_theme.tres" id="1"]
+[ext_resource type="Script" uid="uid://d2kqip5od37qf" path="res://uires/hud_gauge_numeric/hud_gauge_numeric.gd" id="2"]
 
 [node name="HUDGaugeNumeric" type="Control"]
-custom_minimum_size = Vector2( 180, 150 )
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+custom_minimum_size = Vector2(180, 150)
+theme = ExtResource("1")
+script = ExtResource("2")
 label_displayed = "LBL"
 
 [node name="Label" type="Label" parent="."]

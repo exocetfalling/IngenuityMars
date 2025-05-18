@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bx01ucpesub2m"]
 
-[ext_resource type="Script" path="res://effects/dust_effect/dust_effect.gd" id="1"]
+[ext_resource type="Script" uid="uid://jshyqy7yh8j7" path="res://effects/dust_effect/dust_effect.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://qujcqh45txd" path="res://assets/dust_sprites.png" id="2"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0nciw"]
@@ -9,6 +9,7 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.25
 emission_ring_radius = 1.05
 emission_ring_inner_radius = 0.95
+emission_ring_cone_angle = 90.0
 gravity = Vector3(0, 0, 0)
 radial_accel_min = 0.499998
 radial_accel_max = 0.999998

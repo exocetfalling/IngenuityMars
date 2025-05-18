@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgr5c8g8vkgy6"]
 
 [ext_resource type="FontFile" path="res://uires/menu_shared/menu_shared_font.tres" id="1"]
-[ext_resource type="Script" path="res://uires/menu_main/menu_main.gd" id="2"]
+[ext_resource type="Script" uid="uid://dxbwd1yngv110" path="res://uires/menu_main/menu_main.gd" id="2"]
 
 [sub_resource type="Theme" id="1"]
 default_font = ExtResource("1")

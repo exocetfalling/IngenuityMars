@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://cvp4faun7lbwx"]
 
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1"]
-[ext_resource type="Script" path="res://terrain/jezero_crater/jezero_crater.gd" id="1_ihbb4"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2"]
-[ext_resource type="Resource" path="res://terrain/jezero_crater/data.hterrain" id="2_1gk8p"]
+[ext_resource type="Script" uid="uid://d3fhqga7tqsmm" path="res://addons/zylann.hterrain/hterrain.gd" id="1"]
+[ext_resource type="Script" uid="uid://bng6h5i0eahqv" path="res://terrain/jezero_crater/jezero_crater.gd" id="1_ihbb4"]
+[ext_resource type="Script" uid="uid://dogvbx82yj1l0" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2"]
+[ext_resource type="Resource" uid="uid://1h1nicjfbvnd" path="res://terrain/jezero_crater/data.hterrain" id="2_1gk8p"]
 [ext_resource type="Texture2D" uid="uid://qpri3ayeq3w0" path="res://terrain/jezero_crater/jezero_crater_slot0_albedo_bump.png" id="3_7l5c7"]
 [ext_resource type="Texture2D" uid="uid://c54isfrb432nn" path="res://terrain/jezero_crater/jezero_crater_slot1_albedo_bump.png" id="4_wushs"]
 [ext_resource type="Texture2D" uid="uid://cfyvq6tt5n4n8" path="res://terrain/jezero_crater/jezero_crater_slot0_normal_roughness.png" id="5_dr3hd"]
 [ext_resource type="Texture2D" uid="uid://cwymkiqiv1xei" path="res://terrain/jezero_crater/jezero_crater_slot1_normal_roughness.png" id="6_uejgw"]
-[ext_resource type="PackedScene" path="res://objects/charger/charger.tscn" id="8_vcurs"]
+[ext_resource type="PackedScene" uid="uid://diiejoa30qu21" path="res://objects/charger/charger.tscn" id="8_vcurs"]
 
 [sub_resource type="Resource" id="Resource_eg5mp"]
 script = ExtResource("2")

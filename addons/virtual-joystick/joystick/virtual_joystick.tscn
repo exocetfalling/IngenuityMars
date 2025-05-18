@@ -1,18 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://d4m7odtygmq68"]
 
-[ext_resource path="res://addons/virtual-joystick/joystick/textures/joystick_base_outline.png" type="Texture2D" id=1]
-[ext_resource path="res://addons/virtual-joystick/joystick/textures/joystick_tip.png" type="Texture2D" id=2]
-[ext_resource path="res://addons/virtual-joystick/joystick/virtual_joystick.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://bfrgyldo5v37k" path="res://addons/virtual-joystick/joystick/textures/joystick_base_outline.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://hbqyl7g00nwe" path="res://addons/virtual-joystick/joystick/textures/joystick_tip.png" id="2"]
+[ext_resource type="Script" uid="uid://cbslyv17iqfpq" path="res://addons/virtual-joystick/joystick/virtual_joystick.gd" id="3"]
 
 [node name="Virtual joystick" type="Control"]
-modulate = Color( 1, 1, 1, 0.509804 )
+modulate = Color(1, 1, 1, 0.509804)
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
 offset_top = -250.0
 offset_right = 250.0
 offset_bottom = -50.0
-script = ExtResource( 3 )
+script = ExtResource("3")
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,10 +28,10 @@ offset_right = 100.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2( 100, 100 )
+pivot_offset = Vector2(100, 100)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,10 +48,10 @@ offset_right = 50.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2( 50, 50 )
+pivot_offset = Vector2(50, 50)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false

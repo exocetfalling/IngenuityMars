@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://byecdl5cchhtc"]
 
-[ext_resource type="PackedScene" path="res://uires/hud_gauge_numeric/hud_gauge_numeric.tscn" id="1"]
-[ext_resource type="Script" path="res://uires/hud_shared/hud_shared.gd" id="2"]
-[ext_resource type="PackedScene" path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://uires/hud_gauge_custom/hud_gauge_custom.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dw302pnavcrap" path="res://uires/hud_gauge_numeric/hud_gauge_numeric.tscn" id="1"]
+[ext_resource type="Script" uid="uid://b8j8fmswxmtya" path="res://uires/hud_shared/hud_shared.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://d4m7odtygmq68" path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://d3yua66hiib68" path="res://uires/hud_gauge_custom/hud_gauge_custom.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://7agoeddwuudi" path="res://uires/menu_pause/menu_pause.tscn" id="5"]
 [ext_resource type="Theme" uid="uid://bvjvqvqwmxieg" path="res://uires/hud_shared/hud_shared_theme.tres" id="6"]
 [ext_resource type="PackedScene" uid="uid://byrq1dyoh2lby" path="res://uires/minimap/minimap.tscn" id="7"]

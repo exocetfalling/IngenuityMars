@@ -13,7 +13,7 @@ config_version=5
 config/name="IngenuityMars"
 config/description="A simulation of NASA's Ingenuity Mars helicopter in Godot 3.5."
 run/main_scene="res://uires/menu_main/menu_main.tscn"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.4")
 config/icon="res://assets/icon.png"
 
 [autoload]

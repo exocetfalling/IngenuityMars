@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://sgx7n8gjgscw"]
 
-[ext_resource path="res://assets/rock/rock_small.obj" type="ArrayMesh" id=1]
+[ext_resource type="ArrayMesh" uid="uid://datg8bvburx1p" path="res://assets/rock/rock_small.obj" id="1"]
 
 [node name="Rock" type="MeshInstance3D"]
-transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
-mesh = ExtResource( 1 )
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1")
