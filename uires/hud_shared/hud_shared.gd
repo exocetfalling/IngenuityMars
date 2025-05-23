@@ -6,7 +6,7 @@ extends Control
 # var b = "text"
 var hud_visible: bool = true
 
-export var wpt_array: PoolVector3Array = [Vector3.ZERO]
+@export var wpt_array: PackedVector3Array = [Vector3.ZERO]
 var wpt_vector : Vector2 = Vector2.ZERO
 var wpt_index: int = 0
 
@@ -47,7 +47,7 @@ func update_cas_warnings():
 		$MsgBlock/Warnings.text += "ABOVE MAX ALT" + "\n"
 
 
-func set_cas_memos(message_array: PoolStringArray):
+func set_cas_memos(message_array: PackedStringArray):
 	memo_active = true
 	
 	$MsgBlock/Memos.text = ""
@@ -61,7 +61,7 @@ func _process(delta):
 	
 	$GaugeSPD.value_displayed = AeroDataBus.aircraft_spd_true
 	$GaugeBAT.value_displayed = AeroDataBus.aircraft_battery_level
-	$GaugeALT.value_displayed = AeroDataBus.aircraft_alt_asl
+	$GaugeALT.value_displayed = AeroDataBus.aircraft_alt_agl
 	$GaugeVVT.value_displayed = AeroDataBus.aircraft_spd_vertical_tgt
 	$GaugeVVI.value_displayed = AeroDataBus.aircraft_spd_vertical
 	
@@ -86,7 +86,7 @@ func _process(delta):
 	# Enable increase/decrease buttons
 	# Show waypoint symbol and number
 	# Else, hide/disable
-	if $ButtonWptDisp.pressed:
+	if $ButtonWptDisp.button_pressed:
 		$ButtonWptDec.disabled = false
 		$ButtonWptInc.disabled = false
 		$Minimap/Centre/Waypoint.visible = true
@@ -119,15 +119,21 @@ func get_input(delta):
 		hud_visibility_handle()
 
 # Buttons
-func _on_ButtonWptDec_pressed():
+func _on_ButtonWptDec_button_pressed():
 	if wpt_index > 0:
 		wpt_index -= 1
 
 
-func _on_ButtonWptInc_pressed():
+func _on_ButtonWptInc_button_pressed():
 	if wpt_index < len(wpt_array) - 1:
 		wpt_index += 1
 
 
-func _on_ButtonPause_pressed():
+func _on_ButtonPause_button_pressed():
 	pause_handle()
+
+
+func _on_button_camera_pressed() -> void:
+	print("Camera change requested. ")
+	Input.action_press("camera_switch", 1.0)
+	Input.action_release("camera_switch")

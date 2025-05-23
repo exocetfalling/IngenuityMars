@@ -1,31 +1,20 @@
-extends Spatial
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+extends Node3D
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	if Settings.opt_shadows > 0:
-		$Sun.shadow_enabled = true
-		
-		if Settings.opt_shadows == 1:
-			$Sun.directional_shadow_mode = DirectionalLight.SHADOW_ORTHOGONAL
-		if Settings.opt_shadows == 2:
-			$Sun.directional_shadow_mode = DirectionalLight.SHADOW_PARALLEL_2_SPLITS
-		if Settings.opt_shadows == 3:
-			$Sun.directional_shadow_mode = DirectionalLight.SHADOW_PARALLEL_4_SPLITS
-	
-	else:
+func _ready() -> void:
+	# Shadows
+	if Settings.opt_shadows == 0:
 		$Sun.shadow_enabled = false
-
-	if Settings.opt_wind_sounds > 0:
-		$WindSounds.volume_db = 10 * log(Settings.opt_wind_sounds / 3) - 3
-		$WindSounds.play()
+	if Settings.opt_shadows == 1:
+		$Sun.shadow_enabled = true
+	if Settings.opt_shadows == 2:
+		$Sun.shadow_enabled = true
+	if Settings.opt_shadows == 3:
+		$Sun.shadow_enabled = true
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta: float) -> void:
 	pass

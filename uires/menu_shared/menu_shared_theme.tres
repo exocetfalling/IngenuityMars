@@ -1,21 +1,23 @@
-[gd_resource type="Theme" load_steps=2 format=2]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dmcu03ea4ledm"]
 
-[ext_resource path="res://uires/menu_shared/menu_shared_font.tres" type="DynamicFont" id=1]
+[ext_resource type="FontFile" path="res://uires/menu_shared/menu_shared_font.tres" id="1"]
 
 [resource]
-default_font = ExtResource( 1 )
-Button/colors/font_color = Color( 0, 0.541176, 0.858824, 1 )
-Button/colors/font_color_disabled = Color( 0.541176, 0.858824, 1, 0.254902 )
-Button/colors/font_color_hover = Color( 0, 0.705882, 0.858824, 1 )
-Button/colors/font_color_pressed = Color( 0, 0.541176, 0.858824, 1 )
+default_font = ExtResource("1")
+default_font_size = 45
+Button/colors/font_color = Color(0, 0.541176, 0.858824, 1)
+Button/colors/font_color_disabled = Color(0.541176, 0.858824, 1, 0.254902)
+Button/colors/font_color_hover = Color(0, 0.705882, 0.858824, 1)
+Button/colors/font_color_pressed = Color(0, 0.541176, 0.858824, 1)
 Button/constants/hseparation = 2
+Button/font_sizes/font_size = 50
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = null
 Button/styles/normal = null
 Button/styles/pressed = null
-Label/colors/font_color = Color( 0, 0.541176, 0.858824, 1 )
-RichTextLabel/colors/default_color = Color( 0, 0.541176, 0.858824, 1 )
-TabContainer/colors/font_color_bg = Color( 0, 0.541176, 0.858824, 1 )
-TabContainer/colors/font_color_disabled = Color( 0.388235, 0.839216, 0.839216, 0.2 )
-TabContainer/colors/font_color_fg = Color( 0, 0.705882, 0.858824, 1 )
+Label/colors/font_color = Color(0, 0.541176, 0.858824, 1)
+RichTextLabel/colors/default_color = Color(0, 0.541176, 0.858824, 1)
+TabContainer/colors/font_color_bg = Color(0, 0.541176, 0.858824, 1)
+TabContainer/colors/font_color_disabled = Color(0.388235, 0.839216, 0.839216, 0.2)
+TabContainer/colors/font_color_fg = Color(0, 0.705882, 0.858824, 1)

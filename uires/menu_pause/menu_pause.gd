@@ -17,18 +17,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if($Options/ButtonMainMenu.pressed == true):
+	if($Options/ButtonMainMenu.button_pressed == true):
 		get_tree().paused = false
-		get_tree().change_scene("res://uires/menu_main/menu_main.tscn")
+		get_tree().change_scene_to_file("res://uires/menu_main/menu_main.tscn")
 	
-	if($Options/ButtonResume.pressed == true):
+	if($Options/ButtonResume.button_pressed == true):
 		visible = false
 		get_tree().paused = false
 	
-	if ($Options/ButtonSettings.pressed == true):
+	if ($Options/ButtonSettings.button_pressed == true):
 		visible = false
 		get_tree().paused = false
-		get_tree().change_scene("res://uires/menu_settings/menu_settings.tscn")
+		get_tree().change_scene_to_file("res://uires/menu_settings/menu_settings.tscn")
 	
-	if($Options/ButtonExit.pressed == true):
-		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+	if($Options/ButtonExit.button_pressed == true):
+		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+		get_tree().quit()
+		pass

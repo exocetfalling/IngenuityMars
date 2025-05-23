@@ -1,183 +1,217 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://byecdl5cchhtc"]
 
-[ext_resource path="res://uires/hud_gauge_numeric/hud_gauge_numeric.tscn" type="PackedScene" id=1]
-[ext_resource path="res://uires/hud_shared/hud_shared.gd" type="Script" id=2]
-[ext_resource path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" type="PackedScene" id=3]
-[ext_resource path="res://uires/hud_gauge_custom/hud_gauge_custom.tscn" type="PackedScene" id=4]
-[ext_resource path="res://uires/menu_pause/menu_pause.tscn" type="PackedScene" id=5]
-[ext_resource path="res://uires/hud_shared/hud_shared_theme.tres" type="Theme" id=6]
-[ext_resource path="res://uires/minimap/minimap.tscn" type="PackedScene" id=7]
+[ext_resource type="PackedScene" uid="uid://dw302pnavcrap" path="res://uires/hud_gauge_numeric/hud_gauge_numeric.tscn" id="1"]
+[ext_resource type="Script" uid="uid://b8j8fmswxmtya" path="res://uires/hud_shared/hud_shared.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://d4m7odtygmq68" path="res://addons/virtual-joystick/joystick/virtual_joystick.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://d3yua66hiib68" path="res://uires/hud_gauge_custom/hud_gauge_custom.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://7agoeddwuudi" path="res://uires/menu_pause/menu_pause.tscn" id="5"]
+[ext_resource type="Theme" uid="uid://bvjvqvqwmxieg" path="res://uires/hud_shared/hud_shared_theme.tres" id="6"]
+[ext_resource type="PackedScene" uid="uid://byrq1dyoh2lby" path="res://uires/minimap/minimap.tscn" id="7"]
 
-[sub_resource type="InputEventAction" id=1]
-action = "ui_cancel"
-
-[sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 1 )
+[sub_resource type="Shortcut" id="2"]
 
 [node name="HUDShared" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 6 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="GaugeSPD" parent="." instance=ExtResource( 1 )]
-anchor_top = 0.1
-anchor_right = 0.1
-anchor_bottom = 0.3
 grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6")
+script = ExtResource("2")
+
+[node name="GaugeSPD" parent="." instance=ExtResource("1")]
+layout_mode = 1
+anchor_top = 0.1
+anchor_bottom = 0.1
 label_displayed = "SPD"
 
-[node name="GaugeBAT" parent="." instance=ExtResource( 1 )]
-anchor_left = 0.45
+[node name="GaugeBAT" parent="." instance=ExtResource("1")]
+layout_mode = 1
+anchor_left = 0.5
 anchor_top = 0.1
-anchor_right = 0.55
-anchor_bottom = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.1
 grow_horizontal = 2
 label_displayed = "BAT"
 value_displayed = 100.0
 value_maximum = 100.0
 value_minimum = 0.0
 
-[node name="GaugeALT" parent="." instance=ExtResource( 1 )]
-anchor_left = 0.9
+[node name="GaugeALT" parent="." instance=ExtResource("1")]
+layout_mode = 1
+anchor_left = 1.0
 anchor_top = 0.1
 anchor_right = 1.0
-anchor_bottom = 0.3
-grow_horizontal = 2
+anchor_bottom = 0.1
+grow_horizontal = 0
 label_displayed = "ALT"
 
-[node name="GaugeVVT" parent="." instance=ExtResource( 4 )]
-anchor_top = 0.6
-anchor_right = 0.1
-anchor_bottom = 0.6
-grow_horizontal = 2
+[node name="GaugeVVT" parent="." instance=ExtResource("4")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -75.0
+offset_right = 180.0
+offset_bottom = 75.0
+grow_vertical = 2
 theme = null
 label_displayed = "VVT"
 value_format_string = "%+0.1f"
 
-[node name="GaugeVVI" parent="." instance=ExtResource( 4 )]
-anchor_left = 0.9
-anchor_top = 0.6
-anchor_right = 0.9
-anchor_bottom = 0.6
-margin_right = 180.0
-margin_bottom = 150.0
-grow_horizontal = 2
+[node name="GaugeVVI" parent="." instance=ExtResource("4")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -75.0
+offset_bottom = 75.0
+grow_horizontal = 0
+grow_vertical = 2
 label_displayed = "VVI"
 value_format_string = "%+0.1f"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="VJoyLeft" parent="UI" instance=ExtResource( 3 )]
-modulate = Color( 0.196078, 0.196078, 0.196078, 0.196078 )
+[node name="VJoyLeft" parent="UI" instance=ExtResource("3")]
+modulate = Color(0.196078, 0.196078, 0.196078, 0.764706)
+layout_mode = 3
+anchor_left = 0.1
+anchor_top = 0.9
+anchor_right = 0.1
+anchor_bottom = 0.9
+offset_left = 0.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 0.0
+grow_vertical = 0
 clampzone_size = 100.0
 action_left = "yaw_left"
 action_right = "yaw_right"
 action_up = "throttle_up"
 action_down = "throttle_down"
 
-[node name="VJoyRight" parent="UI" instance=ExtResource( 3 )]
-modulate = Color( 0.196078, 0.196078, 0.196078, 0.196078 )
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -250.0
-margin_right = -50.0
+[node name="VJoyRight" parent="UI" instance=ExtResource("3")]
+modulate = Color(0.196078, 0.196078, 0.196078, 0.764706)
+layout_mode = 3
+anchor_left = 0.9
+anchor_top = 0.9
+anchor_right = 0.9
+anchor_bottom = 0.9
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
 clampzone_size = 100.0
 action_left = "roll_left"
 action_right = "roll_right"
 action_up = "pitch_down"
 action_down = "pitch_up"
 
-[node name="MenuPause" parent="." instance=ExtResource( 5 )]
+[node name="MenuPause" parent="." instance=ExtResource("5")]
 visible = false
+top_level = true
+layout_mode = 1
 
 [node name="ButtonPause" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 0.15
-grow_horizontal = 2
+shortcut = SubResource("2")
 shortcut_in_tooltip = false
-shortcut = SubResource( 2 )
 text = "PAUSE"
 
 [node name="ButtonCamera" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.85
 anchor_right = 1.0
-grow_horizontal = 2
+grow_horizontal = 0
+shortcut = SubResource("2")
 shortcut_in_tooltip = false
-shortcut = SubResource( 2 )
 text = "CAMERA"
 
 [node name="ButtonWptDec" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.3
 anchor_right = 0.4
-grow_horizontal = 2
 shortcut_in_tooltip = false
 text = "<<"
 
 [node name="ButtonWptDisp" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.4
 anchor_right = 0.6
 grow_horizontal = 2
 toggle_mode = true
-shortcut_in_tooltip = false
 keep_pressed_outside = true
+shortcut_in_tooltip = false
 text = "WPT XX"
 
 [node name="ButtonWptInc" type="Button" parent="."]
-pause_mode = 2
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.6
 anchor_right = 0.7
 grow_horizontal = 2
 shortcut_in_tooltip = false
 text = ">>"
 
-[node name="Minimap" parent="." instance=ExtResource( 7 )]
-modulate = Color( 0, 1, 0, 1 )
+[node name="Minimap" parent="." instance=ExtResource("7")]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-margin_left = -125.0
-margin_top = -250.0
-margin_right = 125.0
-margin_bottom = 0.0
+offset_left = -125.0
+offset_top = -250.0
+offset_right = 125.0
+offset_bottom = 0.0
+grow_vertical = 0
 
 [node name="MsgBlock" type="VBoxContainer" parent="."]
-anchor_left = 0.5
+layout_mode = 1
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -168.28
-margin_right = 960.0
-margin_bottom = 168.28
+offset_top = -129.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
 [node name="Warnings" type="Label" parent="MsgBlock"]
 show_behind_parent = true
-margin_top = 17.0
-margin_right = 1920.0
-margin_bottom = 242.0
+layout_mode = 2
 text = "BATT LOW
 ABOVE MAX ALT
 LIDAR INOP"
-align = 1
+horizontal_alignment = 1
 clip_text = true
 
 [node name="Memos" type="Label" parent="MsgBlock"]
 show_behind_parent = true
-margin_top = 246.0
-margin_right = 1920.0
-margin_bottom = 319.0
-align = 1
+layout_mode = 2
+horizontal_alignment = 1
 clip_text = true
 
-[connection signal="pressed" from="ButtonPause" to="." method="_on_ButtonPause_pressed"]
+[connection signal="pressed" from="ButtonPause" to="." method="_on_ButtonPause_button_pressed"]
+[connection signal="pressed" from="ButtonCamera" to="." method="_on_button_camera_pressed"]
 [connection signal="pressed" from="ButtonWptDec" to="." method="_on_ButtonWptDec_pressed"]
 [connection signal="pressed" from="ButtonWptInc" to="." method="_on_ButtonWptInc_pressed"]

@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 
 # Class for aerodynamic rotors for rotorcraft
 # Be sure to set vel_body variable using parent velocity data
@@ -10,14 +10,14 @@ class_name AeroRotor
 # var b = "text"
 
 # For individual blades
-export var length_chord : float = 1.00
-export var length_span : float = 1.00
+@export var length_chord : float = 1.00
+@export var length_span : float = 1.00
 
 # Number of blades in rotor
-export var rotor_blade_num : int = 4
+@export var rotor_blade_num : int = 4
 
 # Blade angle, for variable pitch
-export var rotor_blade_angle : float = 0.00
+@export var rotor_blade_angle : float = 0.00
 
 # Rotor blade velocity
 # Velocity experienced by blades due to rotation
@@ -25,7 +25,7 @@ var rotor_blade_velocity : float = 0.00
 
 # Lift effeciency, varies by planform
 # 0.7 for rectangular wings
-export var rotor_lift_effeciency : float = 0.7
+@export var rotor_lift_effeciency : float = 0.7
 
 # Rotor area, total area of all blades
 var rotor_area : float = 1.00
@@ -147,7 +147,7 @@ func _physics_process(delta):
 	
 	air_pressure_dynamic = 0.5 * air_density * pow(linear_velocity_total, 2)
 	
-	vel_rotor = (self.transform.basis.xform_inv(vel_body))
+	vel_rotor = ((vel_body) * self.transform.basis)
 	linear_velocity_total = vel_rotor.length()
 	
 	rotor_blade_velocity = rotor_angular_velocity * 0.8 * length_span
@@ -156,7 +156,7 @@ func _physics_process(delta):
 	
 	angle_alpha = rotor_blade_angle
 	
-	angle_alpha_deg = rad2deg(angle_alpha)
+	angle_alpha_deg = rad_to_deg(angle_alpha)
 	
 	coeffecient_lift = _calc_lift_coeff(angle_alpha)
 	coeffecient_drag = \
