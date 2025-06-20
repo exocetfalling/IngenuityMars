@@ -16,21 +16,21 @@ mode = 0
 textures = [[ExtResource("3_7l5c7"), ExtResource("4_wushs")], [ExtResource("5_dr3hd"), ExtResource("6_uejgw")]]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dteys"]
-sky_top_color = Color(0.585574, 0.405429, 0.214521, 1)
-sky_horizon_color = Color(0.468975, 0.47888, 0.494516, 1)
-ground_horizon_color = Color(0.459289, 0.469119, 0.484638, 1)
+sky_top_color = Color(0.909804, 0.67451, 0.462745, 1)
+sky_horizon_color = Color(0.941614, 0.753118, 0.588457, 1)
 
 [sub_resource type="Sky" id="Sky_2rian"]
 sky_material = SubResource("ProceduralSkyMaterial_dteys")
 
 [sub_resource type="Environment" id="Environment_wru5r"]
 background_mode = 2
-background_energy_multiplier = 1.59
 sky = SubResource("Sky_2rian")
 ambient_light_source = 3
+ambient_light_color = Color(0.472025, 0.472025, 0.472025, 1)
 fog_enabled = true
 fog_light_color = Color(0.653796, 0.524017, 0.375824, 1)
-fog_density = 0.001
+fog_sun_scatter = 0.1
+fog_density = 0.005
 fog_aerial_perspective = 0.321
 
 [node name="JezeroCrater" type="Node3D"]
