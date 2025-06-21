@@ -28,10 +28,9 @@ sky = SubResource("Sky_2rian")
 ambient_light_source = 3
 ambient_light_color = Color(0.472025, 0.472025, 0.472025, 1)
 fog_enabled = true
-fog_light_color = Color(0.653796, 0.524017, 0.375824, 1)
+fog_light_color = Color(0.774847, 0.561562, 0.358394, 1)
 fog_sun_scatter = 0.1
 fog_density = 0.005
-fog_aerial_perspective = 0.321
 
 [node name="JezeroCrater" type="Node3D"]
 script = ExtResource("1_ihbb4")
