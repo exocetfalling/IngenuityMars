@@ -52,7 +52,7 @@ shape = SubResource("ConvexPolygonShape3D_nkayi")
 disabled = true
 
 [node name="RadioAltimeter" type="RayCast3D" parent="."]
-target_position = Vector3(0, -10, 0)
+target_position = Vector3(0, -30, 0)
 
 [node name="PIDCalcPitch" type="Node" parent="."]
 script = ExtResource("3")
