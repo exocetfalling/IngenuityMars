@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bx01ucpesub2m"]
 
 [ext_resource type="Script" uid="uid://jshyqy7yh8j7" path="res://effects/dust_effect/dust_effect.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://ccch0agiqbgl0" path="res://assets/dust_sprites.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://ccch0agiqbgl0" path="res://effects/dust_effect/dust_sprites.png" id="2"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0nciw"]
 emission_shape_offset = Vector3(0, 0.2, 0)

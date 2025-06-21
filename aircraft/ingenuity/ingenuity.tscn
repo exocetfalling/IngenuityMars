@@ -142,7 +142,7 @@ suspension_travel = 0.05
 suspension_stiffness = 200.0
 
 [node name="CameraExt" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.5, 1.75)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.557338, 1.96399)
 current = true
 far = 100000.0
 
