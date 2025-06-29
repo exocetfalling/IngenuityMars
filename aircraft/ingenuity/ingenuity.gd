@@ -183,7 +183,7 @@ func _physics_process(delta):
 	calc_atmo_properties(global_transform.origin.y)
 	
 	tgt_rates.x = deg_to_rad(input_joystick.y * 10)
-	tgt_rates.y = deg_to_rad(input_rudder * 60)
+	tgt_rates.y = deg_to_rad(input_rudder * 90)
 	tgt_rates.z = deg_to_rad(input_joystick.x * 10)
 	
 	linear_velocity_rotated = linear_velocity.rotated(Vector3.UP, -global_rotation.y)
@@ -271,7 +271,7 @@ func _physics_process(delta):
 	apply_torque_local(Vector3(cmd_sas.x, -cmd_sas.y, -cmd_sas.z))
 	
 	# Basic drag
-	apply_central_force(-0.2 * air_density * (linear_velocity + linear_velocity_wind).length_squared() * (linear_velocity + linear_velocity_wind).normalized())
+	apply_central_force(-0.1 * air_density * (linear_velocity + linear_velocity_wind).length_squared() * (linear_velocity + linear_velocity_wind).normalized())
 	
 	# Reset integral on ground
 	if (adc_alt_agl < 0.25):

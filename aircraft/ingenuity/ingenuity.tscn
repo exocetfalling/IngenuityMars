@@ -68,7 +68,7 @@ param_tuning_active = false
 
 [node name="PIDCalcYaw" type="Node" parent="."]
 script = ExtResource("3")
-term_P = 0.2
+term_P = 2.0
 term_D = 0.01
 param_tuning_active = false
 
