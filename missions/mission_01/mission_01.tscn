@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cvp4faun7lbwx" path="res://terrain/jezero_crater/jezero_crater.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://jg4mqk27bw1n" path="res://aircraft/ingenuity/ingenuity.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://objects/charger/charger.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://diiejoa30qu21" path="res://objects/charger/charger.tscn" id="3"]
 [ext_resource type="Script" uid="uid://dqmxylo04ca7j" path="res://missions/mission_classes/mission.gd" id="4"]
 [ext_resource type="Script" uid="uid://qabluy30plca" path="res://missions/mission_classes/mission_goal.gd" id="5"]
 
@@ -10,7 +10,7 @@
 script = ExtResource("4")
 
 [node name="Ingenuity" parent="." instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25841, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 52.234, 0)
 
 [node name="JezeroCrater" parent="." instance=ExtResource("1")]
 
