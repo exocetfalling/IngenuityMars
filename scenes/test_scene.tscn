@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://xn1wm37lvjay"]
+[gd_scene format=3 uid="uid://xn1wm37lvjay"]
 
 [ext_resource type="PackedScene" uid="uid://jg4mqk27bw1n" path="res://aircraft/ingenuity/ingenuity.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cvp4faun7lbwx" path="res://terrain/jezero_crater/jezero_crater.tscn" id="3_ntqqa"]

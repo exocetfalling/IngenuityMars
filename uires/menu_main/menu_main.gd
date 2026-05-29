@@ -5,6 +5,7 @@ extends Control
 # var a = 2
 # var b = "text"
 
+const FLIGHT_SCENE = preload("res://scenes/test_scene.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

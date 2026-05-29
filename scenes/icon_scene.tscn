@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cidiacfqkux8t"]
+[gd_scene format=3 uid="uid://cidiacfqkux8t"]
 
 [ext_resource type="Environment" uid="uid://rhd8ebd3bl3c" path="res://resources/mars_env.tres" id="1"]
 [ext_resource type="PackedScene" uid="uid://c3c3ddjj0shc7" path="res://aircraft/ingenuity/model/Ingenuity_v3.glb" id="2"]

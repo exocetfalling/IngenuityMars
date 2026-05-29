@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcxw4ky85p6ob"]
+[gd_scene format=3 uid="uid://bcxw4ky85p6ob"]
 
 [ext_resource type="Texture2D" uid="uid://b17dj2ls8al8n" path="res://assets/pbr_materials/rocky-dunes1/rocky-dunes1_roughness.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://buce04aqmmr33" path="res://assets/pbr_materials/rocky-dunes1/rocky-dunes1_normal.png" id="2"]

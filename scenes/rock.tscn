@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://sgx7n8gjgscw"]
+[gd_scene format=3 uid="uid://sgx7n8gjgscw"]
 
 [ext_resource type="ArrayMesh" uid="uid://datg8bvburx1p" path="res://assets/rock/rock_small.obj" id="1"]
 
