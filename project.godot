@@ -8,13 +8,17 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="IngenuityMars"
 config/description="A simulation of NASA's Ingenuity Mars helicopter in Godot 3.5."
-config/version="0.5.0"
+config/version="0.5.5"
 run/main_scene="res://uires/menu_main/menu_main.tscn"
-config/features=PackedStringArray("4.4")
+config/features=PackedStringArray("4.6")
 config/icon="uid://bfq2iiqv1khkm"
 
 [autoload]
@@ -24,6 +28,7 @@ AeroDataBus="*res://addons/aero_tools/scripts/aero_data_bus.gd"
 DebugOverlay="*res://debug/DebugOverlay.tscn"
 Global="*res://autoload/global.gd"
 Settings="*res://autoload/settings.gd"
+Autoload="*res://autoload/autoload.tscn"
 
 [display]
 
