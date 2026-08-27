@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bcxw4ky85p6ob"]
 
-[ext_resource type="Texture2D" uid="uid://b17dj2ls8al8n" path="res://assets/pbr_materials/rocky-dunes1/rocky-dunes1_roughness.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://buce04aqmmr33" path="res://assets/pbr_materials/rocky-dunes1/rocky-dunes1_normal.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://8kv3suti6c16" path="res://assets/pbr_materials/rocky-dunes1/rocky-dunes1_albedo.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cqg0wj2mi847p" path="res://assets/pbr_materials/rocky-dunes1/rocky-dunes1_roughness.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cqed3k2axb2fa" path="res://assets/pbr_materials/rocky-dunes1/rocky-dunes1_normal.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://fpec663rebvi" path="res://assets/pbr_materials/rocky-dunes1/rocky-dunes1_albedo.png" id="3"]
 
 [sub_resource type="StandardMaterial3D" id="2"]
 albedo_texture = ExtResource("3")
@@ -14,14 +14,14 @@ normal_texture = ExtResource("2")
 [sub_resource type="SphereShape3D" id="1"]
 radius = 0.1
 
-[node name="RockScatter" type="RigidBody3D"]
+[node name="RockScatter" type="RigidBody3D" unique_id=1751493139]
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=970100161]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 radius = 0.1
 smooth_faces = false
 material = SubResource("2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=300583389]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("1")

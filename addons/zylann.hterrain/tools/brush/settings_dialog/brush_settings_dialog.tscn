@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2rt3wj8xkhp2"]
+[gd_scene format=3 uid="uid://d2rt3wj8xkhp2"]
 
-[ext_resource type="PackedScene" path="res://addons/zylann.hterrain/tools/util/spin_slider.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bp68rc03y0p42" path="res://addons/zylann.hterrain/tools/util/spin_slider.tscn" id="2"]
 [ext_resource type="Script" uid="uid://bfukm4wt5x6g6" path="res://addons/zylann.hterrain/tools/brush/settings_dialog/brush_settings_dialog.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://ng00jipfeucy" path="res://addons/zylann.hterrain/tools/brush/settings_dialog/preview_scratchpad.tscn" id="4"]
 
-[node name="BrushSettingsDialog" type="AcceptDialog"]
+[node name="BrushSettingsDialog" type="AcceptDialog" unique_id=2024341555]
 title = "Brush settings"
 size = Vector2i(700, 422)
 min_size = Vector2i(700, 400)
 script = ExtResource("3")
 
-[node name="VB" type="VBoxContainer" parent="."]
+[node name="VB" type="VBoxContainer" parent="." unique_id=386780889]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,52 +19,52 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -49.0
 
-[node name="HB" type="HBoxContainer" parent="VB"]
+[node name="HB" type="HBoxContainer" parent="VB" unique_id=1283321717]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VB" type="VBoxContainer" parent="VB/HB"]
+[node name="VB" type="VBoxContainer" parent="VB/HB" unique_id=754431299]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VB/HB/VB"]
+[node name="Label" type="Label" parent="VB/HB/VB" unique_id=1205489214]
 layout_mode = 2
 text = "Shapes"
 
-[node name="ShapeList" type="ItemList" parent="VB/HB/VB"]
+[node name="ShapeList" type="ItemList" parent="VB/HB/VB" unique_id=901882437]
 layout_mode = 2
 size_flags_vertical = 3
 fixed_icon_size = Vector2i(100, 100)
 
-[node name="ChangeShape" type="Button" parent="VB/HB/VB"]
+[node name="ChangeShape" type="Button" parent="VB/HB/VB" unique_id=1306066209]
 layout_mode = 2
 disabled = true
 text = "Change..."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VB/HB/VB"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VB/HB/VB" unique_id=1765350743]
 layout_mode = 2
 
-[node name="AddShape" type="Button" parent="VB/HB/VB/HBoxContainer"]
+[node name="AddShape" type="Button" parent="VB/HB/VB/HBoxContainer" unique_id=1804307550]
 layout_mode = 2
 text = "Add..."
 
-[node name="RemoveShape" type="Button" parent="VB/HB/VB/HBoxContainer"]
+[node name="RemoveShape" type="Button" parent="VB/HB/VB/HBoxContainer" unique_id=587960726]
 layout_mode = 2
 disabled = true
 text = "Remove"
 
-[node name="VB2" type="VBoxContainer" parent="VB/HB"]
+[node name="VB2" type="VBoxContainer" parent="VB/HB" unique_id=654577225]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="VB/HB/VB2"]
+[node name="Label" type="Label" parent="VB/HB/VB2" unique_id=2017365783]
 layout_mode = 2
 
-[node name="Settings" type="VBoxContainer" parent="VB/HB/VB2"]
+[node name="Settings" type="VBoxContainer" parent="VB/HB/VB2" unique_id=1021775342]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Size" parent="VB/HB/VB2/Settings" instance=ExtResource("2")]
+[node name="Size" parent="VB/HB/VB2/Settings" unique_id=1384911998 instance=ExtResource("2")]
 custom_minimum_size = Vector2(32, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -78,7 +78,7 @@ centered = true
 allow_greater = true
 greater_max_value = 4000.0
 
-[node name="Opacity" parent="VB/HB/VB2/Settings" instance=ExtResource("2")]
+[node name="Opacity" parent="VB/HB/VB2/Settings" unique_id=102913246 instance=ExtResource("2")]
 custom_minimum_size = Vector2(32, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -90,11 +90,11 @@ rounded = true
 centered = true
 greater_max_value = 10000.0
 
-[node name="PressureEnabled" type="CheckBox" parent="VB/HB/VB2/Settings"]
+[node name="PressureEnabled" type="CheckBox" parent="VB/HB/VB2/Settings" unique_id=450559074]
 layout_mode = 2
 text = "Enable pressure (pen tablets)"
 
-[node name="PressureOverSize" parent="VB/HB/VB2/Settings" instance=ExtResource("2")]
+[node name="PressureOverSize" parent="VB/HB/VB2/Settings" unique_id=2001938323 instance=ExtResource("2")]
 custom_minimum_size = Vector2(32, 28)
 layout_mode = 2
 value = 50.0
@@ -104,7 +104,7 @@ suffix = "%"
 centered = true
 greater_max_value = 10000.0
 
-[node name="PressureOverOpacity" parent="VB/HB/VB2/Settings" instance=ExtResource("2")]
+[node name="PressureOverOpacity" parent="VB/HB/VB2/Settings" unique_id=186433842 instance=ExtResource("2")]
 custom_minimum_size = Vector2(32, 28)
 layout_mode = 2
 value = 50.0
@@ -114,7 +114,7 @@ suffix = "%"
 centered = true
 greater_max_value = 10000.0
 
-[node name="FrequencyTime" parent="VB/HB/VB2/Settings" instance=ExtResource("2")]
+[node name="FrequencyTime" parent="VB/HB/VB2/Settings" unique_id=274097587 instance=ExtResource("2")]
 custom_minimum_size = Vector2(32, 28)
 layout_mode = 2
 value = 60.0
@@ -125,7 +125,7 @@ suffix = "fps"
 centered = true
 greater_max_value = 10000.0
 
-[node name="FrequencyDistance" parent="VB/HB/VB2/Settings" instance=ExtResource("2")]
+[node name="FrequencyDistance" parent="VB/HB/VB2/Settings" unique_id=1774310687 instance=ExtResource("2")]
 custom_minimum_size = Vector2(32, 28)
 layout_mode = 2
 max_value = 100.0
@@ -134,62 +134,62 @@ suffix = "px"
 centered = true
 greater_max_value = 4000.0
 
-[node name="RandomRotation" type="CheckBox" parent="VB/HB/VB2/Settings"]
+[node name="RandomRotation" type="CheckBox" parent="VB/HB/VB2/Settings" unique_id=881337107]
 layout_mode = 2
 text = "Random rotation"
 
-[node name="ShapeCycling" type="CheckBox" parent="VB/HB/VB2/Settings"]
+[node name="ShapeCycling" type="CheckBox" parent="VB/HB/VB2/Settings" unique_id=2088704042]
 layout_mode = 2
 text = "Shape cycling"
 
-[node name="HSeparator" type="HSeparator" parent="VB/HB/VB2/Settings"]
+[node name="HSeparator" type="HSeparator" parent="VB/HB/VB2/Settings" unique_id=1580691230]
 visible = false
 layout_mode = 2
 
-[node name="SizeLimitHB" type="HBoxContainer" parent="VB/HB/VB2/Settings"]
+[node name="SizeLimitHB" type="HBoxContainer" parent="VB/HB/VB2/Settings" unique_id=1412023539]
 visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VB/HB/VB2/Settings/SizeLimitHB"]
+[node name="Label" type="Label" parent="VB/HB/VB2/Settings/SizeLimitHB" unique_id=1689732490]
 layout_mode = 2
 mouse_filter = 0
 text = "Size limit:"
 
-[node name="SizeLimit" type="SpinBox" parent="VB/HB/VB2/Settings/SizeLimitHB"]
+[node name="SizeLimit" type="SpinBox" parent="VB/HB/VB2/Settings/SizeLimitHB" unique_id=460360105]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 max_value = 1000.0
 value = 200.0
 
-[node name="HSeparator2" type="HSeparator" parent="VB/HB/VB2/Settings"]
+[node name="HSeparator2" type="HSeparator" parent="VB/HB/VB2/Settings" unique_id=816474024]
 visible = false
 layout_mode = 2
 
-[node name="HB" type="HBoxContainer" parent="VB/HB/VB2/Settings"]
+[node name="HB" type="HBoxContainer" parent="VB/HB/VB2/Settings" unique_id=962978424]
 visible = false
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VB/HB/VB2/Settings/HB"]
+[node name="Button" type="Button" parent="VB/HB/VB2/Settings/HB" unique_id=979990076]
 layout_mode = 2
 text = "Load preset..."
 
-[node name="Button2" type="Button" parent="VB/HB/VB2/Settings/HB"]
+[node name="Button2" type="Button" parent="VB/HB/VB2/Settings/HB" unique_id=1117972280]
 layout_mode = 2
 text = "Save preset..."
 
-[node name="VB3" type="VBoxContainer" parent="VB/HB"]
+[node name="VB3" type="VBoxContainer" parent="VB/HB" unique_id=172472064]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VB/HB/VB3"]
+[node name="Label" type="Label" parent="VB/HB/VB3" unique_id=861137359]
 layout_mode = 2
 text = "Scratchpad"
 
-[node name="PreviewScratchpad" parent="VB/HB/VB3" instance=ExtResource("4")]
+[node name="PreviewScratchpad" parent="VB/HB/VB3" unique_id=628863182 instance=ExtResource("4")]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
 
-[node name="ClearScratchpad" type="Button" parent="VB/HB/VB3"]
+[node name="ClearScratchpad" type="Button" parent="VB/HB/VB3" unique_id=2048138551]
 layout_mode = 2
 text = "Clear"
 

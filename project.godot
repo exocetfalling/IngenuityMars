@@ -8,10 +8,6 @@
 
 config_version=5
 
-[animation]
-
-compatibility/default_parent_skeleton_in_mesh_instance_3d=true
-
 [application]
 
 config/name="IngenuityMars"
@@ -23,8 +19,8 @@ config/icon="uid://bfq2iiqv1khkm"
 
 [autoload]
 
-AeroHelper="*res://addons/aero_tools/scripts/aero_helper.gd"
-AeroDataBus="*res://addons/aero_tools/scripts/aero_data_bus.gd"
+AeroHelper="*uid://diimoqnx80jf4"
+AeroDataBus="*uid://b6lqrerta4rcq"
 DebugOverlay="*res://debug/DebugOverlay.tscn"
 Global="*res://autoload/global.gd"
 Settings="*res://autoload/settings.gd"

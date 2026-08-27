@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://btvuv77acllh6"]
+[gd_scene format=3 uid="uid://btvuv77acllh6"]
 
 [ext_resource type="Theme" uid="uid://dmcu03ea4ledm" path="res://uires/menu_shared/menu_shared_theme.tres" id="1"]
 [ext_resource type="Script" uid="uid://dpmdjvtvbpmhq" path="res://uires/menu_credits/menu_credits.gd" id="2"]
 
-[node name="MenuTutorials" type="Control"]
+[node name="MenuTutorials" type="Control" unique_id=1828675184]
 layout_mode = 3
 anchor_left = 0.05
 anchor_top = 0.05
@@ -13,7 +13,7 @@ mouse_filter = 1
 theme = ExtResource("1")
 script = ExtResource("2")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=335050998]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.8
@@ -22,7 +22,7 @@ offset_bottom = 95.0
 tab_alignment = 1
 current_tab = 0
 
-[node name="HUD" type="RichTextLabel" parent="TabContainer"]
+[node name="HUD" type="RichTextLabel" parent="TabContainer" unique_id=1795527172]
 layout_mode = 2
 text = "HUD Data:
 
@@ -33,7 +33,7 @@ VVT -> Vertical velocity target
 VVI -> Vertical velocity indicator "
 metadata/_tab_index = 0
 
-[node name="Controls" type="RichTextLabel" parent="TabContainer"]
+[node name="Controls" type="RichTextLabel" parent="TabContainer" unique_id=925045198]
 visible = false
 layout_mode = 2
 text = "Controls:
@@ -57,7 +57,7 @@ To activate the rotors, move the left stick forwards for one second while on the
 To deactivate the rotors, move the left stick backwards for one second while on the ground."
 metadata/_tab_index = 1
 
-[node name="Tips" type="RichTextLabel" parent="TabContainer"]
+[node name="Tips" type="RichTextLabel" parent="TabContainer" unique_id=1283813345]
 visible = false
 layout_mode = 2
 text = "- Stability augmentation system available
@@ -72,7 +72,7 @@ text = "- Stability augmentation system available
 - Hold left stick down while on the ground to stop"
 metadata/_tab_index = 2
 
-[node name="ButtonBack" type="Button" parent="."]
+[node name="ButtonBack" type="Button" parent="." unique_id=425381803]
 layout_mode = 0
 anchor_top = 0.9
 anchor_right = 0.2

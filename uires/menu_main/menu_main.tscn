@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgr5c8g8vkgy6"]
+[gd_scene format=3 uid="uid://cgr5c8g8vkgy6"]
 
-[ext_resource type="FontFile" path="res://uires/menu_shared/menu_shared_font.tres" id="1"]
+[ext_resource type="FontFile" uid="uid://b5638nyepbcb" path="res://uires/menu_shared/menu_shared_font.tres" id="1"]
 [ext_resource type="Script" uid="uid://dxbwd1yngv110" path="res://uires/menu_main/menu_main.gd" id="2"]
 
 [sub_resource type="Theme" id="1"]
@@ -19,7 +19,7 @@ Button/styles/pressed = null
 Label/colors/font_color = Color(0, 0.541176, 0.858824, 1)
 RichTextLabel/colors/default_color = Color(0, 0.541176, 0.858824, 1)
 
-[node name="MenuMain" type="Control"]
+[node name="MenuMain" type="Control" unique_id=892722577]
 layout_mode = 3
 anchor_left = 0.05
 anchor_top = 0.05
@@ -28,7 +28,7 @@ anchor_bottom = 0.95
 theme = SubResource("1")
 script = ExtResource("2")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=868906959]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.25
@@ -36,39 +36,39 @@ text = "INGENUITY MARS VX.X.X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Options" type="VBoxContainer" parent="."]
+[node name="Options" type="VBoxContainer" parent="." unique_id=1669004894]
 layout_mode = 0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 
-[node name="ButtonFreeFlight" type="Button" parent="Options"]
+[node name="ButtonFreeFlight" type="Button" parent="Options" unique_id=1098039964]
 layout_mode = 2
 text = "Free Flight"
 
-[node name="ButtonTutorials" type="Button" parent="Options"]
+[node name="ButtonTutorials" type="Button" parent="Options" unique_id=796130819]
 layout_mode = 2
 text = "Tutorials"
 
-[node name="ButtonMissions" type="Button" parent="Options"]
+[node name="ButtonMissions" type="Button" parent="Options" unique_id=180055255]
 layout_mode = 2
 disabled = true
 text = "Missions"
 
-[node name="ButtonCredits" type="Button" parent="Options"]
+[node name="ButtonCredits" type="Button" parent="Options" unique_id=1548283190]
 layout_mode = 2
 text = "Credits"
 
-[node name="ButtonSettings" type="Button" parent="Options"]
+[node name="ButtonSettings" type="Button" parent="Options" unique_id=1152494772]
 layout_mode = 2
 text = "Settings"
 
-[node name="ButtonExit" type="Button" parent="Options"]
+[node name="ButtonExit" type="Button" parent="Options" unique_id=313068886]
 layout_mode = 2
 text = "Exit"
 
-[node name="LoadingNotice" type="Label" parent="."]
+[node name="LoadingNotice" type="Label" parent="." unique_id=242217327]
 visible = false
 layout_mode = 0
 anchor_top = 0.2
@@ -78,7 +78,7 @@ grow_horizontal = 2
 text = "Loading, please wait. "
 horizontal_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=183453424]
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

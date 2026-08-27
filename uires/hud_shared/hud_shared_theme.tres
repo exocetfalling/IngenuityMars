@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://bvjvqvqwmxieg"]
 
-[ext_resource type="FontFile" path="res://uires/menu_shared/menu_shared_font.tres" id="1"]
+[ext_resource type="FontFile" uid="uid://b5638nyepbcb" path="res://uires/menu_shared/menu_shared_font.tres" id="1"]
 
 [resource]
 default_font = ExtResource("1")

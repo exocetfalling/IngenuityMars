@@ -1,23 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw302pnavcrap"]
+[gd_scene format=3 uid="uid://dw302pnavcrap"]
 
 [ext_resource type="Theme" uid="uid://bvjvqvqwmxieg" path="res://uires/hud_shared/hud_shared_theme.tres" id="1"]
 [ext_resource type="Script" uid="uid://d2kqip5od37qf" path="res://uires/hud_gauge_numeric/hud_gauge_numeric.gd" id="2"]
 
-[node name="HUDGaugeNumeric" type="Control"]
+[node name="HUDGaugeNumeric" type="Control" unique_id=1694643334]
 custom_minimum_size = Vector2(180, 150)
+layout_mode = 3
+anchors_preset = 0
 theme = ExtResource("1")
 script = ExtResource("2")
 label_displayed = "LBL"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1454979420]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.5
 text = "LBL"
-align = 1
+horizontal_alignment = 1
 
-[node name="Value" type="Label" parent="."]
+[node name="Value" type="Label" parent="." unique_id=1037079759]
+layout_mode = 0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "000"
-align = 1
+horizontal_alignment = 1

@@ -1,67 +1,65 @@
-[gd_scene load_steps=4 format=3 uid="uid://s3m5k8rsoh62"]
+[gd_scene format=3 uid="uid://s3m5k8rsoh62"]
 
 [ext_resource type="Script" uid="uid://bee4r1ece7knx" path="res://addons/aero_tools/scripts/aero_pid_calc.gd" id="3"]
 [ext_resource type="Script" uid="uid://dn666xasqlrto" path="res://addons/aero_tools/aircraft/basic_rotorcraft/basic_rotorcraft.gd" id="4"]
 
 [sub_resource type="BoxShape3D" id="1"]
 
-[node name="BasicRotorcraft" type="VehicleBody3D"]
-continuous_cd = true
+[node name="BasicRotorcraft" type="VehicleBody3D" unique_id=1406803355]
 can_sleep = false
-linear_damp = 0.0
+continuous_cd = true
 angular_damp = 1.0
 script = ExtResource("4")
 control_type = 1
 
-[node name="PIDCalcPitch" type="Node" parent="."]
+[node name="PIDCalcPitch" type="Node" parent="." unique_id=214750555]
 script = ExtResource("3")
 term_P = 0.8
 term_D = 0.4
 param_tuning_active = false
 
-[node name="PIDCalcRoll" type="Node" parent="."]
+[node name="PIDCalcRoll" type="Node" parent="." unique_id=539597031]
 script = ExtResource("3")
 term_P = 0.8
 term_D = 0.4
 param_tuning_active = false
 
-[node name="PIDCalcYaw" type="Node" parent="."]
+[node name="PIDCalcYaw" type="Node" parent="." unique_id=841148453]
 script = ExtResource("3")
 term_P = 0.8
 term_D = 0.4
 param_tuning_active = false
 
-[node name="PIDCalcThrust" type="Node" parent="."]
+[node name="PIDCalcThrust" type="Node" parent="." unique_id=1624153638]
 script = ExtResource("3")
 term_P = 0.2
 term_I = 0.2
 term_D = 0.05
 param_tuning_active = false
 
-[node name="PIDCalcVelocityX" type="Node" parent="."]
+[node name="PIDCalcVelocityX" type="Node" parent="." unique_id=452271672]
 script = ExtResource("3")
 term_P = 2.0
 term_I = 1.0
 term_D = 1.0
 param_tuning_active = false
 
-[node name="PIDCalcVelocityY" type="Node" parent="."]
+[node name="PIDCalcVelocityY" type="Node" parent="." unique_id=620743681]
 script = ExtResource("3")
 term_P = 2.0
 term_I = 1.0
 term_D = 1.0
 param_tuning_active = false
 
-[node name="PIDCalcVelocityZ" type="Node" parent="."]
+[node name="PIDCalcVelocityZ" type="Node" parent="." unique_id=978497760]
 script = ExtResource("3")
 term_P = 2.0
 term_I = 1.0
 term_D = 1.0
 param_tuning_active = false
 
-[node name="RadioAltimeter" type="RayCast3D" parent="."]
-enabled = true
+[node name="RadioAltimeter" type="RayCast3D" parent="." unique_id=466003700]
 target_position = Vector3(0, -1000, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=767132102]
 shape = SubResource("1")

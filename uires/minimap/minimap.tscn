@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://byrq1dyoh2lby"]
+[gd_scene format=3 uid="uid://byrq1dyoh2lby"]
 
-[ext_resource type="FontFile" path="res://uires/hud_shared/hud_shared_font.tres" id="1"]
+[ext_resource type="FontFile" uid="uid://vtv4ii0ty6bk" path="res://uires/hud_shared/hud_shared_font.tres" id="1"]
 
-[node name="Minimap" type="Control"]
+[node name="Minimap" type="Control" unique_id=1635730511]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 3
 anchors_preset = 15
@@ -16,21 +16,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Centre" type="Node2D" parent="."]
+[node name="Centre" type="Node2D" parent="." unique_id=1407315934]
 position = Vector2(125, 125)
 
-[node name="Ownship" type="Polygon2D" parent="Centre"]
+[node name="Ownship" type="Polygon2D" parent="Centre" unique_id=1639125011]
 polygon = PackedVector2Array(0, -5, 5, 0, 0, 5, -5, 0)
 
-[node name="Waypoint" type="Line2D" parent="Centre"]
+[node name="Waypoint" type="Line2D" parent="Centre" unique_id=198136202]
 points = PackedVector2Array(0, 0, 0, -10, 0, 0, 10, 0, 0, 0, 0, 10, 0, 0, -10, 0, 0, 0)
 width = 3.0
 
-[node name="MarkerN" type="Line2D" parent="Centre"]
+[node name="MarkerN" type="Line2D" parent="Centre" unique_id=16359637]
 points = PackedVector2Array(0, -80, 10, -70, 0, -80, -10, -70, 0, -80)
 width = 2.0
 
-[node name="Label" type="Label" parent="Centre/MarkerN"]
+[node name="Label" type="Label" parent="Centre/MarkerN" unique_id=1673240085]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,12 +44,12 @@ theme_override_font_sizes/font_size = 25
 text = "N"
 horizontal_alignment = 1
 
-[node name="MarkerE" type="Line2D" parent="Centre"]
+[node name="MarkerE" type="Line2D" parent="Centre" unique_id=1334602105]
 rotation = 1.5708
 points = PackedVector2Array(0, -80, 10, -70, 0, -80, -10, -70, 0, -80)
 width = 2.0
 
-[node name="Label" type="Label" parent="Centre/MarkerE"]
+[node name="Label" type="Label" parent="Centre/MarkerE" unique_id=1538979889]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -63,12 +63,12 @@ theme_override_font_sizes/font_size = 25
 text = "E"
 horizontal_alignment = 1
 
-[node name="MarkerS" type="Line2D" parent="Centre"]
+[node name="MarkerS" type="Line2D" parent="Centre" unique_id=1470210674]
 rotation = 3.14159
 points = PackedVector2Array(0, -80, 10, -70, 0, -80, -10, -70, 0, -80)
 width = 2.0
 
-[node name="Label" type="Label" parent="Centre/MarkerS"]
+[node name="Label" type="Label" parent="Centre/MarkerS" unique_id=1586753138]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -82,12 +82,12 @@ theme_override_font_sizes/font_size = 25
 text = "S"
 horizontal_alignment = 1
 
-[node name="MarkerW" type="Line2D" parent="Centre"]
+[node name="MarkerW" type="Line2D" parent="Centre" unique_id=1368874760]
 rotation = 4.71239
 points = PackedVector2Array(0, -80, 10, -70, 0, -80, -10, -70, 0, -80)
 width = 2.0
 
-[node name="Label" type="Label" parent="Centre/MarkerW"]
+[node name="Label" type="Label" parent="Centre/MarkerW" unique_id=1099490330]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -101,7 +101,7 @@ theme_override_font_sizes/font_size = 25
 text = "W"
 horizontal_alignment = 1
 
-[node name="FlightPath" type="Line2D" parent="Centre"]
+[node name="FlightPath" type="Line2D" parent="Centre" unique_id=1341184255]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
 joint_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://gvc8jost2ju"]
+[gd_scene format=3 uid="uid://gvc8jost2ju"]
 
 [ext_resource type="PackedScene" uid="uid://cvp4faun7lbwx" path="res://terrain/jezero_crater/jezero_crater.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://jg4mqk27bw1n" path="res://aircraft/ingenuity/ingenuity.tscn" id="2"]
@@ -6,29 +6,29 @@
 [ext_resource type="Script" uid="uid://dqmxylo04ca7j" path="res://missions/mission_classes/mission.gd" id="4"]
 [ext_resource type="Script" uid="uid://qabluy30plca" path="res://missions/mission_classes/mission_goal.gd" id="5"]
 
-[node name="Mission01" type="Node3D"]
+[node name="Mission01" type="Node3D" unique_id=707965969]
 script = ExtResource("4")
 
-[node name="Ingenuity" parent="." instance=ExtResource("2")]
+[node name="Ingenuity" parent="." unique_id=1408734550 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 52.234, 0)
 
-[node name="JezeroCrater" parent="." instance=ExtResource("1")]
+[node name="JezeroCrater" parent="." unique_id=1614166128 instance=ExtResource("1")]
 
-[node name="Charger" parent="." instance=ExtResource("3")]
+[node name="Charger" parent="." unique_id=867249907 instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 
-[node name="MissionGoal01" type="Node3D" parent="."]
+[node name="MissionGoal01" type="Node3D" parent="." unique_id=858225662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -100)
 script = ExtResource("5")
 
-[node name="MissionGoal02" type="Node3D" parent="."]
+[node name="MissionGoal02" type="Node3D" parent="." unique_id=1669032377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -50)
 script = ExtResource("5")
 
-[node name="MissionGoal03" type="Node3D" parent="."]
+[node name="MissionGoal03" type="Node3D" parent="." unique_id=1203741528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -25)
 script = ExtResource("5")
 
-[node name="MissionGoal04" type="Node3D" parent="."]
+[node name="MissionGoal04" type="Node3D" parent="." unique_id=2011690169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 script = ExtResource("5")

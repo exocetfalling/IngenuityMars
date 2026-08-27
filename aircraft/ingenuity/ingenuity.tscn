@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jg4mqk27bw1n"]
+[gd_scene format=3 uid="uid://jg4mqk27bw1n"]
 
 [ext_resource type="Script" uid="uid://chnp6vuya0ig6" path="res://aircraft/ingenuity/ingenuity.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bkalbqw5k1ym7" path="res://aircraft/ingenuity/model/Ingenuity_v3_model.tscn" id="2"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://byecdl5cchhtc" path="res://uires/hud_shared/hud_shared.tscn" id="4"]
 [ext_resource type="Script" uid="uid://dyji6eypn3six" path="res://addons/aero_tools/scripts/aero_surface.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://bx01ucpesub2m" path="res://effects/dust_effect/dust_effect.tscn" id="6"]
-[ext_resource type="AudioStream" uid="uid://xv1pprygvmsm" path="res://aircraft/ingenuity/sound/heli_flying.mp3" id="7"]
+[ext_resource type="AudioStream" uid="uid://diqfqgn1cik6h" path="res://aircraft/ingenuity/sound/heli_flying.mp3" id="7"]
 
 [sub_resource type="BoxShape3D" id="1"]
 margin = 0.001
@@ -23,7 +23,7 @@ radius = 0.01
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nkayi"]
 points = PackedVector3Array(0, 0.125, 0, 0.25, -0.125, -0.25, 0.25, -0.125, 0.25, -0.25, -0.125, 0.25, -0.25, -0.125, -0.25)
 
-[node name="Ingenuity" type="VehicleBody3D"]
+[node name="Ingenuity" type="VehicleBody3D" unique_id=1429016962]
 mass = 1.8
 can_sleep = false
 continuous_cd = true
@@ -31,85 +31,85 @@ angular_damp = 1.0
 script = ExtResource("1")
 control_type = 1
 
-[node name="Ingenuity_v3" parent="." instance=ExtResource("2")]
+[node name="Ingenuity_v3" parent="." unique_id=2100173146 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.207, 0)
 
-[node name="CollisionShapeBus" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeBus" type="CollisionShape3D" parent="." unique_id=1625597429]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.014392, 0)
 shape = SubResource("1")
 
-[node name="CollisionShapeRotors" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeRotors" type="CollisionShape3D" parent="." unique_id=1461499035]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.165116, 0)
 shape = SubResource("CylinderShape3D_nkayi")
 
-[node name="CollisionShapeShaft" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeShaft" type="CollisionShape3D" parent="." unique_id=1684614717]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.165116, 0)
 shape = SubResource("CylinderShape3D_bn4v4")
 
-[node name="CollisionShapeLegs" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeLegs" type="CollisionShape3D" parent="." unique_id=188640834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0174878, 0)
 shape = SubResource("ConvexPolygonShape3D_nkayi")
 disabled = true
 
-[node name="RadioAltimeter" type="RayCast3D" parent="."]
+[node name="RadioAltimeter" type="RayCast3D" parent="." unique_id=1976842223]
 target_position = Vector3(0, -30, 0)
 
-[node name="PIDCalcPitch" type="Node" parent="."]
+[node name="PIDCalcPitch" type="Node" parent="." unique_id=1868344126]
 script = ExtResource("3")
 term_P = 0.01
 term_D = 0.01
 param_tuning_active = false
 
-[node name="PIDCalcRoll" type="Node" parent="."]
+[node name="PIDCalcRoll" type="Node" parent="." unique_id=777598763]
 script = ExtResource("3")
 term_P = 0.01
 term_D = 0.01
 param_tuning_active = false
 
-[node name="PIDCalcYaw" type="Node" parent="."]
+[node name="PIDCalcYaw" type="Node" parent="." unique_id=905713587]
 script = ExtResource("3")
 term_P = 2.0
 term_D = 0.01
 param_tuning_active = false
 
-[node name="PIDCalcVelocityX" type="Node" parent="."]
+[node name="PIDCalcVelocityX" type="Node" parent="." unique_id=279607185]
 script = ExtResource("3")
 term_P = 8.0
 param_tuning_active = false
 
-[node name="PIDCalcVelocityY" type="Node" parent="."]
+[node name="PIDCalcVelocityY" type="Node" parent="." unique_id=1144015425]
 script = ExtResource("3")
 term_P = 3.0
 term_I = 1.5
 param_tuning_active = false
 
-[node name="PIDCalcVelocityZ" type="Node" parent="."]
+[node name="PIDCalcVelocityZ" type="Node" parent="." unique_id=421930472]
 script = ExtResource("3")
 term_P = 8.0
 param_tuning_active = false
 
-[node name="PIDCalcPositionX" type="Node" parent="."]
+[node name="PIDCalcPositionX" type="Node" parent="." unique_id=1564974184]
 script = ExtResource("3")
 term_P = 2.0
 term_I = 0.5
 term_D = 0.1
 param_tuning_active = false
 
-[node name="PIDCalcPositionY" type="Node" parent="."]
+[node name="PIDCalcPositionY" type="Node" parent="." unique_id=1622973053]
 script = ExtResource("3")
 term_P = 2.0
 term_I = 0.5
 term_D = 0.1
 param_tuning_active = false
 
-[node name="PIDCalcPositionZ" type="Node" parent="."]
+[node name="PIDCalcPositionZ" type="Node" parent="." unique_id=1135223489]
 script = ExtResource("3")
 term_P = 2.0
 term_I = 0.5
 term_D = 0.1
 param_tuning_active = false
 
-[node name="VehicleWheel1" type="VehicleWheel3D" parent="."]
+[node name="VehicleWheel1" type="VehicleWheel3D" parent="." unique_id=2006245808]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.3, -0.18, -0.3)
 wheel_radius = 0.01
 wheel_rest_length = 0.02
@@ -117,7 +117,7 @@ wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
-[node name="VehicleWheel2" type="VehicleWheel3D" parent="."]
+[node name="VehicleWheel2" type="VehicleWheel3D" parent="." unique_id=1310735858]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.3, -0.18, -0.3)
 wheel_radius = 0.01
 wheel_rest_length = 0.02
@@ -125,7 +125,7 @@ wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
-[node name="VehicleWheel3" type="VehicleWheel3D" parent="."]
+[node name="VehicleWheel3" type="VehicleWheel3D" parent="." unique_id=456078860]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -0.3, -0.18, 0.3)
 wheel_radius = 0.01
 wheel_rest_length = 0.02
@@ -133,7 +133,7 @@ wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
-[node name="VehicleWheel4" type="VehicleWheel3D" parent="."]
+[node name="VehicleWheel4" type="VehicleWheel3D" parent="." unique_id=499607228]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.3, -0.18, 0.3)
 wheel_radius = 0.01
 wheel_rest_length = 0.02
@@ -141,33 +141,33 @@ wheel_friction_slip = 1.0
 suspension_travel = 0.05
 suspension_stiffness = 200.0
 
-[node name="CameraExt" type="Camera3D" parent="."]
+[node name="CameraExt" type="Camera3D" parent="." unique_id=612991458]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.557338, 1.96399)
 current = true
 far = 100000.0
 
-[node name="CameraRTE" type="Camera3D" parent="."]
+[node name="CameraRTE" type="Camera3D" parent="." unique_id=587191234]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, -0.08, -0.1)
 fov = 80.0
 far = 100000.0
 
-[node name="CameraNAV" type="Camera3D" parent="."]
+[node name="CameraNAV" type="Camera3D" parent="." unique_id=1883740534]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.1, 0)
 far = 100000.0
 
-[node name="AeroSurfaceRef" type="Node3D" parent="."]
+[node name="AeroSurfaceRef" type="Node3D" parent="." unique_id=1447112413]
 script = ExtResource("5")
 
-[node name="HUDShared" parent="." instance=ExtResource("4")]
+[node name="HUDShared" parent="." unique_id=985838351 instance=ExtResource("4")]
 
-[node name="DustRayCast" type="RayCast3D" parent="."]
+[node name="DustRayCast" type="RayCast3D" parent="." unique_id=1018141359]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0829749, 0)
 target_position = Vector3(0, -5, 0)
 
-[node name="DustEffect" parent="." instance=ExtResource("6")]
+[node name="DustEffect" parent="." unique_id=61526028 instance=ExtResource("6")]
 amount_ratio = 0.0
 
-[node name="RotorSounds" type="AudioStreamPlayer3D" parent="."]
+[node name="RotorSounds" type="AudioStreamPlayer3D" parent="." unique_id=201674179]
 stream = ExtResource("7")
 attenuation_model = 1
 max_db = 1.0

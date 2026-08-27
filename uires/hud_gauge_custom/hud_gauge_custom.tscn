@@ -1,22 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3yua66hiib68"]
+[gd_scene format=3 uid="uid://d3yua66hiib68"]
 
 [ext_resource type="Theme" uid="uid://bvjvqvqwmxieg" path="res://uires/hud_shared/hud_shared_theme.tres" id="1"]
 [ext_resource type="Script" uid="uid://b0ehljvas3jwj" path="res://uires/hud_gauge_custom/hud_gauge_custom.gd" id="2"]
 
-[node name="HUDGaugeCustom" type="Control"]
+[node name="HUDGaugeCustom" type="Control" unique_id=996165316]
 custom_minimum_size = Vector2(180, 150)
+layout_mode = 3
+anchors_preset = 0
 theme = ExtResource("1")
 script = ExtResource("2")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=898962]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.5
 text = "Label"
-align = 1
+horizontal_alignment = 1
 
-[node name="Value" type="Label" parent="."]
+[node name="Value" type="Label" parent="." unique_id=1861909877]
+layout_mode = 0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "000"
-align = 1
+horizontal_alignment = 1

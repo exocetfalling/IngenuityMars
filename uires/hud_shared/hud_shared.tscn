@@ -22,12 +22,14 @@ script = ExtResource("2")
 
 [node name="GaugeSPD" parent="." unique_id=976580557 instance=ExtResource("1")]
 layout_mode = 1
+anchors_preset = -1
 anchor_top = 0.1
 anchor_bottom = 0.1
 label_displayed = "SPD"
 
 [node name="GaugeBAT" parent="." unique_id=1745932680 instance=ExtResource("1")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.1
 anchor_right = 0.5
@@ -40,6 +42,7 @@ value_minimum = 0.0
 
 [node name="GaugeALT" parent="." unique_id=931514904 instance=ExtResource("1")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 0.1
 anchor_right = 1.0
@@ -79,7 +82,7 @@ value_format_string = "%+0.1f"
 
 [node name="VJoyLeft" parent="UI" unique_id=1736820365 instance=ExtResource("3")]
 modulate = Color(0.196078, 0.196078, 0.196078, 0.764706)
-layout_mode = 3
+anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.9
 anchor_right = 0.1
@@ -97,7 +100,7 @@ action_down = "throttle_down"
 
 [node name="VJoyRight" parent="UI" unique_id=1106916237 instance=ExtResource("3")]
 modulate = Color(0.196078, 0.196078, 0.196078, 0.764706)
-layout_mode = 3
+anchors_preset = -1
 anchor_left = 0.9
 anchor_top = 0.9
 anchor_right = 0.9

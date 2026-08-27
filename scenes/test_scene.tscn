@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://jg4mqk27bw1n" path="res://aircraft/ingenuity/ingenuity.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://cvp4faun7lbwx" path="res://terrain/jezero_crater/jezero_crater.tscn" id="3_ntqqa"]
 
-[node name="TestScene" type="Node3D"]
+[node name="TestScene" type="Node3D" unique_id=334829391]
 
-[node name="Ingenuity" parent="." instance=ExtResource("2")]
+[node name="Ingenuity" parent="." unique_id=1504624247 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 52.2337, 0)
 
-[node name="JezeroCrater" parent="." instance=ExtResource("3_ntqqa")]
+[node name="JezeroCrater" parent="." unique_id=2125187714 instance=ExtResource("3_ntqqa")]

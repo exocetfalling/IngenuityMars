@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://7agoeddwuudi"]
+[gd_scene format=3 uid="uid://7agoeddwuudi"]
 
 [ext_resource type="Theme" uid="uid://dmcu03ea4ledm" path="res://uires/menu_shared/menu_shared_theme.tres" id="1"]
 [ext_resource type="Script" uid="uid://beobpw25mt2ct" path="res://uires/menu_pause/menu_pause.gd" id="2"]
 
-[node name="MenuPause" type="Control"]
+[node name="MenuPause" type="Control" unique_id=1686019124]
 process_mode = 3
 layout_mode = 3
 anchor_left = 0.3
@@ -16,7 +16,7 @@ size_flags_horizontal = 4
 theme = ExtResource("1")
 script = ExtResource("2")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=360268631]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.2
@@ -25,25 +25,25 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Options" type="VBoxContainer" parent="."]
+[node name="Options" type="VBoxContainer" parent="." unique_id=1932686423]
 layout_mode = 0
 anchor_top = 0.2
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_vertical = 3
 
-[node name="ButtonResume" type="Button" parent="Options"]
+[node name="ButtonResume" type="Button" parent="Options" unique_id=1236591705]
 layout_mode = 2
 text = "Resume"
 
-[node name="ButtonSettings" type="Button" parent="Options"]
+[node name="ButtonSettings" type="Button" parent="Options" unique_id=721720549]
 layout_mode = 2
 text = "Settings"
 
-[node name="ButtonMainMenu" type="Button" parent="Options"]
+[node name="ButtonMainMenu" type="Button" parent="Options" unique_id=956407048]
 layout_mode = 2
 text = "Main Menu"
 
-[node name="ButtonExit" type="Button" parent="Options"]
+[node name="ButtonExit" type="Button" parent="Options" unique_id=15515197]
 layout_mode = 2
 text = "Exit"
