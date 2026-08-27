@@ -328,15 +328,15 @@ func get_input(delta):
 
 func align_up(node_basis, normal):
 	var result = Basis()
-	var scale = node_basis.get_scale() # Only if your node might have a scale other than (1,1,1)
+	var node_scale = node_basis.get_scale() # Only if your node might have a scale other than (1,1,1)
 
 	result.x = normal.cross(node_basis.z)
 	result.y = normal
 	result.z = node_basis.x.cross(normal)
 
 	result = result.orthonormalized()
-	result.x *= scale.x 
-	result.y *= scale.y 
-	result.z *= scale.z 
+	result.x *= node_scale.x 
+	result.y *= node_scale.y 
+	result.z *= node_scale.z 
 
 	return result
